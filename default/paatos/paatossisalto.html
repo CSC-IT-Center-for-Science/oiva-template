@@ -1,0 +1,216 @@
+
+<div class="sector">
+
+  <div class="sector-left">
+    Viite
+  </div>
+
+  <div class="sector-right">
+    {% if hakemus.exists  %}
+      Hakemus ammatillisen peruskoulutuksen järjestämislupaan sisältyvän koulutustehtävän muuttamiseksi
+      {{ hakemus.pvm | date("dd.MM.yyyy") }}, {{ paatos.diaari }}
+    {% else %}
+      <div class="paatoskohtainenTeksti">
+        {% for teksti in paatostekstit["viite"] %}
+          {{ teksti | translated(language)}}
+        {% endfor %}
+
+      </div>
+    {% endif %}
+  </div>
+
+</div>
+
+
+<div class="sector">
+
+  <div class="sector-left">
+    Asia
+  </div>
+
+  <div class="sector-right">
+
+    <h4>Ammatillisen peruskoulutuksen järjestämislupaan sisältyvän koulutustehtävän muuttaminen</h4>
+
+    <!-- Yleinen johdanto 1 -->
+    <p>Koulutuksen järjestäjälle on myönnetty ammatillisesta perusopetuksesta annetun lain (630/1998) 8 ja 9 §:n nojalla ammatillisen peruskoulutuksen järjestämislupa {{ paatos.uusiJarjestamislupaPvm | date("dd.MM.yyyy") }} päivätyllä opetus&#45; ja
+      kulttuuriministeriön päätöksellä ​{{ paatos.uusiJarjestamislupaDiaari }}. Koulutuksen järjestäjä on hakenut muutosta ammatillisen peruskoulutuksen järjestämislupaan sisältyvään koulutustehtävään. Opetus&#45; ja kulttuuriministeriö on käsitellyt 
+	  koulutuksen järjestäjän hakemuksen ja päättänyt seuraavasti:
+    </p>
+    <!-- yleinen johdanto 1 ends -->
+
+    <!-- muutokset -->
+
+    <!--
+    EMPTY NOW
+
+    <p>
+
+      Opetus­ ja kulttuuriministeriö muuttaa ​{% if hakemus.exists %} hakemuksesta {% else %}
+      hakemuksetta {% endif %}​ koulutuksen järjestäjän ammatillisen peruskoulutuksen järjestämislupaan
+      sisältyvää ammatillisen peruskoulutuksen koulutustehtävää seuraavasti:</p>
+
+
+      -->
+
+      <!-- vertaillaan tässä myönnettävää ja edellistä koulutustehtävää keskenään ja tuloostetaan
+      muutokset + perustelut, tarkempi speksi myöhemmin. Ei tarvita elokuun päätöksille. -->
+
+    <!-- muutokset end -->
+
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["muut määräykset"] %}
+      {{ teksti | translated(language)}}
+      {% endfor %}
+    </div>
+
+    <!-- yleinen johdanto osa 2 -->
+    <p>Tällä päätöksellä määrättyä ammatillisen peruskoulutuksen koulutustehtävää
+	    {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
+			ja lupaa toimia kuorma&#45; ja linja&#45;autonkuljettajien ammattipätevyyskoulutusta antavana koulutuskeskuksena
+	    {% endif %}
+      sovelletaan ​{{ paatos.alkupvm | date("dd.MM.yyyy") }} ​alkaen.
+	  Ammatillisen peruskoulutuksen koulutustehtävä
+		{% if koulutustehtava.kuljettajakoulutus.size > 0 %}
+			ja koulutuskeskuslupa ovat liitteinä.
+	    {% else %}
+			on liitteenä.
+		{% endif %}
+        Tällä päätöksellä korvataan	{{ paatos.edellinenPaatosPvm | date("dd.MM.yyyy") }} päivätyllä opetus&#45; ja kulttuuriministeriön päätöksellä 
+		({{ paatos.edellinenPaatosDiaari }}) määrätty koulutustehtävä.
+	</p>
+
+
+    <!-- yleinen johdanto osa 2 -->
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["yleinen_johdanto_osa_2"] %}
+      {{ teksti | translated(language)}}
+      {% endfor %}
+    </div>
+
+    <!-- saadokset -->
+    <p>
+      <b>Säädökset, joihin päätös perustuu:</b><br/>
+      {% if koulutustehtava.kokeilut.size > 0 %}
+        Laki ammatillisesta koulutuksesta (630/1998) 9 §:n 2 mom., 23 § (787/2014)<br/>
+      {% else %}
+        Laki ammatillisesta koulutuksesta (630/1998) 9 §:n 2 mom.<br/>
+      {% endif %}
+      Laki ammatillisesta aikuiskoulutuksesta (631/1998) 4 §:n 1 mom.<br/>
+      {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
+        Kuorma&#45; ja linja&#45;auton kuljettajien ammattipätevyydestä annetun lain (273/2007) 10 §
+      {% endif %}
+    </p>
+    <!-- saadokset end -->
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["saadokset"] %}
+      {{ teksti | translated(language)}}
+      {% endfor %}
+    </div>
+
+
+    <!-- maksu -->
+    <b>Maksu:</b><br />
+      {% if paatos.maksu is not empty %}
+        1 220 euroa, joka laskutetaan erikseen; opetus&#45; ja kulttuuriministeriön asetus opetus&#45; ja kulttuuriministeriön
+        maksullisista suoritteista (688/2015) 2 §
+      {% else %}
+		Maksutta
+	  {% endif %}
+    </p>
+    <!-- maksu end -->
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["maksu"] %}
+      {{ teksti | translated(language)}}
+      {% endfor %}
+    </div>
+
+
+    <!-- muutoksenhaku -->
+    <p>
+      <b>Muutoksenhaku:</b><br/>
+      Tähän päätökseen saa hakea muutosta valittamalla korkeimpaan hallinto&#45;oikeuteen. Valitus
+      saadaan tehdä sillä perusteella, että päätös on lain vastainen. Valitusaika on 30 päivää
+      tiedoksisaannista. Liitteenä olevasta valitusosoituksesta ilmenee, miten muutosta haettaessa on
+      meneteltävä.
+    </p>
+    <!-- muutoksenhaku -->
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["muutoksenhaku"] %}
+      {{ teksti | translated(language)}}
+      {% endfor %}
+    </div>
+
+    <div class="ministeri">
+		<div class="ministeri-left">{{ paatos.ministeriNimike }}</div>
+		<div class="ministeri-right">{{ paatos.ministeri }}</div>
+    </div>
+
+    <div class="esittelija">
+		<div class="esittelija-left">{{ paatos.esittelijaNimike }}</div>
+		<div class="esittelija-right">{{ paatos.esittelija }}</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="sector">
+
+  <div class="sector-left">
+    Liitteet
+  </div>
+
+  <div class="sector-right">
+    <ul class="none">
+
+      <li>Ammatillisen peruskoulutuksen koulutustehtävä</li>
+      {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
+        <li>Lupa toimia kuorma&#45; ja linja&#45;autonkuljettajien ammattipätevyyskoulutusta antavana koulutuskeskuksena</li>
+      {% endif %}
+      {% if paatos.maksu  %}
+        <li>Maksua koskeva oikaisuvaatimusosoitus 10/091/2012</li>
+      {% endif %}
+      <li>Valitusosoitus 1/091/2015</li>
+
+    </ul>
+
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["liitteet"] %}
+      {{ teksti | translated(language)}}
+      {% endfor %}
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="sector">
+
+  <div class="sector-left">
+    Tiedoksi
+  </div>
+
+  <div class="sector-right">
+    <ul class="none">
+
+      <li>Opetushallitus</li>
+      <li>Opetushallitus/Koulutustoimialan palvelut</li>
+      <li>Tilastokeskus</li>
+
+      {% for AVIalue in koulutustehtava.jarjestamiskuntienAVIalueet %}
+
+         <li>{{ AVIalue.teksti | translated(language) }}</li>
+      {% endfor %}
+
+      {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
+        <li>Trafi</li>
+      {% endif %}
+	  {% for teksti in paatostekstit["tiedoksi"] %}
+		<li>{{ teksti | translated(language)}}</li>
+	  {% endfor %}
+    </ul>
+
+  </div>
+
+</div>

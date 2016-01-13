@@ -1,0 +1,29 @@
+
+<div class="sector">
+
+  <div class="sector-left">
+    Viite
+  </div>
+
+  <div class="sector-right">
+    {% if hakemus.exists  %}
+      Hakemus ammatillisen peruskoulutuksen järjestämislupaan sisältyvän koulutustehtävän muuttamiseksi
+      {{ hakemus.pvm | date("dd.MM.yyyy") }}, {{ paatos.diaari }}
+    {% endif %}
+  </div>
+
+</div>
+
+
+<div class="sector">
+
+  <div class="sector-left">
+    Asia
+  </div>
+
+  <div class="sector-right">
+    Hakemustekstiä.
+
+  </div>
+</div>
+

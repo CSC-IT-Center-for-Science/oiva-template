@@ -1,0 +1,260 @@
+
+<div class="sector">
+
+  <div class="sector-left">
+    Viite
+  </div>
+
+  <div class="sector-right">
+
+  </div>
+
+</div>
+
+
+<div class="sector">
+
+  <div class="sector-left">
+    Asia
+  </div>
+
+  <div class="sector-right">
+
+    <h4>Ammatillisen peruskoulutuksen järjestämislupaa koskevan päätöksen tekninen uudistaminen</h4>
+
+    <!-- Yleinen johdanto 1 -->
+    <p>Koulutuksen järjestäjälle on myönnetty ammatillisesta perusopetuksesta annetun lain (630/1998) 8 ja 9 §:n nojalla ammatillisen peruskoulutuksen järjestämislupa {{ paatos.uusiJarjestamislupaPvm | date("dd.MM.yyyy") }} päivätyllä opetus&#45; ja
+      kulttuuriministeriön päätöksellä ​{{ paatos.uusiJarjestamislupaDiaari }}.
+      {% if metadata.johdantoVALMA == "true" %}
+        Tällä päätöksellä korvataan {{ paatos.edellisenPaatoksenedellinenPaatosPvm | date("dd.MM.yyyy") }}  ja
+		{{ paatos.edellinenPaatosPvm | date("dd.MM.yyyy") }} päivätyillä opetus&#45; ja kulttuuriministeriön päätöksillä (​​​{{ paatos.edellisenPaatoksenedellinenPaatosDiaari }} ja {{ paatos.edellinenPaatosDiaari }})
+        määrätty koulutustehtävä.
+      {% endif %}
+      {% if metadata.johdantoVALMA != "true" %}
+        Tällä päätöksellä korvataan {{ paatos.edellinenPaatosPvm | date("dd.MM.yyyy") }}
+        päivätyllä opetus&#45; ja kulttuuriministeriön päätöksellä (​​{{ paatos.edellinenPaatosDiaari }}) määrätty koulutustehtävä.
+      {% endif %}
+    </p>
+    <!-- yleinen johdanto 1 ends -->
+
+    <!-- muutokset -->
+
+    <!--
+    EMPTY NOW
+
+    <p>
+
+      Opetus­ ja kulttuuriministeriö muuttaa ​{% if hakemus.exists %} hakemuksesta {% else %}
+      hakemuksetta {% endif %}​ koulutuksen järjestäjän ammatillisen peruskoulutuksen järjestämislupaan
+      sisältyvää ammatillisen peruskoulutuksen koulutustehtävää seuraavasti:</p>
+
+
+      -->
+
+      <!-- vertaillaan tässä myönnettävää ja edellistä koulutustehtävää keskenään ja tuloostetaan
+      muutokset + perustelut, tarkempi speksi myöhemmin. Ei tarvita elokuun päätöksille. -->
+
+    <!-- muutokset end -->
+
+    <!-- hakukierroskohtainen johdanto -->
+	<p>Opetus- ja kulttuuriministeriö siirtyy ammatillisen peruskoulutuksen järjestämislupien osalta uuteen
+	sähköiseen asiointijärjestelmään. Tämä edellyttää, että voimassa olevien ammatillisen peruskoulutuksen
+	järjestämislupien koulutustehtävät saatetaan uudessa järjestelmässä määriteltyyn muotoon. Voimassa
+	olevan järjestämisluvan koulutustehtävä ei sisällöllisesti muutu.</p>
+
+    <p>Tässä päätöksessä on otettu huomioon 1.8.2015 voimaan tulleet ammatillisesta peruskoulutuksesta
+      annettuun lakiin tehdyt tutkinnon muodostumista ja valmentavia koulutuksia koskevat muutokset
+      (787/2014 ja 246/2015) ja opetus&#45; ja kulttuuriministeriön asetus ammatillisen koulutuksen
+      tutkintorakenteesta (835/2014).</p>
+
+
+
+    <p>Koulutustehtävän rakennetta on muutettu siten, että</p>
+
+    <ul>
+      <li>kohdassa <i>Koulutusalat, ammatilliset perustutkinnot ja valmentavat koulutukset</i>
+      luetellaan aiemmasta poiketen koulutusaloittain kaikki ne perustutkinnot, osaamisalat ja
+      valmentavat koulutukset, joita koulutuksen järjestäjä voi järjestää</li>
+      <li>erityisenä koulutustehtävänä määrätään jatkossa vain erityisopetuksen järjestämisestä</li>
+      <li>koulutuskuntayhtymillä järjestämispaikkakunnissa on lueteltu ne paikkakunnat, joissa
+      koulutusta voidaan järjestää</li>
+      <li>muille kuin kaksikielisille koulutuksen järjestäjille ne koulutukset, joita voi järjestää
+      molemmilla kotimaisilla kielillä, on erikseen määrätty kohdassa ​<i>Koulutusalat,
+      ammatilliset perustutkinnot ja valmentavat koulutukset</i>
+    </ul>
+
+    <p>Mikäli koulutuksen järjestäjän koulutustehtävä on sisältänyt hyvinvointiteknologian kokeiluluvan,
+	se on poistettu koulutustehtävästä. Kyseinen kokeilu ei enää uuden lainsäädännön mukaan edellytä
+	opetus&#45; ja kulttuuriministeriön myöntämää lupaa. Kokeilua jatketaan 1.8.2015 alkaen Opetushallituksen
+	määräämien kokeilussa noudatettavien tutkinnon perusteiden mukaisesti. Kokeilun tulee päättyä
+	viimeistään 31.12.2018. </p>
+
+    <p>Lupa järjestää sellaisia tutkintoja, joihin sisältyy kuorma&#45; ja linja&#45;autonkuljettajien perustason
+	ammattipätevyyskoulutus, edellyttää opetus&#45; ja kulttuuriministeriön myöntämää lupaa toimia  kuorma&#45;
+	ja linja&#45;autonkuljettajien perustason ammattipätevyyskoulutusta antavana koulutuskeskuksena
+	(laki 273/2007 sekä valtioneuvoston asetus 640/2007 kuorma&#45; ja linja&#45;auton kuljettajien ammattipätevyydestä).
+	Lupa koskee sekä oppilaitosmuotoista koulutusta että oppisopimuskoulutusta. Luvan edellyttäviä tutkintoja on
+	tekniikan ja liikenteen alalla sekä luonnonvara&#45; ja ympäristöalalla. Tutkinnot, joita koulutuksen järjestäjä
+	saa järjestää, käyvät ilmi koulutustehtävän kohdasta <i>Koulutusalat, ammatilliset perustutkinnot ja valmentavat
+	koulutukset</i>. Lisäksi lupaa toimia kuorma&#45; ja linja&#45;autonkuljettajien ammattipätevyyskoulutusta antavana
+	koulutuskeskuksena on täsmennetty.</p>
+
+    <!-- hakukierroskohtainen johdanto end -->
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["muut määräykset"] %}
+      {{ teksti | translated(language)}}
+      {% endfor %}
+    </div>
+
+    <!-- yleinen johdanto osa 2 -->
+    <p>Tällä päätöksellä määrättyä ammatillisen peruskoulutuksen koulutustehtävää
+	    {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
+			ja lupaa toimia kuorma&#45; ja linja&#45;autonkuljettajien ammattipätevyyskoulutusta antavana koulutuskeskuksena
+	    {% endif %}
+      sovelletaan ​{{ paatos.alkupvm | date("dd.MM.yyyy") }} ​alkaen.
+	  Ammatillisen peruskoulutuksen koulutustehtävä
+		{% if koulutustehtava.kuljettajakoulutus.size > 0 %}
+			ja koulutuskeskuslupa ovat liitteinä.
+	    {% else %}
+			on liitteenä.
+		{% endif %}
+	</p>
+
+
+    <!-- yleinen johdanto osa 2 -->
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["yleinen_johdanto_osa_2"] %}
+      {{ teksti | translated(language)}}
+      {% endfor %}
+    </div>
+
+    <!-- saadokset -->
+    <p>
+      <b>Säädökset, joihin päätös perustuu:</b><br/>
+      {% if koulutustehtava.kokeilut.size > 0 %}
+        Laki ammatillisesta koulutuksesta (630/1998) 9 §:n 2 mom., 23 § (787/2014)<br/>
+      {% else %}
+        Laki ammatillisesta koulutuksesta (630/1998) 9 §:n 2 mom.<br/>
+      {% endif %}
+      Laki ammatillisesta aikuiskoulutuksesta (631/1998) 4 §:n 1 mom.<br/>
+      {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
+        Kuorma&#45; ja linja&#45;auton kuljettajien ammattipätevyydestä annetun lain (273/2007) 10 §
+      {% endif %}
+    </p>
+    <!-- saadokset end -->
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["saadokset"] %}
+      {{ teksti | translated(language)}}
+      {% endfor %}
+    </div>
+
+
+    <!-- maksu -->
+    <b>Maksu:</b><br />
+      {% if paatos.maksu is not empty and hakemus.isHakemusPvmBeforeVertailuPvm %}
+        1 145  euroa, joka laskutetaan erikseen; opetus&#45; ja kulttuuriministeriön asetus opetus&#45; ja kulttuuriministeriön
+        maksullisista suoritteista (263/2012) 2 §
+      {% elseif paatos.maksu is not empty %}
+        1 220 euroa, joka laskutetaan erikseen; opetus&#45; ja kulttuuriministeriön asetus opetus&#45; ja kulttuuriministeriön
+        maksullisista suoritteista (688/2015) 2 §
+      {% else %}
+		Maksutta
+	  {% endif %}
+    </p>
+    <!-- maksu end -->
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["maksu"] %}
+      {{ teksti | translated(language)}}
+      {% endfor %}
+    </div>
+
+
+    <!-- muutoksenhaku -->
+    <p>
+      <b>Muutoksenhaku:</b><br/>
+      Tähän päätökseen saa hakea muutosta valittamalla korkeimpaan hallinto&#45;oikeuteen. Valitus
+      saadaan tehdä sillä perusteella, että päätös on lain vastainen. Valitusaika on 30 päivää
+      tiedoksisaannista. Liitteenä olevasta valitusosoituksesta ilmenee, miten muutosta haettaessa on
+      meneteltävä.
+    </p>
+    <!-- muutoksenhaku -->
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["muutoksenhaku"] %}
+      {{ teksti | translated(language)}}
+      {% endfor %}
+    </div>
+
+    <div class="ministeri">
+		<div class="ministeri-left">{{ paatos.ministeriNimike }}</div>
+		<div class="ministeri-right">{{ paatos.ministeri }}</div>
+    </div>
+
+    <div class="esittelija">
+		<div class="esittelija-left">{{ paatos.esittelijaNimike }}</div>
+		<div class="esittelija-right">{{ paatos.esittelija }}</div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="sector">
+
+  <div class="sector-left">
+    Liitteet
+  </div>
+
+  <div class="sector-right">
+    <ul class="none">
+
+      <li>Ammatillisen peruskoulutuksen koulutustehtävä</li>
+      {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
+        <li>Lupa toimia kuorma&#45; ja linja&#45;autonkuljettajien ammattipätevyyskoulutusta antavana koulutuskeskuksena</li>
+      {% endif %}
+      {% if paatos.maksu  %}
+        <li>Maksua koskeva oikaisuvaatimusosoitus 10/091/2012</li>
+      {% endif %}
+      <li>Valitusosoitus 1/091/2015</li>
+
+    </ul>
+
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["liitteet"] %}
+      {{ teksti | translated(language)}}
+      {% endfor %}
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="sector">
+
+  <div class="sector-left">
+    Tiedoksi
+  </div>
+
+  <div class="sector-right">
+    <ul class="none">
+
+      <li>Opetushallitus</li>
+      <li>Opetushallitus/Koulutustoimialan palvelut</li>
+      <li>Tilastokeskus</li>
+
+      {% for AVIalue in koulutustehtava.jarjestamiskuntienAVIalueet %}
+
+         <li>{{ AVIalue.teksti | translated(language) }}</li>
+      {% endfor %}
+
+      {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
+        <li>Trafi</li>
+      {% endif %}
+	  {% for teksti in paatostekstit["tiedoksi"] %}
+		<li>{{ teksti | translated(language)}}</li>
+	  {% endfor %}
+    </ul>
+
+  </div>
+
+</div>

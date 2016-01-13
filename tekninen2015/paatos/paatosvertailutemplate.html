@@ -1,0 +1,58 @@
+{% extends "templates/default/basetemplate.html" %}
+
+{% block title %} Päätös example {% endblock %}
+
+{% block header %}
+
+  <div id="page-header">
+
+    <div id="page-header-left">
+      <p><img src="{{ logopath }}" style="width:40%;"><p>
+      <p>{{ koulutustehtava.jarjestajaNimi | translated(language)  }}<br/>
+      {{ koulutustehtava.jarjestajaKatuosoite }}<br/>
+      {{ koulutustehtava.jarjestajaPostiNro }} {{ koulutustehtava.jarjestajaToimipaikka }}</p>
+    </div>
+
+    <div id="page-header-center">
+      <h4>Päätös</h4>
+      {{ paatos.paatospvm | date("dd.MM.yyyy") }}
+    </div>
+
+    <div id="page-header-right">
+      OKM/{{ paatos.diaari }}
+    </div>
+
+  </div>
+
+  <div id="diaari-placeholder">
+    OKM/{{ paatos.diaari }}
+  </div>
+
+  <div id="page-footer">
+	<div id="page-footer-left">
+	Opetus- ja kulttuuriministeriö<br />
+	Meritullinkatu 10, Helsinki | PL 29, 00023 Valtioneuvosto<br />
+	Puh. 0295 3 30004 | kirjaamo@minedu.fi
+	</div>
+	<div id="page-footer-center">
+	Undervisnings- och kulturministeriet<br />
+	Sjötullsgatan 10, Helsingfors | PL 29, 00023 Statsrådet<br />
+	Tfn 0295 3 30004 | kirjaamo@minedu.fi
+	</div>
+	<div id="page-footer-right">
+	www.minedu.fi<br />
+	Y-tunnus 0245872-8<br />
+	FO-nummer 0245872-8
+	</div>
+  </div>
+
+
+{% endblock %}
+
+{% block content %}
+
+  {% include 'templates/default/paatos/paatosvertailusisalto.html' %}
+  {% include 'templates/default/paatos/koulutustehtava.html' %}
+  {% include 'templates/default/paatos/kuljettajakoulutus.html' %}
+
+{% endblock %}
