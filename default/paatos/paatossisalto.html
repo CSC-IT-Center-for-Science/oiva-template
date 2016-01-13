@@ -65,6 +65,10 @@
     </div>
 
     <!-- yleinen johdanto osa 2 -->
+	{% if paatos.kielteinen %}
+	Koulutuksen järjestäjälle {{ paatos.edellinenPaatosPvm | date("dd.MM.yyyy") }} päivätyllä opetus- ja kulttuuriministeriön päätöksellä
+	({{ paatos.edellinenPaatosDiaari }}) määrätty koulutustehtävä pysyy voimassa.
+	{% else %}
     <p>Tällä päätöksellä määrättyä ammatillisen peruskoulutuksen koulutustehtävää
 	    {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
 			ja lupaa toimia kuorma&#45; ja linja&#45;autonkuljettajien ammattipätevyyskoulutusta antavana koulutuskeskuksena
@@ -79,7 +83,7 @@
         Tällä päätöksellä korvataan	{{ paatos.edellinenPaatosPvm | date("dd.MM.yyyy") }} päivätyllä opetus&#45; ja kulttuuriministeriön päätöksellä 
 		({{ paatos.edellinenPaatosDiaari }}) määrätty koulutustehtävä.
 	</p>
-
+	{% endif %}
 
     <!-- yleinen johdanto osa 2 -->
     <div class="paatoskohtainenTeksti">
