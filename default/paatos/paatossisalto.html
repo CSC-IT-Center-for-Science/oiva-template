@@ -7,14 +7,12 @@
 
   <div class="sector-right">
     {% if hakemus.exists  %}
-      Hakemus ammatillisen peruskoulutuksen järjestämislupaan sisältyvän koulutustehtävän muuttamiseksi
-      {{ hakemus.pvm | date("dd.MM.yyyy") }}, {{ paatos.diaari }}
+      Hakemus ammatillisen peruskoulutuksen järjestämislupaan sisältyvän koulutustehtävän muuttamiseksi {{ hakemus.pvm | date("dd.MM.yyyy") }} ({{ paatos.diaari }})
     {% else %}
       <div class="paatoskohtainenTeksti">
         {% for teksti in paatostekstit["viite"] %}
           {{ teksti | translated(language)}}
         {% endfor %}
-
       </div>
     {% endif %}
   </div>
@@ -39,33 +37,12 @@
     </p>
     <!-- yleinen johdanto 1 ends -->
 
-    <!-- muutokset -->
-
-    <!--
-    EMPTY NOW
-
-    <p>
-
-      Opetus­ ja kulttuuriministeriö muuttaa ​{% if hakemus.exists %} hakemuksesta {% else %}
-      hakemuksetta {% endif %}​ koulutuksen järjestäjän ammatillisen peruskoulutuksen järjestämislupaan
-      sisältyvää ammatillisen peruskoulutuksen koulutustehtävää seuraavasti:</p>
-
-
-      -->
-
-      <!-- vertaillaan tässä myönnettävää ja edellistä koulutustehtävää keskenään ja tuloostetaan
-      muutokset + perustelut, tarkempi speksi myöhemmin. Ei tarvita elokuun päätöksille. -->
-
-    <!-- muutokset end -->
-
-    <div class="paatoskohtainenTeksti">
-      {% for teksti in paatostekstit["muut määräykset"] %}
-      {{ teksti | translated(language)}}
-      {% endfor %}
-    </div>
-
+	<!-- muutokset -->
+	
+	<!-- muutokset ends -->
+	
     <!-- yleinen johdanto osa 2 -->
-	{% if paatos.kielteinen %}
+	{% if paatos.kielteinen = true %}
 	Koulutuksen järjestäjälle {{ paatos.edellinenPaatosPvm | date("dd.MM.yyyy") }} päivätyllä opetus- ja kulttuuriministeriön päätöksellä
 	({{ paatos.edellinenPaatosDiaari }}) määrätty koulutustehtävä pysyy voimassa.
 	{% else %}
