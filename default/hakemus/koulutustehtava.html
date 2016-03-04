@@ -34,7 +34,7 @@
   <!--
 <div class="paatoskohtainenTeksti">
   {% for teksti in paatostekstit["järjestämiskunnat"] %}
-  {{ teksti | translated(language)}}
+  {{ teksti.text | translated(language)}}
   {% endfor %}
 </div>
   -->
@@ -59,7 +59,7 @@
   <!--
 <div class="paatoskohtainenTeksti">
 {% for teksti in paatostekstit["järjestämismuoto"] %}
-{{ teksti | translated(language)}}
+{{ teksti.text | translated(language)}}
 {% endfor %}
 </div>
 -->
@@ -110,7 +110,7 @@
   <!--
 <div class="paatoskohtainenTeksti">
   {% for teksti in paatostekstit["koulutukset"] %}
-  {{ teksti | translated(language)}}
+  {{ teksti.text | translated(language)}}
   {% endfor %}
 </div>
 -->
@@ -167,7 +167,7 @@ Ei lupaa
   <!--
 <div class="paatoskohtainenTeksti">
 {% for teksti in paatostekstit["erityinen koulutustehtävä"] %}
-{{ teksti | translated(language)}}
+{{ teksti.text | translated(language)}}
 {% endfor %}
 </div>
 -->
@@ -212,7 +212,7 @@ käyttäen (kevään opiskelijamäärä kerrotaan seitsemällä ja syksyn opiske
   <!--
 <div class="paatoskohtainenTeksti">
 {% for teksti in paatostekstit["vuosiopiskelijamäärä"] %}
-{{ teksti | translated(language)}}
+{{ teksti.text | translated(language)}}
 {% endfor %}
 </div>
 -->
@@ -265,7 +265,7 @@ Ei lupaa
   <!--
 <div class="paatoskohtainenTeksti">
 {% for teksti in paatostekstit["vieraskielinen"] %}
-{{ teksti | translated(language)}}
+{{ teksti.text | translated(language)}}
 {% endfor %}
 </div>
 -->
@@ -361,7 +361,7 @@ tutkintorakenteesta (835/2014):</p>
 <!--
 <div class="paatoskohtainenTeksti">
 {% for teksti in paatostekstit["kokeilut"] %}
-{{ teksti | translated(language)}}
+{{ teksti.text | translated(language)}}
 {% endfor %}
 </div>
 -->
@@ -390,7 +390,7 @@ tutkintorakenteesta (835/2014):</p>
 <!--
 <div class="paatoskohtainenTeksti">
 {% for teksti in paatostekstit["muut määräykset"] %}
-{{ teksti | translated(language)}}
+{{ teksti.text | translated(language)}}
 {% endfor %}
 </div>
 -->

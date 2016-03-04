@@ -1,4 +1,4 @@
-{% extends "templates/examples/paatos/basetemplate.html" %}
+{% extends "../template/default/basetemplate.html" %}
 
 {% block title %} Päätös example {% endblock %}
 
@@ -51,8 +51,8 @@
 
 {% block content %}
 
-  {% include 'templates/examples/paatos/muutossisalto.html' %}
-  {% include 'templates/examples/paatos/koulutustehtava.html' %}
-  {% include 'templates/examples/paatos/kuljettajakoulutus.html' %}
+  {% include '../template/default/paatos/muutossisalto.html' %}
+  {% include '../template/default/paatos/koulutustehtava.html' %}
+  {% include '../template/default/paatos/kuljettajakoulutus.html' %}
 
 {% endblock %}

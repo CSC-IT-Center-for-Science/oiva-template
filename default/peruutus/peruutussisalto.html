@@ -12,7 +12,7 @@
     {% else %}
       <div class="paatoskohtainenTeksti">
         {% for teksti in paatostekstit["viite"] %}
-          {{ teksti | translated(language)}}
+          {{ teksti.text | translated(language)}}
         {% endfor %}
 
       </div>
@@ -39,7 +39,7 @@
     <!-- hakukierroskohtainen johdanto end -->
     <div class="paatoskohtainenTeksti">
       {% for teksti in paatostekstit["muut määräykset"] %}
-      {{ teksti | translated(language)}}
+      {{ teksti.text | translated(language)}}
       {% endfor %}
     </div>
 
@@ -59,7 +59,7 @@
     <!-- saadokset end -->
     <div class="paatoskohtainenTeksti">
       {% for teksti in paatostekstit["saadokset"] %}
-      {{ teksti | translated(language)}}
+      {{ teksti.text | translated(language)}}
       {% endfor %}
     </div>
 
@@ -70,7 +70,7 @@
     <!-- maksu end -->
     <div class="paatoskohtainenTeksti">
       {% for teksti in paatostekstit["maksu"] %}
-      {{ teksti | translated(language)}}
+      {{ teksti.tex | translated(language)}}
       {% endfor %}
     </div>
 
@@ -86,7 +86,7 @@
     <!-- muutoksenhaku -->
     <div class="paatoskohtainenTeksti">
       {% for teksti in paatostekstit["muutoksenhaku"] %}
-      {{ teksti | translated(language)}}
+      {{ teksti.text | translated(language)}}
       {% endfor %}
     </div>
 
@@ -119,7 +119,7 @@
 
     <div class="paatoskohtainenTeksti">
       {% for teksti in paatostekstit["liitteet"] %}
-      {{ teksti | translated(language)}}
+      {{ teksti.text | translated(language)}}
       {% endfor %}
     </div>
 
@@ -150,7 +150,7 @@
         <li>Trafi</li>
       {% endif %}
 	  {% for teksti in paatostekstit["tiedoksi"] %}
-		<li>{{ teksti | translated(language)}}</li>
+		<li>{{ teksti.text | translated(language)}}</li>
 	  {% endfor %}
     </ul>
 

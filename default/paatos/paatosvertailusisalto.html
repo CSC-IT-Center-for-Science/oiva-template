@@ -12,7 +12,7 @@
     {% else %}
       <div class="paatoskohtainenTeksti">
         {% for teksti in paatostekstit["viite"] %}
-          {{ teksti | translated(language)}}
+          {{ teksti.text | translated(language)}}
         {% endfor %}
 
       </div>
