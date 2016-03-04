@@ -39,7 +39,7 @@
 	koulutuksen järjestäjän ammatillisen peruskoulutuksen järjestämislupaan sisältyvää ammatillisen peruskoulutuksen koulutustehtävää seuraavasti:</p>
 	
     <div class="paatoskohtainenTeksti">
-      {% for teksti in paatostekstit["muut määräykset"] %}
+      {% for teksti in paatostekstit["yleinen johdanto osa 1"] %}
       {{ teksti | translated(language)}}
       {% endfor %}
     </div>
@@ -61,7 +61,7 @@
 
     <!-- yleinen johdanto osa 2 -->
     <div class="paatoskohtainenTeksti">
-      {% for teksti in paatostekstit["yleinen_johdanto_osa_2"] %}
+      {% for teksti in paatostekstit["yleinen johdanto osa 2"] %}
       {{ teksti | translated(language)}}
       {% endfor %}
     </div>
@@ -81,7 +81,7 @@
     </p>
     <!-- saadokset end -->
     <div class="paatoskohtainenTeksti">
-      {% for teksti in paatostekstit["saadokset"] %}
+      {% for teksti in paatostekstit["säädökset"] %}
       {{ teksti | translated(language)}}
       {% endfor %}
     </div>
