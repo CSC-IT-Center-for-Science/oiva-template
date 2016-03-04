@@ -1,0 +1,398 @@
+<div id="koulutustehtavaPage">
+
+  <h4>Ammatillisen peruskoulutuksen koulutustehtävä </h4>
+
+
+  <div class="otsikko">
+    1. Koulutuksen järjestäjän opetuskieli
+  </div>
+
+  <div class="sisalto">
+    {% for opetuskieli in koulutustehtavaMuutos.opetuskielet %}
+      {{ opetuskieli.teksti | translated(language) }}{% if loop.length-loop.index > 1 %}, {% endif %}
+    {% endfor %}
+  </div>
+
+  <!--
+  <div class="paatoskohtainenTeksti">
+    {% for teksti in paatostekstit["opetuskieli"] %}
+    {{ teksti.text | translated(language)}}
+    {% endfor %}
+  </div>
+ -->
+
+  <div class="otsikko">
+    2. Koulutuksen järjestämiskunnat
+  </div>
+
+  <div class="sisalto">
+    {% for jarjestamiskunta in koulutustehtavaMuutos.jarjestamiskunnat | sortByLanguage(language) %}
+    {{ jarjestamiskunta.teksti | translated(language)}}{% if loop.length-loop.index > 1 %}, {% endif %}
+    {% endfor %}
+  </div>
+
+  <!--
+<div class="paatoskohtainenTeksti">
+  {% for teksti in paatostekstit["järjestämiskunnat"] %}
+  {{ teksti.text | translated(language)}}
+  {% endfor %}
+</div>
+  -->
+
+
+<div class="otsikko">
+  3.  Koulutuksen järjestämismuoto
+</div>
+
+<div class="sisalto">
+  Koulutusta voidaan järjestää oppilaitosmuotoisena koulutuksena ja oppisopimuskoulutuksena.
+
+  <p>
+    Ammatilliseen perustutkintoon johtavaa/valmistavaa oppisopimuskoulutusta voidaan järjestää
+    sen estämättä, mitä koulutustehtävässä määrätään koulutusaloista, opiskelijamääristä ja
+    järjestämiskunnista. Tietopuolisten opintojen järjestäminen koulutuksen järjestäjän omissa
+    oppilaitoksissa on kuitenkin sidottu koulutuksen järjestäjälle tässä päätöksessä määrättyihin
+    koulutusaloihin.
+  </p>
+</div>
+
+  <!--
+<div class="paatoskohtainenTeksti">
+{% for teksti in paatostekstit["järjestämismuoto"] %}
+{{ teksti.text | translated(language)}}
+{% endfor %}
+</div>
+-->
+
+<div class="otsikko">
+4. Koulutusalat, ammatilliset perustutkinnot ja valmentavat koulutukset
+</div>
+
+<div class="sisalto">
+<p>Koulutusta voidaan järjestää seuraavilla koulutusaloilla, tutkinnoissa ja osaamisaloilla:</p>
+
+{% for koulutusala in koulutustehtavaMuutos.koulutusalat %}
+  <div class="koulutusala">
+    <div class="koulutusala-otsikko">
+    {{ koulutusala.id }} {{ koulutusala.teksti | translated(language) }}
+    {% if koulutusala.opetuskieli is null or koulutusala.opetuskieli.koodi equals koululang  %} {% else %}
+      *
+    {% endif %}
+    </div>
+    {% for koulutus in koulutusala.children %}
+      <div class="koulutus">
+        {{ koulutus.id }} {{ koulutus.teksti | translated(language)}}
+
+        {% for osaamisala in koulutus.children %}
+          <div class="osaamisala">
+            {{ osaamisala.id }} {{ osaamisala.teksti | translated(language)}}
+          </div>
+        {% endfor %}
+
+      </div>
+    {% endfor %}
+
+  </div>
+{% endfor %}
+
+{% for koulutusala in koulutustehtavaMuutos.koulutusalat %}
+{% if koulutusala.opetuskieli is null or koulutusala.opetuskieli.koodi equals koululang  %} {% elseif printed != "true" %}
+{% if koululang equals "fi" %}
+  * ) koulutusta voidaan järjestää myös ruotsinkielisenä.
+{% endif %}
+{% if koululang equals "sv" %}
+* ) koulutusta voidaan järjestää myös suomenkielisenä.
+{% endif %}
+{% set printed = "true" %}
+{% endif %}
+{% endfor %}
+
+  <!--
+<div class="paatoskohtainenTeksti">
+  {% for teksti in paatostekstit["koulutukset"] %}
+  {{ teksti.text | translated(language)}}
+  {% endfor %}
+</div>
+-->
+<p><i>Valmentavat koulutukset</i></p>
+{% if metadata.koulutusVALMENTAVA == "true" %}
+  <p>Koulutusta voidaan järjestää seuraavissa valmentavissa koulutuksissa:</p>
+  <ul class="disc">
+    {% if metadata.koulutusVALMA == "true" %}
+      <li>Ammatilliseen peruskoulutukseen valmentava koulutus (VALMA)</li>
+    {% endif %}
+    {% if metadata.koulutusTELMA == "true" %}
+      <li>Työhön ja itsenäiseen elämään valmentava koulutus (TELMA) (voidaan järjestää vain erityisopetuksen erityisenä koulutustehtävänä)</li>
+    {% endif %}
+  </ul>
+{% else %}
+Ei lupaa
+{% endif %}
+
+</div>
+
+
+
+
+<div class="otsikko">
+5. Erityisopetuksen erityinen koulutustehtävä
+</div>
+
+<div class="sisalto">
+{% if koulutustehtavaMuutos.erityisopetus.size > 0 %}
+  <p>Koulutuksen järjestäjän erityisopetuksen erityiseen koulutustehtävään sisältyy:</p>
+
+  <ul class="disc">
+  {% for opetus in koulutustehtavaMuutos.erityisopetus %}
+      {% if opetus.koodi == "TUTKINTOONVALMISTAVA" %}
+        <li>tutkintoon johtava/valmistava koulutus</li>
+      {% endif %}
+      {% if opetus.koodi == "VALMA" %}
+        <li>ammatilliseen peruskoulutukseen valmentava koulutus (VALMA)</li>
+      {% endif %}
+      {% if opetus.koodi == "TELMA" %}
+        <li>työhön ja itsenäiseen elämään valmentava koulutus (TELMA)</li>
+      {% endif %}
+      {% if opetus.koodi == "KEHITTAMISOHJAUSTUKI" %}
+        <li>erityisopetukseen liittyvät kehittämis­, ohjaus­ ja tukitehtävät</li>
+      {% endif %}
+  {% endfor %}
+  </ul>
+
+{% else %}
+  Ei lupaa
+{% endif %}
+</div>
+
+  <!--
+<div class="paatoskohtainenTeksti">
+{% for teksti in paatostekstit["erityinen koulutustehtävä"] %}
+{{ teksti.text | translated(language)}}
+{% endfor %}
+</div>
+-->
+
+<div class="otsikko">
+6. Oppilaitosmuotoisen koulutuksen vuosiopiskelijamäärä
+</div>
+
+<div class="sisalto">
+<p>Vuosiopiskelijamäärä sisältää ammatilliseen perustutkintoon johtavan
+opetussuunnitelmaperusteisen koulutuksen ja näyttötutkintona suoritettavan ammatillisen
+perustutkintoon valmistavan koulutuksen{% for opetus in koulutustehtavaMuutos.erityisopetus %}{% if opetus.koodi == "VALMA" %}
+sekä ammatilliseen peruskoulutukseen valmentavan koulutuksen (VALMA){% endif %}{% if opetus.koodi == "TUTKINTOONVALMISTAVA" %}
+          ja työhön ja itsenäiseen elämään valmentavan koulutuksen (TELMA){% endif %}{% endfor %}.</p>
+<p>
+Ammatillisen peruskoulutuksen vuosiopiskelijamäärä lasketaan valtionosuusjärjestelmän
+tiedonkeruun tammikuun ja syyskuun tilastointipäivien opiskelijamäärien painotettua keskiarvoa
+käyttäen (kevään opiskelijamäärä kerrotaan seitsemällä ja syksyn opiskelijamäärä viidellä).
+</p>
+
+<div class="taulukko_opiskelijamaara">
+{% for rivi in koulutustehtavaMuutos.opiskelijamaarat %}
+
+  <div class="rivi">
+    {% if rivi.tyyppi == 'otsikko' %}
+      <div class="solu_levea">{{ rivi.otsikko | translated(language)}}</div>
+      {% for entry in rivi.sarakkeet.entrySet %}
+            <div class="solu_kapea_bold">{{ entry.value }}</div>
+      {% endfor %}
+    {% else %}
+    <div class="solu_levea">{{ rivi.otsikko | translated(language) }}</div>
+      {% for entry in rivi.sarakkeet.entrySet %}
+    <div class="solu_kapea">{{ entry.value }}</div>
+      {% endfor %}
+    {% endif %}
+  </div>
+{% endfor %}
+</div>
+
+</div>
+
+  <!--
+<div class="paatoskohtainenTeksti">
+{% for teksti in paatostekstit["vuosiopiskelijamäärä"] %}
+{{ teksti.text | translated(language)}}
+{% endfor %}
+</div>
+-->
+
+<div class="otsikko">
+7. Vieraskielinen koulutus
+</div>
+
+<div class="sisalto">
+
+{%  if koulutustehtavaMuutos.vieraskieliset.size > 0  %}
+
+<p>Vieraskielisellä koulutuksella tarkoitetaan muuta kuin suomen­ tai ruotsinkielistä
+koulutusta. Vieraskielisellä koulutuksella ei tarkoiteta kieliopintoja. Tutkinto tai koulutus
+katsotaan vieraskieliseksi, mikäli opetus toteutetaan kokonaan tai pääosin (yli 50 %)
+muulla kuin koulutuksen järjestäjän opetuskielellä.</p>
+
+
+<p>Koulutuksen järjestäjä voi järjestää vieraskielisenä seuraavia koulutuksia:</p>
+
+
+{% for koulutusala in koulutustehtavaMuutos.vieraskieliset %}
+<div class="koulutusala">
+
+{{ koulutusala.id }} {{ koulutusala.teksti | translated(language) }}
+
+{% for koulutus in koulutusala.children %}
+<div class="koulutus">
+{{ koulutus.id }} {{ koulutus.teksti | translated(language)}}
+{% for vk in koulutus.vieraskielet %} ({{ vk.kieli }})
+ {% if koulutus.teksti is hasTranslation(vk.kieli) %}
+({{ koulutus.teksti | translated(vk.kieli)}} )
+{% endif %}
+{% endfor %}
+
+</div>
+{% endfor %}
+
+</div>
+{% endfor %}
+{% else %}
+Ei lupaa
+{% endif %}
+
+</p>
+
+
+</div>
+
+  <!--
+<div class="paatoskohtainenTeksti">
+{% for teksti in paatostekstit["vieraskielinen"] %}
+{{ teksti.text | translated(language)}}
+{% endfor %}
+</div>
+-->
+
+<div class="otsikko">
+8. Kokeilut
+</div>
+
+{% if koulutustehtavaMuutos.kokeilut.size > 0 %}
+
+<div class="sisalto">
+<p>Koulutuksen järjestäjä voi poiketa tutkintojen nimistä ja osaamisaloista, tutkinnon
+muodostumisesta ja laajuudesta sekä valmentavan koulutuksen laajuudesta siten kuin
+seuraavassa määrätään. Kokeiluissa noudatetaan Opetushallituksen määräämiä tutkinnon tai
+koulutuksen perusteita. Kokeilut toteutetaan koulutuksen järjestäjän oppilaitosmuotoisen
+koulutuksen vuosiopiskelijamäärän puitteissa.</p>
+
+<p>Kokeilut, joissa poiketaan opetus­ ja kulttuuriministeriön asetuksesta ammatillisen koulutuksen
+tutkintorakenteesta (835/2014):</p>
+
+
+{% for koulutusala in koulutustehtavaMuutos.kokeilut %}
+<div class="koulutusala">
+{{ koulutusala.id }} {{ koulutusala.teksti | translated(language) }}
+
+
+{% if koulutusala.kokeiluData is not null  %}
+  <div class="koulutusKokeilu">
+
+  Kokeilun voimassaolo: {{ koulutusala.kokeiluData.ensimmainenSisaanotto | date("yyyy") }} - {{ koulutusala.kokeiluData.kokeiluPaattyy | date("yyyy") }}<br/>
+  {% if koulutusala.kokeiluData.viimeinenSisaanotto is not empty %}
+  Viimeinen sisäänotto: {{ koulutusala.kokeiluData.viimeinenSisaanotto | date("dd.MM.yyyy") }}<br/>
+  {% endif %}
+  {{ koulutusala.kokeiluData.selite  | translated(language)}}
+  </div>
+{% endif %}
+
+{% for koulutus in koulutusala.children %}
+  <div class="koulutus">
+    {{ koulutus.id }} {{ koulutus.teksti | translated(language)}}
+
+    {% if koulutus.kokeiluData is not null  %}
+          <div class="koulutusKokeilu">
+
+            Kokeilun voimassaolo: {{ koulutus.kokeiluData.ensimmainenSisaanotto | date("yyyy") }} - {{ koulutus.kokeiluData.kokeiluPaattyy | date("yyyy") }}<br/>
+            {% if koulutus.kokeiluData.viimeinenSisaanotto is not empty %}
+              Viimeinen sisäänotto: {{ koulutus.kokeiluData.viimeinenSisaanotto | date("dd.MM.yyyy") }}<br/>
+            {% endif %}
+            {{ koulutus.kokeiluData.selite  | translated(language)}}
+          </div>
+
+     {% endif %}
+
+    {% for osaamisala in koulutus.children %}
+    <div class="osaamisala">
+      {{ osaamisala.id }} {{ osaamisala.teksti | translated(language)}}
+
+      {% if osaamisala.kokeiluData is not null  %}
+
+      <div class="koulutusKokeilu">
+
+        Kokeilun voimassaolo: {{ osaamisala.kokeiluData.ensimmainenSisaanotto | date("yyyy") }} - {{ osaamisala.kokeiluData.kokeiluPaattyy | date("yyyy") }}<br/>
+        {% if osaamisala.kokeiluData.viimeinenSisaanotto is not empty %}
+        Viimeinen sisäänotto: {{ osaamisala.kokeiluData.viimeinenSisaanotto | date("dd.MM.yyyy") }}<br/>
+        {% endif %}
+        {{ osaamisala.kokeiluData.selite  | translated(language)}}
+      </div>
+
+      {% endif %}
+
+
+    </div>
+    {% endfor %}
+
+
+
+  </div>
+{% endfor %}
+
+</div>
+{% endfor %}
+
+<!-- TODO. kokeilut jotka eivät ole tutkintorakenteeseen liittyviä -->
+
+
+    </div>
+
+    {% else %}
+      Ei lupaa
+    {% endif %}
+  </div>
+
+<!--
+<div class="paatoskohtainenTeksti">
+{% for teksti in paatostekstit["kokeilut"] %}
+{{ teksti.text | translated(language)}}
+{% endfor %}
+</div>
+-->
+
+
+<div class="otsikko">
+  9. Muut määräykset
+</div>
+
+<div class="sisalto">
+
+  {% for muutMaaraykset in koulutustehtavaMuutos.muutEhdot%}
+
+    <div class="muutMaarayksetOtsikko">
+      {{ muutMaaraykset.otsikko | translated(language) }}
+    </div>
+
+    <div class="muutMaarayksetSelite">
+      {{ muutMaaraykset.selite | translated(language) }}
+    </div>
+
+  {% endfor %}
+
+</div>
+
+<!--
+<div class="paatoskohtainenTeksti">
+{% for teksti in paatostekstit["muut määräykset"] %}
+{{ teksti.text | translated(language)}}
+{% endfor %}
+</div>
+-->
+
+</div>
