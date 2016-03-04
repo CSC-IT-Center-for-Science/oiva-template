@@ -11,7 +11,7 @@
     {% else %}
       <div class="paatoskohtainenTeksti">
         {% for teksti in paatostekstit["viite"] %}
-          {{ teksti | translated(language)}}
+          {{ teksti.text | translated(language)}}
         {% endfor %}
       </div>
     {% endif %}
@@ -36,14 +36,19 @@
 	  koulutuksen järjestäjän hakemuksen ja päättänyt seuraavasti:
     </p>
     <!-- yleinen johdanto 1 ends -->
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["yleinen johdanto osa 1"] %}
+      {{ teksti.text | translated(language)}}
+      {% endfor %}
+    </div>
 
 	<!-- muutokset -->
 	
 	<!-- muutokset ends -->
 	
     <!-- yleinen johdanto osa 2 -->
-	paatos.kielteinen
-	{% if paatos.kielteinen = true %}
+	<!-- paatos.kielteinen -->
+	{% if paatos.kielteinen %}
 	Koulutuksen järjestäjälle {{ paatos.edellinenPaatosPvm | date("dd.MM.yyyy") }} päivätyllä opetus- ja kulttuuriministeriön päätöksellä
 	({{ paatos.edellinenPaatosDiaari }}) määrätty koulutustehtävä pysyy voimassa.
 	{% else %}
@@ -65,8 +70,8 @@
 
     <!-- yleinen johdanto osa 2 -->
     <div class="paatoskohtainenTeksti">
-      {% for teksti in paatostekstit["yleinen_johdanto_osa_2"] %}
-      {{ teksti | translated(language)}}
+      {% for teksti in paatostekstit["yleinen johdanto osa 2"] %}
+      {{ teksti.text | translated(language)}}
       {% endfor %}
     </div>
 
@@ -85,8 +90,8 @@
     </p>
     <!-- saadokset end -->
     <div class="paatoskohtainenTeksti">
-      {% for teksti in paatostekstit["saadokset"] %}
-      {{ teksti | translated(language)}}
+      {% for teksti in paatostekstit["säädökset"] %}
+      {{ teksti.text | translated(language)}}
       {% endfor %}
     </div>
 
@@ -103,7 +108,7 @@
     <!-- maksu end -->
     <div class="paatoskohtainenTeksti">
       {% for teksti in paatostekstit["maksu"] %}
-      {{ teksti | translated(language)}}
+      {{ teksti.text | translated(language)}}
       {% endfor %}
     </div>
 
@@ -119,7 +124,7 @@
     <!-- muutoksenhaku -->
     <div class="paatoskohtainenTeksti">
       {% for teksti in paatostekstit["muutoksenhaku"] %}
-      {{ teksti | translated(language)}}
+      {{ teksti.text | translated(language)}}
       {% endfor %}
     </div>
 
@@ -158,7 +163,7 @@
 
     <div class="paatoskohtainenTeksti">
       {% for teksti in paatostekstit["liitteet"] %}
-      {{ teksti | translated(language)}}
+      {{ teksti.text | translated(language)}}
       {% endfor %}
     </div>
 
@@ -189,7 +194,7 @@
         <li>Trafi</li>
       {% endif %}
 	  {% for teksti in paatostekstit["tiedoksi"] %}
-		<li>{{ teksti | translated(language)}}</li>
+		<li>{{ teksti.text | translated(language)}}</li>
 	  {% endfor %}
     </ul>
 
