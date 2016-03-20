@@ -1,4 +1,4 @@
-{% extends "../template/default/basetemplate.html" %}
+{% extends "template/default/basetemplate.html" %}
 
 {% block title %} Hakemus  {% endblock %}
 
@@ -51,8 +51,8 @@
 
 {% block content %}
 
-  {% include '../template/default/hakemus/hakemussisalto.html' %}
-  {% include '../template/default/hakemus/muutoskoulutustehtava.html' %}
-  {% include '../template/default/hakemus/kuljettajakoulutus.html' %}
+  {% include 'template/default/hakemus/hakemussisalto.html' %}
+  {% include 'template/default/hakemus/muutoskoulutustehtava.html' %}
+  {% include 'template/default/hakemus/kuljettajakoulutus.html' %}
 
 {% endblock %}

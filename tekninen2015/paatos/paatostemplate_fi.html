@@ -1,4 +1,4 @@
-{% extends "templates/default/basetemplate.html" %}
+{% extends "template/tekninen2015/basetemplate.html" %}
 
 {% block title %} OKM/{{ paatos.diaari }} {% endblock %}
 
@@ -7,7 +7,7 @@
   <div id="page-header">
 
     <div id="page-header-left">
-      <p><img src="{{ logopath }}" style="width:40%;"><p>
+      <p><img src="{{ basePath }}/images/OKM_leijona_BW_15mm.svg" style="width:40%;"><p>
       <p>{{ koulutustehtava.jarjestajaNimi | translated(language)  }}<br/>
       {{ koulutustehtava.jarjestajaKatuosoite }}<br/>
       {{ koulutustehtava.jarjestajaPostiNro }} {{ koulutustehtava.jarjestajaToimipaikka }}</p>
@@ -51,8 +51,8 @@
 
 {% block content %}
 
-  {% include 'templates/tekninen2015/paatos/paatossisalto.html' %}
-  {% include 'templates/tekninen2015/paatos/koulutustehtava.html' %}
-  {% include 'templates/tekninen2015/paatos/kuljettajakoulutus.html' %}
+  {% include 'template/tekninen2015/paatos/paatossisalto.html' %}
+  {% include 'template/tekninen2015/paatos/koulutustehtava.html' %}
+  {% include 'template/tekninen2015/paatos/kuljettajakoulutus.html' %}
 
 {% endblock %}
