@@ -116,7 +116,15 @@
     <!-- muutoksenhaku -->
     <p>
       <b>Muutoksenhaku:</b><br/>
-      Tähän päätökseen saa hakea muutosta valittamalla korkeimpaan hallinto&#45;oikeuteen. Valitus
+      Tähän päätökseen saa hakea muutosta valittamalla
+        {% if hallintooikeus == "hki" %} Helsingin hallinto-oikeuteen
+        {% elseif hallintooikeus == "hml" %} Hämeenlinnan hallinto-oikeuteen
+        {% elseif hallintooikeus == "ita" %} Itä-Suomen hallinto-oikeuteen
+        {% elseif hallintooikeus == "poh" %} Pohjois-Suomen hallinto-oikeuteen
+        {% elseif hallintooikeus == "tku" %} Turun hallinto-oikeuteen
+        {% elseif hallintooikeus == "vsa" %} Vaasan hallinto-oikeuteen
+        {% else %} korkeimpaan hallinto&#45;oikeuteen
+        {% endif %}. Valitus
       saadaan tehdä sillä perusteella, että päätös on lain vastainen. Valitusaika on 30 päivää
       tiedoksisaannista. Liitteenä olevasta valitusosoituksesta ilmenee, miten muutosta haettaessa on
       meneteltävä.
