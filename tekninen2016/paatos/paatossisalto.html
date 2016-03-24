@@ -49,7 +49,7 @@
     <!-- yleinen johdanto osa 2 -->
     <!-- paatos.kielteinen -->
     {% if paatos.kielteinen %}
-    Koulutuksen järjestäjälle {{ paatos.edellinenPaatosPvm | date("dd.MM.yyyy") }} päivätyllä opetus- ja kulttuuriministeriön päätöksellä
+    Koulutuksen järjestäjälle {{ paatos.edellinenPaatosPvm | date("dd.MM.yyyy") }} päivätyllä opetus&#45; ja kulttuuriministeriön päätöksellä
     ({{ paatos.edellinenPaatosDiaari }}) määrätty koulutustehtävä pysyy voimassa.
     {% else %}
     <p>Tällä päätöksellä määrättyä ammatillisen peruskoulutuksen koulutustehtävää
@@ -119,8 +119,8 @@
       Tähän päätökseen saa hakea muutosta valittamalla
         {% if hallintooikeus == "hki" %} Helsingin
         {% elseif hallintooikeus == "hml" %} Hämeenlinnan
-        {% elseif hallintooikeus == "ita" %} Itä-Suomen
-        {% elseif hallintooikeus == "poh" %} Pohjois-Suomen
+        {% elseif hallintooikeus == "ita" %} Itä&#45;Suomen
+        {% elseif hallintooikeus == "poh" %} Pohjois&#45;Suomen
         {% elseif hallintooikeus == "tku" %} Turun
         {% elseif hallintooikeus == "vsa" %} Vaasan
         {% else %} korkeimpaan
@@ -170,37 +170,37 @@
             {% if language == "sv" %}
                 Besvärsanvisning till Helsingfors förvaltningsdomstol
             {% else %}
-                Valitusosoitus Helsingin hallinto-oikeuteen
+                Valitusosoitus Helsingin hallinto&#45;oikeuteen
             {% endif %}
         {% elseif hallintooikeus == "hml" %}
             {% if language == "sv" %}
                 Besvärsanvisning till Tavastehus förvaltningsdomstol
             {% else %}
-                Valitusosoitus Hämeenlinnan hallinto-oikeuteen
+                Valitusosoitus Hämeenlinnan hallinto&#45;oikeuteen
             {% endif %}
         {% elseif hallintooikeus == "ita" %}
             {% if language == "sv" %}
                     Besvärsanvisning till Östra Finlands förvaltningsdomstol
             {% else %}
-                    Valitusosoitus Itä-Suomen hallinto-oikeuteen
+                    Valitusosoitus Itä&#45;Suomen hallinto&#45;oikeuteen
             {% endif %}
         {% elseif hallintooikeus == "poh" %}
             {% if language == "sv" %}
                     Besvärsanvisning till Norra Finlands förvaltningsdomstol
             {% else %}
-                    Valitusosoitus Pohjois-Suomen hallinto-oikeuteen
+                    Valitusosoitus Pohjois&#45;Suomen hallinto&#45;oikeuteen
             {% endif %}
         {% elseif hallintooikeus == "tku" %}
             {% if language == "sv" %}
                     Besvärsanvisning till Åbo förvaltningsdomstol
             {% else %}
-                    Valitusosoitus Turun hallinto-oikeuteen
+                    Valitusosoitus Turun hallinto&#45;oikeuteen
             {% endif %}
         {% elseif hallintooikeus == "vsa" %}
             {% if language == "sv" %}
                     Besvärsanvisning till Vasa förvaltningsdomstol
             {% else %}
-                    Valitusosoitus Vaasan hallinto-oikeuteen
+                    Valitusosoitus Vaasan hallinto&#45;oikeuteen
             {% endif %}
         {% else %}
             Valitusosoitus 1/091/2015
