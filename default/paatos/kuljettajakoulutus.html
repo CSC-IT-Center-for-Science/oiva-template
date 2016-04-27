@@ -5,7 +5,7 @@
 
     <div class="liitteenAlku">
       Koulutuksen järjestäjä: {{ koulutustehtava.jarjestajaNimi | translated(language) }} ({{ koulutustehtava.jarjestajaYtunnus}})<br/>
-      Lupaa sovelletaan {{ paatos.alkupvm | date("dd.MM.yyyy") }} alkaen.
+      Lupaa sovelletaan {{ koulutustehtava.alkupvm | date("dd.MM.yyyy") }} alkaen.
     </div>
 
     {% for kuljettajaKoulutus in koulutustehtava.kuljettajakoulutus %}

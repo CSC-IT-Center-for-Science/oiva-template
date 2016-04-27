@@ -107,7 +107,7 @@
 	    {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
 			ja lupaa toimia kuorma&#45; ja linja&#45;autonkuljettajien ammattipätevyyskoulutusta antavana koulutuskeskuksena
 	    {% endif %}
-      sovelletaan ​{{ paatos.alkupvm | date("dd.MM.yyyy") }} ​alkaen.
+      sovelletaan ​{{ koulutustehtava.alkupvm | date("dd.MM.yyyy") }} ​alkaen.
 	  Ammatillisen peruskoulutuksen koulutustehtävä
 		{% if koulutustehtava.kuljettajakoulutus.size > 0 %}
 			ja koulutuskeskuslupa ovat liitteinä.
