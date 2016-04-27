@@ -98,7 +98,7 @@
 
     <!-- maksu -->
     <b>Maksu:</b><br />
-      {% if paatos.maksu is not empty %}
+      {% if paatos.maksu %}
         1 220 euroa, joka laskutetaan erikseen; opetus&#45; ja kulttuuriministeriön asetus opetus&#45; ja kulttuuriministeriön
         maksullisista suoritteista (688/2015) 2 §
       {% else %}
@@ -162,7 +162,7 @@
         {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
         <li>Lupa toimia kuorma&#45; ja linja&#45;autonkuljettajien ammattipätevyyskoulutusta antavana koulutuskeskuksena</li>
         {% endif %}
-        {% if paatos.maksu  %}
+        {% if paatos.maksu %}
         <li>Maksua koskeva oikaisuvaatimusosoitus 10/091/2012</li>
         {% endif %}
         <li>
