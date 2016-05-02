@@ -35,6 +35,82 @@
       kulttuuriministeriön päätöksellä ​{{ paatos.uusiJarjestamislupaDiaari }}. Koulutuksen järjestäjä on hakenut muutosta ammatillisen peruskoulutuksen järjestämislupaan sisältyvään koulutustehtävään. Opetus&#45; ja kulttuuriministeriö on käsitellyt 
       koulutuksen järjestäjän hakemuksen ja päättänyt seuraavasti:
     </p>
+
+    <!-- Perustelut -->
+    <div class="perusteluosio">
+      {% if perustelut["opetuskieli"] is not null %}
+        <div class="otsikko">1. Koulutuksen järjestäjän opetuskieli</div>
+        <div class="sisalto">
+          {% for perustelu in perustelut["opetuskieli"] %}
+            {{ perustelu.text | translated(language)}}
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if perustelut["järjestämiskunnat"] is not null %}
+        <div class="otsikko">2. Koulutuksen järjestämiskunnat</div>
+        <div class="sisalto">
+          {% for perustelu in perustelut["järjestämiskunnat"] %}
+            {{ perustelu.text | translated(language)}}
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if perustelut["koulutukset"] is not null %}
+        <div class="otsikko">4. Koulutusalat, ammatilliset perustutkinnot ja valmentavat koulutukset</div>
+        <div class="sisalto">
+          {% for perustelu in perustelut["koulutukset"] %}
+            {{ perustelu.text | translated(language)}}
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if perustelut["erityinen koulutustehtävä"] is not null %}
+        <div class="otsikko">5. Erityisopetuksen erityinen koulutustehtävä</div>
+        <div class="sisalto">
+          {% for perustelu in perustelut["erityinen koulutustehtävä"] %}
+            {{ perustelu.text | translated(language)}}
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if perustelut["vuosiopiskelijamäärä"] is not null %}
+        <div class="otsikko">6. Oppilaitosmuotoisen koulutuksen vuosiopiskelijamäärä</div>
+        <div class="sisalto">
+          {% for perustelu in perustelut["vuosiopiskelijamäärä"] %}
+            {{ perustelu.text | translated(language)}}
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if perustelut["vieraskielinen"] is not null %}
+        <div class="otsikko">7. Vieraskielinen koulutus</div>
+        <div class="sisalto">
+          {% for perustelu in perustelut["vieraskielinen"] %}
+            {{ perustelu.text | translated(language)}}
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if perustelut["kokeilut"] is not null %}
+        <div class="otsikko">8. Kokeilut</div>
+        <div class="sisalto">
+          {% for perustelu in perustelut["kokeilut"] %}
+            {{ perustelu.text | translated(language)}}
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if perustelut["muut määräykset"] is not null %}
+        <div class="otsikko">9. Muut määräykset</div>
+        <div class="sisalto">
+          {% for perustelu in perustelut["muut määräykset"] %}
+            {{ perustelu.text | translated(language)}}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
     <!-- yleinen johdanto 1 ends -->
     <div class="paatoskohtainenTeksti">
       {% for teksti in paatostekstit["yleinen johdanto osa 1"] %}
