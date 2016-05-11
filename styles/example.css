@@ -146,9 +146,14 @@ ul.none {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.perusteluosio {
+.muutosperusteluosio {
   margin-left: 25px;
 }
+.muutosperusteluosio div.perustelutosio-fi > p:before {
+  content: 'Perustelut: ';
+  font-style: italic;
+}
+
 .paatoskohtainenTeksti{
   margin-top: 10px;
   margin-bottom: 10px;
