@@ -149,7 +149,7 @@ ul.none {
 .muutosperusteluosio {
   margin-left: 25px;
 }
-.muutosperusteluosio div.perustelutosio-fi > p:before {
+.muutosperusteluosio div.perustelutosio-fi > p:first-child:before {
   content: 'Perustelut: ';
   font-style: italic;
 }
