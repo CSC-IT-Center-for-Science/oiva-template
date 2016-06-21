@@ -98,11 +98,14 @@
       {{ teksti.text | translated(language)}}
       {% endfor %}
     </div>
-
+    
 
     <!-- maksu -->
     <b>Maksu:</b><br />
-      {% if paatos.maksu %}
+      {% if paatos.maksu and (hakemus.isHakemusPvmBeforeVertailuPvm or paatos.isDiaariBefore2016) %}
+        1 145  euroa, joka laskutetaan erikseen; opetus&#45; ja kulttuuriministeriön asetus opetus&#45; ja kulttuuriministeriön
+        maksullisista suoritteista (263/2012) 2 §
+      {% elseif paatos.maksu %}
         1 220 euroa, joka laskutetaan erikseen; opetus&#45; ja kulttuuriministeriön asetus opetus&#45; ja kulttuuriministeriön
         maksullisista suoritteista (688/2015) 2 §
       {% else %}
