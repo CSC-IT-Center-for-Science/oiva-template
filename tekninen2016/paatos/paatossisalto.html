@@ -36,15 +36,15 @@
       koulutuksen järjestäjän hakemuksen ja päättänyt seuraavasti:
     </p>
 
-    <!-- Muutokset ja perustelut -->
-    {% include 'template/default/paatetytmuutoksettemplate.html' %}
-
     <!-- yleinen johdanto 1 ends -->
     <div class="paatoskohtainenTeksti">
       {% for teksti in paatostekstit["yleinen johdanto osa 1"] %}
       {{ teksti.text | translated(language)}}
       {% endfor %}
     </div>
+
+    <!-- Muutokset ja perustelut -->
+    {% include 'template/default/paatetytmuutoksettemplate.html' %}
 
     <!-- muutokset -->
     
