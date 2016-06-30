@@ -207,10 +207,12 @@
       {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
         <li>Lupa toimia kuorma&#45; ja linja&#45;autonkuljettajien ammattipätevyyskoulutusta antavana koulutuskeskuksena</li>
       {% endif %}
-      {% if paatos.isMaksu and paatos.isDiaariBefore2016 %}
-      <li>Maksua koskeva oikaisuvaatimusosoitus 10/091/2012</li>
-      {% else %}
-      <li>Maksua koskeva oikaisuvaatimusosoitus 15/091/2016</li>
+      {% if paatos.isMaksu %}
+        {% if paatos.isDiaariBefore2016 %}
+        <li>Maksua koskeva oikaisuvaatimusosoitus 10/091/2012</li>
+        {% else %}
+        <li>Maksua koskeva oikaisuvaatimusosoitus 15/091/2016</li>
+        {% endif %}
       {% endif %}
       <li>Valitusosoitus 1/091/2015</li>
 
