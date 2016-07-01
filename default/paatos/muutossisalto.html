@@ -33,11 +33,11 @@
     <h4>Ammatillisen peruskoulutuksen järjestämislupaan sisältyvän koulutustehtävän muuttaminen</h4>
 
     <!-- Yleinen johdanto 1 -->
-    <p>Koulutuksen järjestäjälle on myönnetty ammatillisesta perusopetuksesta annetun lain (630/1998) 8 ja 9 §:n nojalla ammatillisen 
+    <p>Koulutuksen järjestäjälle on myönnetty ammatillisesta perusopetuksesta annetun lain (630/1998) 8 ja 9 §:n nojalla ammatillisen
 	peruskoulutuksen järjestämislupa {{ paatos.uusiJarjestamislupaPvm | date("dd.MM.yyyy") }} päivätyllä opetus&#45; ja kulttuuriministeriön
 	päätöksellä ​{{ paatos.uusiJarjestamislupaDiaari }}. Opetus­ ja kulttuuriministeriö muuttaa ​{% if hakemus.exists %} hakemuksesta {% else %} hakemuksetta {% endif %}​
 	koulutuksen järjestäjän ammatillisen peruskoulutuksen järjestämislupaan sisältyvää ammatillisen peruskoulutuksen koulutustehtävää seuraavasti:</p>
-	
+
     <div class="paatoskohtainenTeksti">
       {% for teksti in paatostekstit["yleinen johdanto osa 1"] %}
       {{ teksti.text | translated(language)}}
@@ -150,7 +150,9 @@
         <li>Lupa toimia kuorma&#45; ja linja&#45;autonkuljettajien ammattipätevyyskoulutusta antavana koulutuskeskuksena</li>
       {% endif %}
       {% if paatos.isMaksu %}
-        {% if paatos.isDiaariBefore2016 %}
+        {% set oikaisuvaatimuspvm = "1.1.2016" | date("yyyy-M-d", existingFormat="d.M.yyyy") %}
+        {% set paatospvm = paatos.paatospvm | date("yyyy-M-d") %}
+        {% if oikaisuvaatimuspvm.compareTo(paatospvm) > 0 %}
         <li>Maksua koskeva oikaisuvaatimusosoitus 10/091/2012</li>
         {% else %}
         <li>Maksua koskeva oikaisuvaatimusosoitus 15/091/2016</li>

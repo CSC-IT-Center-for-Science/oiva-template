@@ -143,7 +143,7 @@
       {{ teksti | translated(language)}}
       {% endfor %}
     </div>
-    
+
 
     <!-- maksu -->
     <b>Maksu:</b><br />
@@ -208,7 +208,9 @@
         <li>Lupa toimia kuorma&#45; ja linja&#45;autonkuljettajien ammattipätevyyskoulutusta antavana koulutuskeskuksena</li>
       {% endif %}
       {% if paatos.isMaksu %}
-        {% if paatos.isDiaariBefore2016 %}
+        {% set oikaisuvaatimuspvm = "1.1.2016" | date("yyyy-M-d", existingFormat="d.M.yyyy") %}
+        {% set paatospvm = paatos.paatospvm | date("yyyy-M-d") %}
+        {% if oikaisuvaatimuspvm.compareTo(paatospvm) > 0 %}
         <li>Maksua koskeva oikaisuvaatimusosoitus 10/091/2012</li>
         {% else %}
         <li>Maksua koskeva oikaisuvaatimusosoitus 15/091/2016</li>

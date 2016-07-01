@@ -32,7 +32,7 @@
 
     <!-- Yleinen johdanto 1 -->
     <p>Koulutuksen järjestäjälle on myönnetty ammatillisesta perusopetuksesta annetun lain (630/1998) 8 ja 9 §:n nojalla ammatillisen peruskoulutuksen järjestämislupa {{ paatos.uusiJarjestamislupaPvm | date("dd.MM.yyyy") }} päivätyllä opetus&#45; ja
-      kulttuuriministeriön päätöksellä ​{{ paatos.uusiJarjestamislupaDiaari }}. Koulutuksen järjestäjä on hakenut muutosta ammatillisen peruskoulutuksen järjestämislupaan sisältyvään koulutustehtävään. Opetus&#45; ja kulttuuriministeriö on käsitellyt 
+      kulttuuriministeriön päätöksellä ​{{ paatos.uusiJarjestamislupaDiaari }}. Koulutuksen järjestäjä on hakenut muutosta ammatillisen peruskoulutuksen järjestämislupaan sisältyvään koulutustehtävään. Opetus&#45; ja kulttuuriministeriö on käsitellyt
       koulutuksen järjestäjän hakemuksen ja päättänyt seuraavasti:
     </p>
 
@@ -47,9 +47,9 @@
     {% include 'template/default/paatetytmuutoksettemplate.html' %}
 
     <!-- muutokset -->
-    
+
     <!-- muutokset ends -->
-    
+
     <!-- yleinen johdanto osa 2 -->
     <!-- paatos.kielteinen -->
     {% if paatos.kielteinen %}
@@ -67,7 +67,7 @@
         {% else %}
             on liitteenä.
         {% endif %}
-        Tällä päätöksellä korvataan    {{ paatos.edellinenPaatosPvm | date("dd.MM.yyyy") }} päivätyllä opetus&#45; ja kulttuuriministeriön päätöksellä 
+        Tällä päätöksellä korvataan    {{ paatos.edellinenPaatosPvm | date("dd.MM.yyyy") }} päivätyllä opetus&#45; ja kulttuuriministeriön päätöksellä
         ({{ paatos.edellinenPaatosDiaari }}) määrätty koulutustehtävä.
     </p>
     {% endif %}
@@ -170,7 +170,9 @@
         <li>Lupa toimia kuorma&#45; ja linja&#45;autonkuljettajien ammattipätevyyskoulutusta antavana koulutuskeskuksena</li>
         {% endif %}
         {% if paatos.isMaksu %}
-          {% if paatos.isDiaariBefore2016 %}
+          {% set oikaisuvaatimuspvm = "1.1.2016" | date("yyyy-M-d", existingFormat="d.M.yyyy") %}
+          {% set paatospvm = paatos.paatospvm | date("yyyy-M-d") %}
+          {% if oikaisuvaatimuspvm.compareTo(paatospvm) > 0 %}
           <li>Maksua koskeva oikaisuvaatimusosoitus 10/091/2012</li>
           {% else %}
           <li>Maksua koskeva oikaisuvaatimusosoitus 15/091/2016</li>
