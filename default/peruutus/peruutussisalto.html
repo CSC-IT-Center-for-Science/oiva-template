@@ -33,9 +33,16 @@
     <h4>Ammatillisen peruskoulutuksen järjestämisluvan peruutus</h4>
 
     <!-- Yleinen johdanto 1 -->
-	<p>Opetus- ja kulttuuriministeriö on hakemuksesta päättänyt peruuttaa koulutuksen järjestäjän {{ koulutustehtava.jarjestajaNimi | translated(language)}} ({{ koulutustehtava.jarjestajaYtunnus }})
-	ammatillisen peruskoulutuksen järjestämisluvan {{ paatos.loppupvm | date("dd.MM.yyyy") }} lukien.</p>
-  
+	<p>Opetus- ja kulttuuriministeriö on
+	{% if hakemus.exists %}
+	hakemuksesta
+    {% else %}
+    hakemuksetta
+	{% endif %}    
+	päättänyt peruuttaa koulutuksen järjestäjän {{ koulutustehtava.jarjestajaNimi | translated(language)}} ({{ koulutustehtava.jarjestajaYtunnus }})
+	{{ paatos.uusiJarjestamislupaPvm | date("dd.MM.yyyy") }} päivätyllä opetus&#45; ja kulttuuriministeriön päätöksellä ​{{ paatos.uusiJarjestamislupaDiaari }}
+	myönnetyn ammatillisen peruskoulutuksen järjestämisluvan {{ paatos.loppupvm | date("dd.MM.yyyy") }} lukien.</p>
+
     <!-- hakukierroskohtainen johdanto end -->
     <div class="paatoskohtainenTeksti">
       {% for teksti in paatostekstit["muut määräykset"] %}
@@ -46,11 +53,7 @@
     <!-- saadokset -->
     <p>
       <b>Säädökset, joihin päätös perustuu:</b><br/>
-      {% if koulutustehtava.kokeilut.size > 0 %}
-        Laki ammatillisesta koulutuksesta (630/1998) 9 §:n 2 mom., 23 § (787/2014)<br/>
-      {% else %}
-        Laki ammatillisesta koulutuksesta (630/1998) 9 §:n 2 mom.<br/>
-      {% endif %}
+      Laki ammatillisesta koulutuksesta (630/1998) 9 §:n 2 mom.<br/>
       Laki ammatillisesta aikuiskoulutuksesta (631/1998) 4 §:n 1 mom.<br/>
       {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
         Kuorma&#45; ja linja&#45;auton kuljettajien ammattipätevyydestä annetun lain (273/2007) 10 §
@@ -75,7 +78,7 @@
     </div>
 
 
-    <!-- muutoksenhaku -->
+    <!-- muutoksenhaku TODO: Hallinto-oikeudet alueittain -->
     <p>
       <b>Muutoksenhaku:</b><br/>
       Tähän päätökseen saa hakea muutosta valittamalla korkeimpaan hallinto&#45;oikeuteen. Valitus
