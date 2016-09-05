@@ -1,0 +1,232 @@
+
+<div class="sector">
+
+  <div class="sector-left">
+    Viite
+  </div>
+
+  <div class="sector-right">
+      Ammatillisen peruskoulutuksen järjestämislupahakemus {{ hakemus.pvm | date("dd.MM.yyyy") }} ({{ paatos.diaari }})
+  </div>
+
+</div>
+
+
+<div class="sector">
+
+  <div class="sector-left">
+    Asia
+  </div>
+
+  <div class="sector-right">
+
+    <h4>Ammatillisen peruskoulutuksen järjestämislupa</h4>
+
+    <!-- Yleinen johdanto 1 --> 
+
+    <p>Opetus&#45; ja kulttuuriministeriö on ammatillisesta peruskoulutuksesta annetun lain (630/1998) 8 ja 9 §:n nojalla päättänyt myöntää koulutuksen järjestäjälle ammatillisen peruskoulutuksen järjestämisluvan ja siihen sisältyvän koulutustehtävän.
+    <p>Tällä päätöksellä määrättyä ammatillisen peruskoulutuksen koulutustehtävää
+        {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
+            ja lupaa toimia kuorma&#45; ja linja&#45;autonkuljettajien ammattipätevyyskoulutusta antavana koulutuskeskuksena
+        {% endif %}
+      sovelletaan ​{{ koulutustehtava.alkupvm | date("dd.MM.yyyy") }} ​alkaen.
+      Ammatillisen peruskoulutuksen koulutustehtävä
+        {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
+            ja koulutuskeskuslupa ovat liitteinä.
+        {% else %}
+            on liitteenä.
+        {% endif %}
+    </p>
+
+    <!-- yleinen johdanto osa 2 -->
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["yleinen johdanto osa 2"] %}
+      {{ teksti.text | translated(language)}}
+      {% endfor %}
+    </div>
+
+    <!-- saadokset -->
+    <p>
+      <b>Säädökset, joihin päätös perustuu:</b><br/>
+      {% if koulutustehtava.kokeilut.size > 0 %}
+        Laki ammatillisesta peruskoulutuksesta (630/1998) 9 §:n 2 mom., 23 § (787/2014)<br/>
+      {% else %}
+        Laki ammatillisesta peruskoulutuksesta (630/1998) 9 §:n 2 mom.<br/>
+      {% endif %}
+      Laki ammatillisesta aikuiskoulutuksesta (631/1998) 4 §:n 1 mom.<br/>
+      {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
+        Kuorma&#45; ja linja&#45;auton kuljettajien ammattipätevyydestä annetun lain (273/2007) 10 §
+      {% endif %}
+    </p>
+    <!-- saadokset end -->
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["säädökset"] %}
+      {{ teksti.text | translated(language)}}
+      {% endfor %}
+    </div>
+
+
+    <!-- maksu -->
+    <b>Maksu:</b><br />
+      {% if paatos.isMaksu and (hakemus.isHakemusPvmBeforeVertailuPvm or paatos.isDiaariBefore2016) %}
+        1 920  euroa, joka laskutetaan erikseen; opetus&#45; ja kulttuuriministeriön asetus opetus&#45; ja kulttuuriministeriön
+        maksullisista suoritteista (263/2012) 2 §
+      {% elseif paatos.isMaksu %}
+        2 045 euroa, joka laskutetaan erikseen; opetus&#45; ja kulttuuriministeriön asetus opetus&#45; ja kulttuuriministeriön
+        maksullisista suoritteista (688/2015) 2 §
+      {% else %}
+        Maksutta
+      {% endif %}
+    </p>
+    <!-- maksu end -->
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["maksu"] %}
+      {{ teksti.text | translated(language)}}
+      {% endfor %}
+    </div>
+
+
+    <!-- muutoksenhaku -->
+    <p>
+      <b>Muutoksenhaku:</b><br/>
+      Tähän päätökseen saa hakea muutosta valittamalla
+        {% if hallintooikeus == "hki" %} Helsingin
+        {% elseif hallintooikeus == "hml" %} Hämeenlinnan
+        {% elseif hallintooikeus == "ita" %} Itä&#45;Suomen
+        {% elseif hallintooikeus == "poh" %} Pohjois&#45;Suomen
+        {% elseif hallintooikeus == "tku" %} Turun
+        {% elseif hallintooikeus == "vsa" %} Vaasan
+        {% else %} korkeimpaan
+        {% endif %} hallinto&#45;oikeuteen.
+      Valitus saadaan tehdä sillä perusteella, että päätös on lain vastainen. Valitusaika on 30 päivää
+      tiedoksisaannista. Liitteenä olevasta valitusosoituksesta ilmenee, miten muutosta haettaessa on
+      meneteltävä.
+    </p>
+    <!-- muutoksenhaku -->
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["muutoksenhaku"] %}
+      {{ teksti.text | translated(language)}}
+      {% endfor %}
+    </div>
+
+    <div class="ministeri">
+        <div class="ministeri-left">{{ paatos.ministeriNimike }}</div>
+        <div class="ministeri-right">{{ paatos.ministeri }}</div>
+    </div>
+
+    <div class="esittelija">
+        <div class="esittelija-left">{{ paatos.esittelijaNimike }}</div>
+        <div class="esittelija-right">{{ paatos.esittelija }}</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="sector">
+
+  <div class="sector-left">
+    Liitteet
+  </div>
+
+  <div class="sector-right">
+    <ul class="none">
+
+        <li>Ammatillisen peruskoulutuksen koulutustehtävä</li>
+        {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
+        <li>Lupa toimia kuorma&#45; ja linja&#45;autonkuljettajien ammattipätevyyskoulutusta antavana koulutuskeskuksena</li>
+        {% endif %}
+        {% if paatos.isMaksu %}
+          {% set oikaisuvaatimuspvm = "1.1.2016" | date("yyyy-M-d", existingFormat="d.M.yyyy") %}
+          {% set paatospvm = paatos.paatospvm | date("yyyy-M-d") %}
+          {% if oikaisuvaatimuspvm.compareTo(paatospvm) > 0 %}
+          <li>Maksua koskeva oikaisuvaatimusosoitus 10/091/2012</li>
+          {% else %}
+          <li>Maksua koskeva oikaisuvaatimusosoitus 15/091/2016</li>
+          {% endif %}
+        {% endif %}
+        <li>
+        {% if hallintooikeus == "hki" %}
+            {% if language == "sv" %}
+                Besvärsanvisning till Helsingfors förvaltningsdomstol
+            {% else %}
+                Valitusosoitus Helsingin hallinto&#45;oikeuteen
+            {% endif %}
+        {% elseif hallintooikeus == "hml" %}
+            {% if language == "sv" %}
+                Besvärsanvisning till Tavastehus förvaltningsdomstol
+            {% else %}
+                Valitusosoitus Hämeenlinnan hallinto&#45;oikeuteen
+            {% endif %}
+        {% elseif hallintooikeus == "ita" %}
+            {% if language == "sv" %}
+                    Besvärsanvisning till Östra Finlands förvaltningsdomstol
+            {% else %}
+                    Valitusosoitus Itä&#45;Suomen hallinto&#45;oikeuteen
+            {% endif %}
+        {% elseif hallintooikeus == "poh" %}
+            {% if language == "sv" %}
+                    Besvärsanvisning till Norra Finlands förvaltningsdomstol
+            {% else %}
+                    Valitusosoitus Pohjois&#45;Suomen hallinto&#45;oikeuteen
+            {% endif %}
+        {% elseif hallintooikeus == "tku" %}
+            {% if language == "sv" %}
+                    Besvärsanvisning till Åbo förvaltningsdomstol
+            {% else %}
+                    Valitusosoitus Turun hallinto&#45;oikeuteen
+            {% endif %}
+        {% elseif hallintooikeus == "vsa" %}
+            {% if language == "sv" %}
+                    Besvärsanvisning till Vasa förvaltningsdomstol
+            {% else %}
+                    Valitusosoitus Vaasan hallinto&#45;oikeuteen
+            {% endif %}
+        {% else %}
+            Valitusosoitus 1/091/2015
+        {% endif %}
+      </li>
+
+    </ul>
+
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["liitteet"] %}
+      {{ teksti.text | translated(language)}}
+      {% endfor %}
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="sector">
+
+  <div class="sector-left">
+    Tiedoksi
+  </div>
+
+  <div class="sector-right">
+    <ul class="none">
+
+      <li>Opetushallitus</li>
+      <li>Opetushallitus/Koulutustoimialan palvelut</li>
+      <li>Tilastokeskus</li>
+
+      {% for AVIalue in koulutustehtava.jarjestamiskuntienAVIalueet %}
+
+         <li>{{ AVIalue.teksti | translated(language) }}</li>
+      {% endfor %}
+
+      {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
+        <li>Trafi</li>
+      {% endif %}
+      {% for teksti in paatostekstit["tiedoksi"] %}
+        <li>{{ teksti.text | translated(language)}}</li>
+      {% endfor %}
+    </ul>
+
+  </div>
+
+</div>
+
+

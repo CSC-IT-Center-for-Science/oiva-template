@@ -51,7 +51,11 @@
 
 {% block content %}
 
-  {% include 'template/syksy2016/paatos/paatossisalto.html' %}
+  {% if paatos.uusiJarjestamislupaDiaari == paatos.diaari %}
+    {% include 'template/syksy2016/paatos/paatossisalto_uusi.html' %}
+  {% else %}
+    {% include 'template/syksy2016/paatos/paatossisalto_muutos.html' %}
+  {% endif %}
   {% include 'template/syksy2016/paatos/koulutustehtava.html' %}
   {% include 'template/syksy2016/paatos/kuljettajakoulutus.html' %}
 
