@@ -6,7 +6,6 @@
   </div>
 
   <div class="sector-right">
-      Ammatillisen peruskoulutuksen järjestämislupahakemus {{ hakemus.pvm | date("dd.MM.yyyy") }} ({{ paatos.diaari }})
   </div>
 
 </div>
@@ -20,29 +19,17 @@
 
   <div class="sector-right">
 
-    <h4>Ammatillisen peruskoulutuksen järjestämislupa ja siihen sisältyvä koulutustehtävä</h4>
+    <h4>Ammatillisen peruskoulutuksen järjestämisluvan peruminen</h4>
 
     <!-- Yleinen johdanto 1 --> 
 
-    <p>Opetus&#45; ja kulttuuriministeriö on ammatillisesta peruskoulutuksesta annetun lain (630/1998) 8 ja 9 §:n nojalla päättänyt myöntää koulutuksen järjestäjälle ammatillisen peruskoulutuksen järjestämisluvan ja siihen sisältyvän koulutustehtävän.
-    Tällä päätöksellä määrättyä ammatillisen peruskoulutuksen koulutustehtävää sovelletaan ​{{ koulutustehtava.alkupvm | date("dd.MM.yyyy") }} alkaen.</p>
+    <p>Koulutuksen järjestäjälle on myönnetty ammatillisesta peruskoulutuksesta annetun lain (630/1998) 8 ja 9 §:n nojalla ammatillisen peruskoulutuksen järjestämislupa {{ paatos.uusiJarjestamislupaPvm | date("dd.MM.yyyy") }} päivätyllä opetus&#45; ja
+      kulttuuriministeriön päätöksellä ​{{ paatos.uusiJarjestamislupaDiaari }}. Tällä päätöksellä opetus&#45; ja kulttuuriministeriö peruu kyseisen luvan.</p>
       
     {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
-    <p>GODKÄNNANDE SOM UTBILDNINGSCENTRUM</p>
-	<p>Undervisnings- och kulturministeriet har med stöd av 12 § i lagen om yrkeskompetens för lastbils- och bussförare (273/2007) godkänt utbildningsanordnaren som ett utbildningscentrum för utbildning för grundläggande yrkeskompetens för lastbils- och bussförare frän 01.01.2015.</p>
-	<p>De bestämmelser som gäller godkännande sam utbildningscentrum finns under punkt 3. Utbildningscentrum som ger utbildning för grundläggande yrkeskompetens för lastbils- och bussförare.</p>
-	<p>Enligt regeringens beslut daterat den 25.03.2014 om genomförandet av regeringens strukturpolitiska program samt beslutetfrän den 03.04.2014 gällande planen för den offentliga sektorn 2015 - 2018 förnyas tillständen att ordna yrkesutbildning fr.o.m. 01.01 .2017.</p>
+	<p>Samalla perutaan kuljettajakoulutuslupa.</p>
     {% endif %}
         
-    <p>
-    Ammatillisen peruskoulutuksen koulutustehtävä
-        {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
-            ja koulutuskeskuslupa ovat liitteinä.
-        {% else %}ö
-            on liitteenä.
-        {% endif %}
-    </p>
-
     <!-- yleinen johdanto osa 2 -->
     <div class="paatoskohtainenTeksti">
       {% for teksti in paatostekstit["yleinen johdanto osa 2"] %}
@@ -73,15 +60,7 @@
 
     <!-- maksu -->
     <b>Maksu:</b><br />
-      {% if paatos.isMaksu and (hakemus.isHakemusPvmBeforeVertailuPvm or paatos.isDiaariBefore2016) %}
-        1 920  euroa, joka laskutetaan erikseen; opetus&#45; ja kulttuuriministeriön asetus opetus&#45; ja kulttuuriministeriön
-        maksullisista suoritteista (263/2012) 2 §
-      {% elseif paatos.isMaksu %}
-        2 045 euroa, joka laskutetaan erikseen; opetus&#45; ja kulttuuriministeriön asetus opetus&#45; ja kulttuuriministeriön
-        maksullisista suoritteista (688/2015) 2 §
-      {% else %}
-        Maksutta
-      {% endif %}
+    Maksutta
     </p>
     <!-- maksu end -->
     <div class="paatoskohtainenTeksti">
