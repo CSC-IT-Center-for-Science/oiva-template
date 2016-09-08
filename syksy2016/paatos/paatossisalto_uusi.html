@@ -22,18 +22,18 @@
 
     <h4>Ammatillisen peruskoulutuksen järjestämislupa ja siihen sisältyvä koulutustehtävä</h4>
 
-    <!-- Yleinen johdanto 1 --> 
+    <!-- Yleinen johdanto 1 -->
 
     <p>Opetus&#45; ja kulttuuriministeriö on ammatillisesta peruskoulutuksesta annetun lain (630/1998) 8 ja 9 §:n nojalla päättänyt myöntää koulutuksen järjestäjälle ammatillisen peruskoulutuksen järjestämisluvan ja siihen sisältyvän koulutustehtävän.
     Tällä päätöksellä määrättyä ammatillisen peruskoulutuksen koulutustehtävää sovelletaan ​{{ koulutustehtava.alkupvm | date("dd.MM.yyyy") }} alkaen.</p>
-      
+
     {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
     <p>GODKÄNNANDE SOM UTBILDNINGSCENTRUM</p>
 	<p>Undervisnings- och kulturministeriet har med stöd av 12 § i lagen om yrkeskompetens för lastbils- och bussförare (273/2007) godkänt utbildningsanordnaren som ett utbildningscentrum för utbildning för grundläggande yrkeskompetens för lastbils- och bussförare frän 01.01.2015.</p>
 	<p>De bestämmelser som gäller godkännande sam utbildningscentrum finns under punkt 3. Utbildningscentrum som ger utbildning för grundläggande yrkeskompetens för lastbils- och bussförare.</p>
 	<p>Enligt regeringens beslut daterat den 25.03.2014 om genomförandet av regeringens strukturpolitiska program samt beslutetfrän den 03.04.2014 gällande planen för den offentliga sektorn 2015 - 2018 förnyas tillständen att ordna yrkesutbildning fr.o.m. 01.01 .2017.</p>
     {% endif %}
-        
+
     <p>
     Ammatillisen peruskoulutuksen koulutustehtävä
         {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
@@ -141,9 +141,7 @@
         <li>Lupa toimia kuorma&#45; ja linja&#45;autonkuljettajien ammattipätevyyskoulutusta antavana koulutuskeskuksena</li>
         {% endif %}
         {% if paatos.isMaksu %}
-          {% set oikaisuvaatimuspvm = "1.1.2016" | date("yyyy-M-d", existingFormat="d.M.yyyy") %}
-          {% set paatospvm = paatos.paatospvm | date("yyyy-M-d") %}
-          {% if oikaisuvaatimuspvm.compareTo(paatospvm) > 0 %}
+          {% if "01.01.2016" is dateGT(paatos.paatospvm) %}
           <li>Maksua koskeva oikaisuvaatimusosoitus 10/091/2012</li>
           {% else %}
           <li>Maksua koskeva oikaisuvaatimusosoitus 15/091/2016</li>
@@ -233,5 +231,3 @@
   </div>
 
 </div>
-
-
