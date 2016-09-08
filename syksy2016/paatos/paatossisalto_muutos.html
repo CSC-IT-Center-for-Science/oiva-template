@@ -22,7 +22,7 @@
 
     <h4>Ammatillisen peruskoulutuksen järjestämislupa</h4>
 
-    <!-- Yleinen johdanto 1 --> 
+    <!-- Yleinen johdanto 1 -->
 
     <p>Opetus&#45; ja kulttuuriministeriö on ammatillisesta peruskoulutuksesta annetun lain (630/1998) 8 ja 9 §:n nojalla päättänyt myöntää koulutuksen järjestäjälle ammatillisen peruskoulutuksen järjestämisluvan ja siihen sisältyvän koulutustehtävän.
     <p>Tällä päätöksellä määrättyä ammatillisen peruskoulutuksen koulutustehtävää
@@ -136,9 +136,7 @@
         <li>Lupa toimia kuorma&#45; ja linja&#45;autonkuljettajien ammattipätevyyskoulutusta antavana koulutuskeskuksena</li>
         {% endif %}
         {% if paatos.isMaksu %}
-          {% set oikaisuvaatimuspvm = "1.1.2016" | date("yyyy-M-d", existingFormat="d.M.yyyy") %}
-          {% set paatospvm = paatos.paatospvm | date("yyyy-M-d") %}
-          {% if oikaisuvaatimuspvm.compareTo(paatospvm) > 0 %}
+          {% if "01.01.2016" is dateGT(paatos.paatospvm) %}
           <li>Maksua koskeva oikaisuvaatimusosoitus 10/091/2012</li>
           {% else %}
           <li>Maksua koskeva oikaisuvaatimusosoitus 15/091/2016</li>
@@ -228,5 +226,3 @@
   </div>
 
 </div>
-
-
