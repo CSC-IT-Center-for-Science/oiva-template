@@ -8,7 +8,7 @@
   <div class="sector-right">
     {% if hakemus.exists  %}
       Hakemus ammatillisen peruskoulutuksen järjestämisluvan peruuttamiseksi
-      {{ hakemus.pvm | date("dd.MM.yyyy") }}, {{ paatos.diaari }}
+      {{ hakemus.pvm | date("dd.MM.yyyy") }} ({{ paatos.diaari }})
     {% else %}
       <div class="paatoskohtainenTeksti">
         {% for teksti in paatostekstit["viite"] %}
@@ -33,8 +33,12 @@
     <h4>Ammatillisen peruskoulutuksen järjestämisluvan peruutus</h4>
 
     <!-- Yleinen johdanto 1 -->
-	<p>Opetus- ja kulttuuriministeriö on hakemuksesta päättänyt peruuttaa koulutuksen järjestäjän {{ koulutustehtava.jarjestajaNimi | translated(language)}} ({{ koulutustehtava.jarjestajaYtunnus }})
-	ammatillisen peruskoulutuksen järjestämisluvan {{ koulutustehtava.alkupvm | date("dd.MM.yyyy") }} lukien.</p>
+	<p>Koulutuksen järjestäjälle on myönnetty ammatillisesta peruskoulutuksesta annetun lain (630/1998) 8 ja 9 §:n nojalla
+     ammatillisen peruskoulutuksen järjestämislupa {{ paatos.uusiJarjestamislupaPvm | date("dd.MM.yyyy") }} päivätyllä
+     opetus&#45; ja kulttuuriministeriön päätöksellä ​{{ paatos.uusiJarjestamislupaDiaari }}.
+     Opetus- ja kulttuuriministeriö on hakemuksesta päättänyt peruuttaa koulutuksen järjestäjän
+     {{ koulutustehtava.jarjestajaNimi | translated(language)}} ({{ koulutustehtava.jarjestajaYtunnus }})
+	   ammatillisen peruskoulutuksen järjestämisluvan {{ koulutustehtava.alkupvm | date("dd.MM.yyyy") }} lukien.</p>
 
     <!-- hakukierroskohtainen johdanto end -->
     <div class="paatoskohtainenTeksti">
