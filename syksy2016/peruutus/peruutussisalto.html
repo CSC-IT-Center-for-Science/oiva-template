@@ -34,8 +34,8 @@
 
     <!-- Yleinen johdanto 1 -->
 	<p>Opetus- ja kulttuuriministeriö on hakemuksesta päättänyt peruuttaa koulutuksen järjestäjän {{ koulutustehtava.jarjestajaNimi | translated(language)}} ({{ koulutustehtava.jarjestajaYtunnus }})
-	ammatillisen peruskoulutuksen järjestämisluvan {{ paatos.loppupvm | date("dd.MM.yyyy") }} lukien.</p>
-  
+	ammatillisen peruskoulutuksen järjestämisluvan {{ koulutustehtava.alkupvm | date("dd.MM.yyyy") }} lukien.</p>
+
     <!-- hakukierroskohtainen johdanto end -->
     <div class="paatoskohtainenTeksti">
       {% for teksti in paatostekstit["muut määräykset"] %}

@@ -42,7 +42,7 @@
 	päättänyt peruuttaa koulutuksen järjestäjän {{ koulutustehtava.jarjestajaNimi | translated(language)}} ({{ koulutustehtava.jarjestajaYtunnus }})
 	{{ paatos.uusiJarjestamislupaPvm | date("dd.MM.yyyy") }} päivätyllä opetus&#45; ja kulttuuriministeriön päätöksellä ​{{ paatos.uusiJarjestamislupaDiaari }}
 	myönnetyn ammatillisen peruskoulutuksen järjestämisluvan {{ koulutustehtava.alkupvm | date("dd.MM.yyyy") }} lukien.</p>
-
+ 
     <!-- hakukierroskohtainen johdanto end -->
     <div class="paatoskohtainenTeksti">
       {% for teksti in paatostekstit["muut määräykset"] %}
