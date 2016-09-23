@@ -38,6 +38,13 @@
         {% endif %}
     </p>
 
+    <!-- yleinen johdanto 1 ends -->
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["yleinen johdanto osa 1"] %}
+      {{ teksti.text | translated(language)}}
+      {% endfor %}
+    </div>
+
     <!-- yleinen johdanto osa 2 -->
     <div class="paatoskohtainenTeksti">
       {% for teksti in paatostekstit["yleinen johdanto osa 2"] %}

@@ -29,19 +29,26 @@
 
     {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
     <p>GODKÄNNANDE SOM UTBILDNINGSCENTRUM</p>
-	<p>Undervisnings- och kulturministeriet har med stöd av 12 § i lagen om yrkeskompetens för lastbils- och bussförare (273/2007) godkänt utbildningsanordnaren som ett utbildningscentrum för utbildning för grundläggande yrkeskompetens för lastbils- och bussförare frän 01.01.2015.</p>
-	<p>De bestämmelser som gäller godkännande sam utbildningscentrum finns under punkt 3. Utbildningscentrum som ger utbildning för grundläggande yrkeskompetens för lastbils- och bussförare.</p>
-	<p>Enligt regeringens beslut daterat den 25.03.2014 om genomförandet av regeringens strukturpolitiska program samt beslutetfrän den 03.04.2014 gällande planen för den offentliga sektorn 2015 - 2018 förnyas tillständen att ordna yrkesutbildning fr.o.m. 01.01 .2017.</p>
+    <p>Undervisnings- och kulturministeriet har med stöd av 12 § i lagen om yrkeskompetens för lastbils- och bussförare (273/2007) godkänt utbildningsanordnaren som ett utbildningscentrum för utbildning för grundläggande yrkeskompetens för lastbils- och bussförare frän 01.01.2015.</p>
+    <p>De bestämmelser som gäller godkännande sam utbildningscentrum finns under punkt 3. Utbildningscentrum som ger utbildning för grundläggande yrkeskompetens för lastbils- och bussförare.</p>
+    <p>Enligt regeringens beslut daterat den 25.03.2014 om genomförandet av regeringens strukturpolitiska program samt beslutetfrän den 03.04.2014 gällande planen för den offentliga sektorn 2015 - 2018 förnyas tillständen att ordna yrkesutbildning fr.o.m. 01.01 .2017.</p>
     {% endif %}
 
     <p>
     Ammatillisen peruskoulutuksen koulutustehtävä
         {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
             ja koulutuskeskuslupa ovat liitteinä.
-        {% else %}ö
+        {% else %}
             on liitteenä.
         {% endif %}
     </p>
+
+    <!-- yleinen johdanto 1 ends -->
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["yleinen johdanto osa 1"] %}
+      {{ teksti.text | translated(language)}}
+      {% endfor %}
+    </div>
 
     <!-- yleinen johdanto osa 2 -->
     <div class="paatoskohtainenTeksti">
