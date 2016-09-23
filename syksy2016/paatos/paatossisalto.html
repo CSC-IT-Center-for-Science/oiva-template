@@ -6,7 +6,15 @@
   </div>
 
   <div class="sector-right">
-      Ammatillisen peruskoulutuksen järjestämislupahakemus {{ hakemus.pvm | date("dd.MM.yyyy") }} ({{ paatos.diaari }})
+    {% if hakemus.exists  %}
+      Hakemus ammatillisen peruskoulutuksen järjestämislupaan sisältyvän koulutustehtävän muuttamiseksi {{ hakemus.pvm | date("dd.MM.yyyy") }} ({{ paatos.diaari }})
+    {% else %}
+      <div class="paatoskohtainenTeksti">
+        {% for teksti in paatostekstit["viite"] %}
+          {{ teksti.text | translated(language)}}
+        {% endfor %}
+      </div>
+    {% endif %}
   </div>
 
 </div>
@@ -20,11 +28,32 @@
 
   <div class="sector-right">
 
-    <h4>Ammatillisen peruskoulutuksen järjestämislupa</h4>
+    <h4>Ammatillisen peruskoulutuksen järjestämislupaan sisältyvän koulutustehtävän muuttaminen</h4>
 
     <!-- Yleinen johdanto 1 -->
+    <p>Koulutuksen järjestäjälle on myönnetty ammatillisesta peruskoulutuksesta annetun lain (630/1998) 8 ja 9 §:n nojalla ammatillisen peruskoulutuksen järjestämislupa {{ paatos.uusiJarjestamislupaPvm | date("dd.MM.yyyy") }} päivätyllä opetus&#45; ja
+      kulttuuriministeriön päätöksellä ​{{ paatos.uusiJarjestamislupaDiaari }}. Koulutuksen järjestäjä on hakenut muutosta ammatillisen peruskoulutuksen järjestämislupaan sisältyvään koulutustehtävään. Opetus&#45; ja kulttuuriministeriö on käsitellyt
+      koulutuksen järjestäjän hakemuksen ja päättänyt seuraavasti:
+    </p>
 
-    <p>Opetus&#45; ja kulttuuriministeriö on ammatillisesta peruskoulutuksesta annetun lain (630/1998) 8 ja 9 §:n nojalla päättänyt myöntää koulutuksen järjestäjälle ammatillisen peruskoulutuksen järjestämisluvan ja siihen sisältyvän koulutustehtävän.
+    <!-- Muutokset ja perustelut -->
+    {% include 'template/syksy2016/paatetytmuutoksettemplate.html' %}
+
+    <!-- muutokset ends -->
+
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["yleinen johdanto osa 1"] %}
+      {{ teksti.text | translated(language)}}
+      {% endfor %}
+    </div>
+    <!-- yleinen johdanto 1 ends -->
+
+    <!-- yleinen johdanto osa 2 -->
+    <!-- paatos.kielteinen -->
+    {% if paatos.kielteinen %}
+    Koulutuksen järjestäjälle {{ paatos.edellinenPaatosPvm | date("dd.MM.yyyy") }} päivätyllä opetus&#45; ja kulttuuriministeriön päätöksellä
+    ({{ paatos.edellinenPaatosDiaari }}) määrätty koulutustehtävä pysyy voimassa.
+    {% else %}
     <p>Tällä päätöksellä määrättyä ammatillisen peruskoulutuksen koulutustehtävää
         {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
             ja lupaa toimia kuorma&#45; ja linja&#45;autonkuljettajien ammattipätevyyskoulutusta antavana koulutuskeskuksena
@@ -36,16 +65,11 @@
         {% else %}
             on liitteenä.
         {% endif %}
+        Tällä päätöksellä korvataan    {{ paatos.edellinenPaatosPvm | date("dd.MM.yyyy") }} päivätyllä opetus&#45; ja kulttuuriministeriön päätöksellä
+        ({{ paatos.edellinenPaatosDiaari }}) määrätty koulutustehtävä.
     </p>
+    {% endif %}
 
-    <!-- yleinen johdanto 1 ends -->
-    <div class="paatoskohtainenTeksti">
-      {% for teksti in paatostekstit["yleinen johdanto osa 1"] %}
-      {{ teksti.text | translated(language)}}
-      {% endfor %}
-    </div>
-
-    <!-- yleinen johdanto osa 2 -->
     <div class="paatoskohtainenTeksti">
       {% for teksti in paatostekstit["yleinen johdanto osa 2"] %}
       {{ teksti.text | translated(language)}}
