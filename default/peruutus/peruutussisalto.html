@@ -38,10 +38,10 @@
 	hakemuksesta
     {% else %}
     hakemuksetta
-	{% endif %}    
+	{% endif %}
 	päättänyt peruuttaa koulutuksen järjestäjän {{ koulutustehtava.jarjestajaNimi | translated(language)}} ({{ koulutustehtava.jarjestajaYtunnus }})
 	{{ paatos.uusiJarjestamislupaPvm | date("dd.MM.yyyy") }} päivätyllä opetus&#45; ja kulttuuriministeriön päätöksellä ​{{ paatos.uusiJarjestamislupaDiaari }}
-	myönnetyn ammatillisen peruskoulutuksen järjestämisluvan {{ paatos.loppupvm | date("dd.MM.yyyy") }} lukien.</p>
+	myönnetyn ammatillisen peruskoulutuksen järjestämisluvan {{ koulutustehtava.alkuPvm | date("dd.MM.yyyy") }} lukien.</p>
 
     <!-- hakukierroskohtainen johdanto end -->
     <div class="paatoskohtainenTeksti">
