@@ -42,7 +42,7 @@
 
     <!-- hakukierroskohtainen johdanto end -->
     <div class="paatoskohtainenTeksti">
-      {% for teksti in paatostekstit["muut määräykset"] %}
+      {% for teksti in paatostekstit["yleinen johdanto osa 1"] %}
       {{ teksti.text | translated(language)}}
       {% endfor %}
     </div>
