@@ -127,14 +127,10 @@
             <div class="rivi">
               {% if rivi.tyyppi == 'otsikko' %}
                 <div class="solu_levea"><i>Päätös:</i></div>
-                {% for value in rivi.sarakeMuutosDisplayValues %}
-                  <div class="solu_kapea_bold">{{ value }}</div>
-                {% endfor %}
+                  <div class="solu_kapea_bold">{{ rivi.sarakeMuutosDisplayValues | last }}</div>
               {% else %}
                 <div class="solu_levea">{{ rivi.otsikko | translated(language) }}</div>
-                {% for value in rivi.sarakeMuutosDisplayValues %}
-                  <div class="solu_kapea">{{ value }}</div>
-                {% endfor %}
+                  <div class="solu_kapea">{{ rivi.sarakeMuutosDisplayValues | last }}</div>
               {% endif %}
             </div>
           {% endfor %}
