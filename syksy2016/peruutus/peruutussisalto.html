@@ -124,9 +124,47 @@
 
   <div class="sector-right">
     <ul class="none">
-
-      <li>Valitusosoitus 1/091/2015</li>
-
+        <li>
+        {% if hallintooikeus == "hki" %}
+            {% if language == "sv" %}
+                Besvärsanvisning till Helsingfors förvaltningsdomstol 1/091/2016
+            {% else %}
+                Valitusosoitus Helsingin hallinto&#45;oikeuteen 1/091/2016
+            {% endif %}
+        {% elseif hallintooikeus == "hml" %}
+            {% if language == "sv" %}
+                Besvärsanvisning till Tavastehus förvaltningsdomstol 2/091/2016
+            {% else %}
+                Valitusosoitus Hämeenlinnan hallinto&#45;oikeuteen 2/091/2016
+            {% endif %}
+        {% elseif hallintooikeus == "ita" %}
+            {% if language == "sv" %}
+                    Besvärsanvisning till Östra Finlands förvaltningsdomstol 3/091/2016
+            {% else %}
+                    Valitusosoitus Itä&#45;Suomen hallinto&#45;oikeuteen 3/091/2016
+            {% endif %}
+        {% elseif hallintooikeus == "poh" %}
+            {% if language == "sv" %}
+                    Besvärsanvisning till Norra Finlands förvaltningsdomstol 4/091/2016
+            {% else %}
+                    Valitusosoitus Pohjois&#45;Suomen hallinto&#45;oikeuteen 4/091/2016
+            {% endif %}
+        {% elseif hallintooikeus == "tku" %}
+            {% if language == "sv" %}
+                    Besvärsanvisning till Åbo förvaltningsdomstol 5/091/2016
+            {% else %}
+                    Valitusosoitus Turun hallinto&#45;oikeuteen 5/091/2016
+            {% endif %}
+        {% elseif hallintooikeus == "vsa" %}
+            {% if language == "sv" %}
+                    Besvärsanvisning till Vasa förvaltningsdomstol 6/091/2016
+            {% else %}
+                    Valitusosoitus Vaasan hallinto&#45;oikeuteen 6/091/2016
+            {% endif %}
+        {% else %}
+            Valitusosoitus 1/091/2015
+        {% endif %}
+      </li>
     </ul>
 
     <div class="paatoskohtainenTeksti">
