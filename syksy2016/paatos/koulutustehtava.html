@@ -74,7 +74,7 @@
     <p>Koulutusta voidaan järjestää seuraavilla koulutusaloilla, tutkinnoissa ja osaamisaloilla:</p>
 
     {% for koulutusala in koulutustehtava.koulutusalat %}
-    {% if koulutusala.id < 9 %}
+    {% if koulutusala.id != "9" %}
       <div class="koulutusala">
 		<div class="koulutusala-otsikko">
         {{ koulutusala.id }} {{ koulutusala.teksti | translated(language) }}
