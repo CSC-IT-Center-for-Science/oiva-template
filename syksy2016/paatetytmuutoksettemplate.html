@@ -123,14 +123,16 @@
       {% endif %}</p>
       <p>
         <div class="taulukko_opiskelijamaara">
-          {% for rivi in koulutustehtavaMuutos.opiskelijamaarat %}
+          {% for rivi in koulutustehtava.opiskelijamaarat %}
             <div class="rivi">
               {% if rivi.tyyppi == 'otsikko' %}
                 <div class="solu_levea"><i>Päätös:</i></div>
-                  <div class="solu_kapea_bold">{{ rivi.sarakeMuutosDisplayValues | last }}</div>
+                {% for entry in rivi.sarakkeet.entrySet %}
+                  <div class="solu_kapea_bold">{{ entry.value }}</div>
               {% else %}
                 <div class="solu_levea">{{ rivi.otsikko | translated(language) }}</div>
-                  <div class="solu_kapea">{{ rivi.sarakeMuutosDisplayValues | last | slice(0,3) }}</div>
+                {% for value in rivi.sarakeDisplayValues %}
+                  <div class="solu_kapea">{{ value }}</div>
               {% endif %}
             </div>
           {% endfor %}
