@@ -129,10 +129,12 @@
                 <div class="solu_levea"><i>Päätös:</i></div>
                 {% for entry in rivi.sarakkeet.entrySet %}
                   <div class="solu_kapea_bold">{{ entry.value }}</div>
+                {% endfor % }
               {% else %}
                 <div class="solu_levea">{{ rivi.otsikko | translated(language) }}</div>
                 {% for value in rivi.sarakeDisplayValues %}
                   <div class="solu_kapea">{{ value }}</div>
+                {% endfor % }
               {% endif %}
             </div>
           {% endfor %}
