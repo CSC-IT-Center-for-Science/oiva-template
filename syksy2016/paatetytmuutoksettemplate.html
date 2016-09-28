@@ -130,7 +130,7 @@
                   <div class="solu_kapea_bold">{{ rivi.sarakeMuutosDisplayValues | last }}</div>
               {% else %}
                 <div class="solu_levea">{{ rivi.otsikko | translated(language) }}</div>
-                  <div class="solu_kapea">{{ rivi.sarakeMuutosDisplayValues | last }}</div>
+                  <div class="solu_kapea">{{ rivi.sarakeMuutosDisplayValues | last | abbreviate(4) }}</div>
               {% endif %}
             </div>
           {% endfor %}
