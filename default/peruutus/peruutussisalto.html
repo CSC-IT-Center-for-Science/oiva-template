@@ -8,7 +8,7 @@
   <div class="sector-right">
     {% if hakemus.exists  %}
       Hakemus ammatillisen peruskoulutuksen järjestämisluvan peruuttamiseksi
-      {{ hakemus.pvm | date("dd.MM.yyyy") }}, {{ paatos.diaari }}
+      {{ hakemus.pvm | date("dd.MM.yyyy") }} {{ paatos.diaari }}
     {% else %}
       <div class="paatoskohtainenTeksti">
         {% for teksti in paatostekstit["viite"] %}
