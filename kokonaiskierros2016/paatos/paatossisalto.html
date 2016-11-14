@@ -6,15 +6,11 @@
   </div>
 
   <div class="sector-right">
-    {% if hakemus.exists  %}
-      Hakemus ammatillisen peruskoulutuksen järjestämislupaan sisältyvän koulutustehtävän muuttamiseksi {{ hakemus.pvm | date("dd.MM.yyyy") }} {{ paatos.diaari }}
-    {% else %}
       <div class="paatoskohtainenTeksti">
         {% for teksti in paatostekstit["viite"] %}
           {{ teksti.text | translated(language)}}
         {% endfor %}
       </div>
-    {% endif %}
   </div>
 
 </div>
@@ -32,12 +28,11 @@
 
     <!-- Yleinen johdanto 1 -->
     <p>Koulutuksen järjestäjälle on myönnetty ammatillisesta peruskoulutuksesta annetun lain (630/1998) 8 ja 9 §:n nojalla ammatillisen peruskoulutuksen järjestämislupa {{ paatos.uusiJarjestamislupaPvm | date("dd.MM.yyyy") }} päivätyllä opetus&#45; ja
-      kulttuuriministeriön päätöksellä ​{{ paatos.uusiJarjestamislupaDiaari }}. Koulutuksen järjestäjä on hakenut muutosta ammatillisen peruskoulutuksen järjestämislupaan sisältyvään koulutustehtävään. Opetus&#45; ja kulttuuriministeriö on käsitellyt
-      koulutuksen järjestäjän hakemuksen ja päättänyt seuraavasti:
+      kulttuuriministeriön päätöksellä ​{{ paatos.uusiJarjestamislupaDiaari }}. Opetus&#45; ja kulttuuriministeriö on hakemuksetta päättänyt muuttaa koulutuksen järjestämislupaan sisältyvää koulutustehtävää seuraavasti:
     </p>
 
     <!-- Muutokset ja perustelut -->
-    {% include 'template/syksy2016/paatetytmuutoksettemplate.html' %}
+    {% include 'template/kokonaiskierros2016/paatetytmuutoksettemplate.html' %}
 
     <!-- muutokset ends -->
 
