@@ -22,8 +22,7 @@
     <p>Koulutuksen järjestäjälle on myönnetty ammatillisesta perusopetuksesta annetun lain (630/1998) 8 ja 9 §:n nojalla ammatillisen peruskoulutuksen järjestämislupa {{ paatos.uusiJarjestamislupaPvm | date("dd.MM.yyyy") }} päivätyllä opetus&#45; ja
       kulttuuriministeriön päätöksellä ​{{ paatos.uusiJarjestamislupaDiaari }}.
       {% if metadata.johdantoVALMA == "true" %}
-        Tällä päätöksellä korvataan {{ paatos.edellisenPaatoksenedellinenPaatosPvm | date("dd.MM.yyyy") }}  ja
-		{{ paatos.edellinenPaatosPvm | date("dd.MM.yyyy") }} päivätyillä opetus&#45; ja kulttuuriministeriön päätöksillä (​​​{{ paatos.edellisenPaatoksenedellinenPaatosDiaari }} ja {{ paatos.edellinenPaatosDiaari }})
+        Tällä päätöksellä korvataan {{ paatos.edellinenPaatosPvm | date("dd.MM.yyyy") }} päivätyillä opetus&#45; ja kulttuuriministeriön päätöksillä (​​​{{ paatos.edellinenPaatosDiaari }})
         määrätty koulutustehtävä.
       {% endif %}
       {% if metadata.johdantoVALMA != "true" %}
