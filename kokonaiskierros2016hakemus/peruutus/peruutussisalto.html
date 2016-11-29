@@ -1,0 +1,209 @@
+
+<div class="sector">
+
+  <div class="sector-left">
+    Viite
+  </div>
+
+  <div class="sector-right">
+    {% if hakemus.exists  %}
+      Hakemus ammatillisen peruskoulutuksen järjestämisluvan peruuttamiseksi
+      {{ hakemus.pvm | date("dd.MM.yyyy") }} {{ paatos.diaari }}
+    {% else %}
+      <div class="paatoskohtainenTeksti">
+        {% for teksti in paatostekstit["viite"] %}
+          {{ teksti.text | translated(language)}}
+        {% endfor %}
+
+      </div>
+    {% endif %}
+  </div>
+
+</div>
+
+
+<div class="sector">
+
+  <div class="sector-left">
+    Asia
+  </div>
+
+  <div class="sector-right">
+
+    <h4>Ammatillisen peruskoulutuksen järjestämisluvan peruutus</h4>
+
+    <!-- Yleinen johdanto 1 -->
+	<p>Koulutuksen järjestäjälle on myönnetty ammatillisesta peruskoulutuksesta annetun lain (630/1998) 8 ja 9 §:n nojalla
+     ammatillisen peruskoulutuksen järjestämislupa {{ paatos.uusiJarjestamislupaPvm | date("dd.MM.yyyy") }} päivätyllä
+     opetus&#45; ja kulttuuriministeriön päätöksellä ​{{ paatos.uusiJarjestamislupaDiaari }}.
+     Opetus- ja kulttuuriministeriö on hakemuksesta päättänyt peruuttaa koulutuksen järjestäjän
+     {{ koulutustehtava.jarjestajaNimi | translated(language)}} ({{ koulutustehtava.jarjestajaYtunnus }})
+	   ammatillisen peruskoulutuksen järjestämisluvan {{ koulutustehtava.alkupvm | date("dd.MM.yyyy") }} lukien.</p>
+
+    <!-- hakukierroskohtainen johdanto end -->
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["yleinen johdanto osa 1"] %}
+      {{ teksti.text | translated(language)}}
+      {% endfor %}
+    </div>
+
+    <!-- saadokset -->
+    <p>
+      <b>Säädökset, joihin päätös perustuu:</b><br/>
+      {% if koulutustehtava.kokeilut.size > 0 %}
+        Laki ammatillisesta koulutuksesta (630/1998) 9 §:n 2 mom., 23 § (787/2014)<br/>
+      {% else %}
+        Laki ammatillisesta koulutuksesta (630/1998) 9 §:n 2 mom.<br/>
+      {% endif %}
+      Laki ammatillisesta aikuiskoulutuksesta (631/1998) 4 §:n 1 mom.<br/>
+      {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
+        Kuorma&#45; ja linja&#45;auton kuljettajien ammattipätevyydestä annetun lain (273/2007) 10 §
+      {% endif %}
+    </p>
+    <!-- saadokset end -->
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["saadokset"] %}
+      {{ teksti.text | translated(language)}}
+      {% endfor %}
+    </div>
+
+
+    <!-- maksu -->
+    <b>Maksu:</b><br />
+	Maksutta
+    <!-- maksu end -->
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["maksu"] %}
+      {{ teksti.tex | translated(language)}}
+      {% endfor %}
+    </div>
+
+
+    <!-- muutoksenhaku -->
+    <p>
+      <b>Muutoksenhaku:</b><br/>
+      Tähän päätökseen saa hakea muutosta valittamalla
+        {% if hallintooikeus == "hki" %} Helsingin
+        {% elseif hallintooikeus == "hml" %} Hämeenlinnan
+        {% elseif hallintooikeus == "ita" %} Itä&#45;Suomen
+        {% elseif hallintooikeus == "poh" %} Pohjois&#45;Suomen
+        {% elseif hallintooikeus == "tku" %} Turun
+        {% elseif hallintooikeus == "vsa" %} Vaasan
+        {% else %} korkeimpaan
+        {% endif %} hallinto&#45;oikeuteen.
+      Valitus saadaan tehdä sillä perusteella, että päätös on lain vastainen. Valitusaika on 30 päivää
+      tiedoksisaannista. Liitteenä olevasta valitusosoituksesta ilmenee, miten muutosta haettaessa on
+      meneteltävä.
+    </p>
+    <!-- muutoksenhaku -->
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["muutoksenhaku"] %}
+      {{ teksti.text | translated(language)}}
+      {% endfor %}
+    </div>
+
+    <div class="ministeri">
+		<div class="ministeri-left">{{ paatos.ministeriNimike }}</div>
+		<div class="ministeri-right">{{ paatos.ministeri }}</div>
+    </div>
+
+    <div class="esittelija">
+		<div class="esittelija-left">{{ paatos.esittelijaNimike }}</div>
+		<div class="esittelija-right">{{ paatos.esittelija }}</div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="sector">
+
+  <div class="sector-left">
+    Liitteet
+  </div>
+
+  <div class="sector-right">
+    <ul class="none">
+        <li>
+        {% if hallintooikeus == "hki" %}
+            {% if language == "sv" %}
+                Besvärsanvisning till Helsingfors förvaltningsdomstol 1/091/2016
+            {% else %}
+                Valitusosoitus Helsingin hallinto&#45;oikeuteen 1/091/2016
+            {% endif %}
+        {% elseif hallintooikeus == "hml" %}
+            {% if language == "sv" %}
+                Besvärsanvisning till Tavastehus förvaltningsdomstol 2/091/2016
+            {% else %}
+                Valitusosoitus Hämeenlinnan hallinto&#45;oikeuteen 2/091/2016
+            {% endif %}
+        {% elseif hallintooikeus == "ita" %}
+            {% if language == "sv" %}
+                    Besvärsanvisning till Östra Finlands förvaltningsdomstol 3/091/2016
+            {% else %}
+                    Valitusosoitus Itä&#45;Suomen hallinto&#45;oikeuteen 3/091/2016
+            {% endif %}
+        {% elseif hallintooikeus == "poh" %}
+            {% if language == "sv" %}
+                    Besvärsanvisning till Norra Finlands förvaltningsdomstol 4/091/2016
+            {% else %}
+                    Valitusosoitus Pohjois&#45;Suomen hallinto&#45;oikeuteen 4/091/2016
+            {% endif %}
+        {% elseif hallintooikeus == "tku" %}
+            {% if language == "sv" %}
+                    Besvärsanvisning till Åbo förvaltningsdomstol 5/091/2016
+            {% else %}
+                    Valitusosoitus Turun hallinto&#45;oikeuteen 5/091/2016
+            {% endif %}
+        {% elseif hallintooikeus == "vsa" %}
+            {% if language == "sv" %}
+                    Besvärsanvisning till Vasa förvaltningsdomstol 6/091/2016
+            {% else %}
+                    Valitusosoitus Vaasan hallinto&#45;oikeuteen 6/091/2016
+            {% endif %}
+        {% else %}
+            Valitusosoitus 1/091/2015
+        {% endif %}
+      </li>
+    </ul>
+
+    <div class="paatoskohtainenTeksti">
+      {% for teksti in paatostekstit["liitteet"] %}
+      {{ teksti.text | translated(language)}}
+      {% endfor %}
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="sector">
+
+  <div class="sector-left">
+    Tiedoksi
+  </div>
+
+  <div class="sector-right">
+    <ul class="none">
+
+      <li>Opetushallitus</li>
+      <li>Opetushallitus/Koulutustoimialan palvelut</li>
+      <li>Tilastokeskus</li>
+
+      {% for AVIalue in koulutustehtava.jarjestamiskuntienAVIalueet %}
+
+         <li>{{ AVIalue.teksti | translated(language) }}</li>
+      {% endfor %}
+
+      {% if koulutustehtava.kuljettajakoulutus.size > 0 %}
+        <li>Trafi</li>
+      {% endif %}
+	  {% for teksti in paatostekstit["tiedoksi"] %}
+		<li>{{ teksti.text | translated(language)}}</li>
+	  {% endfor %}
+    </ul>
+
+  </div>
+
+</div>
