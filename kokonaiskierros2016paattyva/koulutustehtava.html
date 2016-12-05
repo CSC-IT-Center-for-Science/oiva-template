@@ -5,7 +5,7 @@
   <!--johdanto -->
   <div class="liitteenAlku">
     Koulutuksen järjestäjä: {{ koulutustehtava.jarjestajaNimi | translated(language)}} ({{ koulutustehtava.jarjestajaYtunnus }})<br/>
-    Koulutustehtävää sovelletaan {{ koulutustehtava.alkupvm | date("dd.MM.yyyy") }} alkaen.
+    Koulutustehtävää sovelletaan {{ koulutustehtava.alkupvm | date("dd.MM.yyyy") }} - {{ koulutustehtava.loppupvm | date("dd.MM.yyyy") }}.
   </div>
   <!-- johdanto end -->
 
