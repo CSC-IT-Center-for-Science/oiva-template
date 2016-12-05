@@ -101,6 +101,27 @@
     <div class="otsikko">6. Oppilaitosmuotoisen koulutuksen vuosiopiskelijamäärä</div>
     <div class="sisalto">
       <p>{% if koulutustehtavaNyt.opiskelijamaarat is notEmpty %}
+         <div class="taulukko_opiskelijamaara">
+          {% for rivi in koulutustehtavaNyt.opiskelijamaarat %}
+            <div class="rivi">
+              {% if rivi.tyyppi == 'otsikko' %}
+                <div class="solu_levea"><i>Edellinen päätös:</i></div>
+                {% for value in rivi.sarakeDisplayValues %}
+                  <div class="solu_kapea_bold">{{ value }}</div>
+                {% endfor %}
+              {% else %}
+                <div class="solu_levea">{{ rivi.otsikko | translated(language) }}</div>
+                {% for value in rivi.sarakeDisplayValues %}
+                  <div class="solu_kapea">{{ value }}</div>
+                {% endfor %}
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <i>Voimassaoleva:</i> Ei lupaa
+      {% endif %}</p>
+      <p>
         <div class="taulukko_opiskelijamaara">
           {% for rivi in koulutustehtavaMuutos.opiskelijamaarat %}
             <div class="rivi">
