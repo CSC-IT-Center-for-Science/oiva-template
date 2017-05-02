@@ -176,6 +176,13 @@ ul.none {
 .sisennys {
     margin-left: 20px;
 }
+.sisennys2 {
+    margin-left: 40px;
+}
+.cell-wide {
+    display: inline-block;
+    width: 300px;
+}
 
 .muutosperusteluosio {
     margin-left: 25px;
