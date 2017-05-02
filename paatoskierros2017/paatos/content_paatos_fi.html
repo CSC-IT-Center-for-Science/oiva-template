@@ -124,9 +124,8 @@
 
     <div class="otsikko">1) Tutkinnot ja koulutukset</div>
     <div class="sisalto">
-        <div class="maarays-rivi">
-            Koulutuksen järjestäjällä on oikeus myöntää seuraavia tutkintoja ja antaa niihin tutkintokoulutusta sekä
-            järjestää niihin ammatillista osaamista täydentävää ja syventävää koulutusta.
+        <div class="tietoa">
+            Koulutuksen järjestäjällä on oikeus myöntää seuraavia tutkintoja ja antaa niihin tutkintokoulutusta:
         </div>
 
         <!-- TODO: Velvollisuus ja rajoitus sisennetään oikeuksien alle -->
@@ -137,36 +136,18 @@
                 <div class="maaraystyyppiotsikko">Ammatilliset perustutkinnot</div>
 
                 <!-- oikeus -->
-                <div class="maarays-rivi sisennys2">
+                <div class="maaraykset sisennys2">
                     {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:oikeus", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_1"]) %}
-                        <div class="loop {{ maarays.tyyppi }}">
-                            <span class="data cell-wide">{{ maarays.koodi.nimi | translated }}</span>
-                            <span class="data">
-                                {% if maarays.koodi.voimassaLoppuPvm is notBlank %}
-                                    {{ maarays.koodi.voimassaLoppuPvm | toDate("yyyy-MM-dd") | date("d.M.yyyy") }} asti
-                                {% elseif maarays.koodi.voimassaAlkuPvm is notBlank  %}
-                                    {{ maarays.koodi.voimassaAlkuPvm | toDate("yyyy-MM-dd") | date("d.M.yyyy") }} lukien
-                                {% endif %}
-                            </span>
-                        </div>
+                        {% include fromDefault("koulutusmaarays") %}
                     {% endfor %}
                 </div>
 
                 <!-- velvoite -->
                 <div class="if">
                     {% if lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_1"]) is notBlank %}
-                        <div class="maarays-rivi sisennys2">
+                        <div class="maaraykset sisennys2">
                             {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_1"]) %}
-                                <div class="loop {{ maarays.tyyppi }}">
-                                    <span class="data cell-wide">{{ maarays.koodi.nimi | translated }}</span>
-                                    <span class="data">
-                                        {% if maarays.koodi.voimassaLoppuPvm is notBlank %}
-                                            {{ maarays.koodi.voimassaLoppuPvm | toDate("yyyy-MM-dd") | date("d.M.yyyy") }} asti
-                                        {% elseif maarays.koodi.voimassaAlkuPvm is notBlank  %}
-                                            {{ maarays.koodi.voimassaAlkuPvm | toDate("yyyy-MM-dd") | date("d.M.yyyy") }} lukien
-                                        {% endif %}
-                                    </span>
-                                </div>
+                                {% include fromDefault("koulutusmaarays") %}
                             {% endfor %}
                         </div>
                     {% endif %}
@@ -175,18 +156,9 @@
                 <!-- rajoite -->
                 <div class="if">
                     {% if lupa.maaraykset | maaraysFilter(["tyyppi:rajoite", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_1"]) is notBlank %}
-                        <div class="maarays-rivi sisennys2">
+                        <div class="maaraykset sisennys2">
                             {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:rajoite", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_1"]) %}
-                                <div class="loop {{ maarays.tyyppi }}">
-                                    <span class="data cell-wide">{{ maarays.koodi.nimi | translated }}</span>
-                                    <span class="data">
-                                        {% if maarays.koodi.voimassaLoppuPvm is notBlank %}
-                                            {{ maarays.koodi.voimassaLoppuPvm | toDate("yyyy-MM-dd") | date("d.M.yyyy") }} asti
-                                        {% elseif maarays.koodi.voimassaAlkuPvm is notBlank  %}
-                                            {{ maarays.koodi.voimassaAlkuPvm | toDate("yyyy-MM-dd") | date("d.M.yyyy") }} lukien
-                                        {% endif %}
-                                    </span>
-                                </div>
+                                {% include fromDefault("koulutusmaarays") %}
                             {% endfor %}
                         </div>
                     {% endif %}
@@ -200,36 +172,18 @@
                 <div class="maaraystyyppiotsikko">Ammattitutkinnot</div>
 
                 <!-- oikeus -->
-                <div class="maarays-rivi sisennys2">
+                <div class="maaraykset sisennys2">
                     {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:oikeus", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_11"]) %}
-                        <div class="loop {{ maarays.tyyppi }}">
-                            <span class="data cell-wide">{{ maarays.koodi.nimi | translated }}</span>
-                            <span class="data">
-                                {% if maarays.koodi.voimassaLoppuPvm is notBlank %}
-                                    {{ maarays.koodi.voimassaLoppuPvm | toDate("yyyy-MM-dd") | date("d.M.yyyy") }} asti
-                                {% elseif maarays.koodi.voimassaAlkuPvm is notBlank  %}
-                                    {{ maarays.koodi.voimassaAlkuPvm | toDate("yyyy-MM-dd") | date("d.M.yyyy") }} lukien
-                                {% endif %}
-                            </span>
-                        </div>
+                        {% include fromDefault("koulutusmaarays") %}
                     {% endfor %}
                 </div>
 
                 <!-- velvoite -->
                 <div class="if">
                     {% if lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_11"]) is notBlank %}
-                        <div class="maarays-rivi sisennys2">
+                        <div class="maaraykset sisennys2">
                             {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_11"]) %}
-                            <div class="loop {{ maarays.tyyppi }}">
-                                <span class="data cell-wide">{{ maarays.koodi.nimi | translated }}</span>
-                                <span class="data">
-                                    {% if maarays.koodi.voimassaLoppuPvm is notBlank %}
-                                        {{ maarays.koodi.voimassaLoppuPvm | toDate("yyyy-MM-dd") | date("d.M.yyyy") }} asti
-                                    {% elseif maarays.koodi.voimassaAlkuPvm is notBlank  %}
-                                        {{ maarays.koodi.voimassaAlkuPvm | toDate("yyyy-MM-dd") | date("d.M.yyyy") }} lukien
-                                    {% endif %}
-                                </span>
-                            </div>
+                                {% include fromDefault("koulutusmaarays") %}
                             {% endfor %}
                         </div>
                     {% endif %}
@@ -238,18 +192,9 @@
                 <!-- rajoite -->
                 <div class="if">
                     {% if lupa.maaraykset | maaraysFilter(["tyyppi:rajoite", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_11"]) is notBlank %}
-                        <div class="maarays-rivi sisennys2">
+                        <div class="maaraykset sisennys2">
                             {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:rajoite", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_11"]) %}
-                                <div class="loop {{ maarays.tyyppi }}">
-                                    <span class="data cell-wide">{{ maarays.koodi.nimi | translated }}</span>
-                                    <span class="data">
-                                        {% if maarays.koodi.voimassaLoppuPvm is notBlank %}
-                                            {{ maarays.koodi.voimassaLoppuPvm | toDate("yyyy-MM-dd") | date("d.M.yyyy") }} asti
-                                        {% elseif maarays.koodi.voimassaAlkuPvm is notBlank  %}
-                                            {{ maarays.koodi.voimassaAlkuPvm | toDate("yyyy-MM-dd") | date("d.M.yyyy") }} lukien
-                                        {% endif %}
-                                    </span>
-                                </div>
+                                {% include fromDefault("koulutusmaarays") %}
                             {% endfor %}
                         </div>
                     {% endif %}
@@ -263,36 +208,18 @@
                 <div class="maaraystyyppiotsikko">Erikoisammattitutkinnot</div>
 
                 <!-- oikeus -->
-                <div class="maarays-rivi sisennys2">
+                <div class="maaraykset sisennys2">
                     {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:oikeus", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_12"]) %}
-                        <div class="loop {{ maarays.tyyppi }}">
-                            <span class="data cell-wide">{{ maarays.koodi.nimi | translated }}</span>
-                            <span class="data">
-                                {% if maarays.koodi.voimassaLoppuPvm is notBlank %}
-                                    {{ maarays.koodi.voimassaLoppuPvm | toDate("yyyy-MM-dd") | date("d.M.yyyy") }} asti
-                                {% elseif maarays.koodi.voimassaAlkuPvm is notBlank  %}
-                                    {{ maarays.koodi.voimassaAlkuPvm | toDate("yyyy-MM-dd") | date("d.M.yyyy") }} lukien
-                                {% endif %}
-                            </span>
-                        </div>
+                        {% include fromDefault("koulutusmaarays") %}
                     {% endfor %}
                 </div>
 
                 <!-- velvoite -->
                 <div class="if">
                     {% if lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_12"]) is notBlank %}
-                        <div class="maarays-rivi sisennys2">
+                        <div class="maaraykset sisennys2">
                             {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_12"]) %}
-                                <div class="loop {{ maarays.tyyppi }}">
-                                    <span class="data cell-wide">{{ maarays.koodi.nimi | translated }}</span>
-                                    <span class="data">
-                                        {% if maarays.koodi.voimassaLoppuPvm is notBlank %}
-                                            {{ maarays.koodi.voimassaLoppuPvm | toDate("yyyy-MM-dd") | date("d.M.yyyy") }} asti
-                                        {% elseif maarays.koodi.voimassaAlkuPvm is notBlank  %}
-                                            {{ maarays.koodi.voimassaAlkuPvm | toDate("yyyy-MM-dd") | date("d.M.yyyy") }} lukien
-                                        {% endif %}
-                                    </span>
-                                </div>
+                                {% include fromDefault("koulutusmaarays") %}
                             {% endfor %}
                         </div>
                     {% endif %}
@@ -301,18 +228,9 @@
                 <!-- rajoite -->
                 <div class="if">
                     {% if lupa.maaraykset | maaraysFilter(["tyyppi:rajoite", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_12"]) is notBlank %}
-                        <div class="maarays-rivi sisennys2">
+                        <div class="maaraykset sisennys2">
                             {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:rajoite", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_12"]) %}
-                                <div class="loop {{ maarays.tyyppi }}">
-                                    <span class="data cell-wide">{{ maarays.koodi.nimi | translated }}</span>
-                                    <span class="data">
-                                        {% if maarays.koodi.voimassaLoppuPvm is notBlank %}
-                                            {{ maarays.koodi.voimassaLoppuPvm | toDate("yyyy-MM-dd") | date("d.M.yyyy") }} asti
-                                        {% elseif maarays.koodi.voimassaAlkuPvm is notBlank  %}
-                                            {{ maarays.koodi.voimassaAlkuPvm | toDate("yyyy-MM-dd") | date("d.M.yyyy") }} lukien
-                                        {% endif %}
-                                    </span>
-                                </div>
+                                {% include fromDefault("koulutusmaarays") %}
                             {% endfor %}
                         </div>
                     {% endif %}
@@ -320,16 +238,15 @@
             {% endif %}
         </div>
 
-        <div class="maarays-rivi">
+        <div class="tietoa">
             Koulutuksen järjestäjä voi järjestää myös em. tutkintoihin liittyvää ammatillisesta koulutuksesta annetun lain
             8 §:n 1 kohdassa tarkoitettua ammatillista osaamista syventävää tai täydentävää koulutusta.
         </div>
 
-
         <div class="if">
             {% if lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:oivatyovoimakoulutus"]) is notBlank %}
                 <div class="maaraystyyppiotsikko">Työvoimakoulutus</div>
-                <div class="maarays-rivi sisennys">
+                <div class="maaraykset sisennys">
                     {% for maarays in lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:oivatyovoimakoulutus"]) %}
                         <span class="data loop {{ maarays.tyyppi }}">{{ maarays.koodi.nimi | translated }}{{ maarays.koodi.kuvaus | translated | withColonPrefix }}</span><br/>
                     {% endfor %}
@@ -344,11 +261,13 @@
 
         <!-- Oppilaitoksen opetuskieli -->
         {% if lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:opetusjatutkintokieli", "koodisto:oppilaitoksenopetuskieli"]) is notBlank %}
-            <div class="maarays-rivi sisennys">
-                Koulutuksen järjestäjän on annettava opetusta seuraavalla opetuskielellä/ seuraavilla opetuskielillä:<br/>
-                {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:opetusjatutkintokieli", "koodisto:oppilaitoksenopetuskieli"]) %}
-                    <span class="data sisennys2 loop {{ maarays.tyyppi }}">{{ maarays.koodi.nimi | translated | comma }}</span>
-                {% endfor %}
+            <div class="maaraykset sisennys">
+                Koulutuksen järjestäjän on annettava opetusta seuraavalla opetuskielellä/ seuraavilla opetuskielillä:
+                <div class="sisennys2">
+                    {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:opetusjatutkintokieli", "koodisto:oppilaitoksenopetuskieli"]) %}
+                        <span class="data loop {{ maarays.tyyppi }}">{{ maarays.koodi.nimi | translated | comma }}</span>
+                    {% endfor %}
+                </div>
             </div>
         {% endif %}
 
@@ -357,10 +276,10 @@
         <!-- muut opetuskielet -->
         <div class="if">
             {% if lupa.maaraykset | maaraysFilter(["tyyppi:velvoite|oikeus", "kohde:opetusjatutkintokieli", "koodisto:~oppilaitoksenopetuskieli"]) is notBlank %}
-                <div class="maarays-rivi sisennys">
+                <div class="tietoa sisennys">
                     Lisäksi seuraavat tehtävät:
                 </div>
-                <div class="maarays-rivi sisennys">
+                <div class="maaraykset sisennys">
                     {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:velvoite|oikeus", "kohde:opetusjatutkintokieli", "koodisto:~oppilaitoksenopetuskieli"]) %}
                         <span class="data loop {{ maarays.tyyppi }}">{{ maarays.koodi.nimi | translated | comma }}</span>
                     {% endfor %}
@@ -371,10 +290,10 @@
         <!-- Rajoitukset -->
         <div class="if">
             {% if lupa.maaraykset | maaraysFilter(["tyyppi:rajoite", "kohde:opetusjatutkintokieli", "koodisto:~oppilaitoksenopetuskieli"]) is notBlank %}
-                <div class="maarays-rivi sisennys">
+                <div class="maaraykset sisennys">
                     Rajoitukset:
                 </div>
-                <div class="maarays-rivi sisennys">
+                <div class="maaraykset sisennys">
                     {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:rajoite", "kohde:opetusjatutkintokieli", "koodisto:~oppilaitoksenopetuskieli"]) %}
                         <span class="data loop {{ maarays.tyyppi }}">{{ maarays.koodi.nimi | translated | comma }}</span>
                     {% endfor %}
@@ -387,29 +306,29 @@
     <div class="otsikko">3) Toiminta-alue</div>
     <div class="sisalto if">
         {% if lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:toimintaalue"]) is notBlank %}
-            <div class="maarays-rivi">
+            <div class="maaraykset">
                 Koulutuksen järjestäjällä on velvollisuus järjestäjää tutkintoja ja koulutusta ensisijaisesti seuraavan alueen/ seuraavien alueiden osaamis- ja koulutustarpeeseen:
             </div>
 
             <!-- Maakunnat -->
-            <div class="maarays-rivi sisennys">
+            <div class="maaraykset sisennys">
                 {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:toimintaalue", "koodisto:maakunta"]) %}
                     <span class="data loop {{ maarays.tyyppi }}">{{ maarays.koodi.nimi | translated | comma }}</span>
                 {% endfor %}
             </div>
 
             <!-- Kunnat -->
-            <div class="maarays-rivi sisennys">
+            <div class="maaraykset sisennys">
                 {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:toimintaalue", "koodisto:kunta"]) %}
                     <span class="data loop {{ maarays.tyyppi }}">{{ maarays.koodi.nimi | translated | comma }}</span>
                 {% endfor %}
             </div>
 
-            <div class="maarays-rivi">
+            <div class="tietoa">
                 Tutkintoja ja koulutusta saa lisäksi järjestää Ahvenanmaan maakuntaa lukuun ottamatta myös muualla Suomessa.
             </div>
         {% else %}
-            <div class="maarays-rivi">
+            <div class="tietoa">
                 Tutkintoja ja koulutusta saa järjestää Suomessa Ahvenanmaan maakuntaa lukuun ottamatta.
             </div>
         {% endif %}
@@ -421,7 +340,7 @@
 
         <!-- Koulutussektori opiskelijavuosien vähimmäis/enimmäismäärä -->
         {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:oikeus|rajoite", "kohde:opiskelijavuodet", "koodisto:koulutussektori"]) %}
-            <div class="maarays-rivi sisennys loop {{ maarays.tyyppi }}">
+            <div class="maaraykset sisennys loop {{ maarays.tyyppi }}">
                 Opiskelijavuosien
                 <span class="if">
                     {% if maarays.isMaaraystyyppi("oikeus") %} vähimmäismäärä: {% else %} enimmäismäärä: {% endif %}
@@ -432,18 +351,18 @@
 
         <!-- Muut opiskelijavuosien vähimmäis/enimmäismäärä -->
         {% if lupa.maaraykset | maaraysFilter(["tyyppi:oikeus|rajoite", "kohde:opiskelijavuodet", "koodisto:~koulutussektori"]) is notBlank %}
-            <div class="maarays-rivi sisennys">
+            <div class="tietoa sisennys">
                 Opiskelijavuosia koskevat rajoitukset:
             </div>
 
             <!-- Rajoitteet -->
             {% if lupa.maaraykset | maaraysFilter(["tyyppi:rajoite", "kohde:opiskelijavuodet", "koodisto:~koulutussektori"]) is notBlank %}
-                <div class="maarays-rivi sisennys2">
+                <div class="maaraykset sisennys2">
                     Seur. tutkintoa/tutkintoja tai koulutusta koskevien opiskelijavuosien määrä saa olla:
                     {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:rajoite", "kohde:opiskelijavuodet", "koodisto:~koulutussektori"]) %}
                         <div class="loop {{ maarays.tyyppi }}">
                             <span class="data cell-wide">{{ maarays.koodi.nimi | translated }}</span>
-                            <span>
+                            <span class="cell">
                                 enintään <span class="data">{{ maarays.arvo }}</span> opiskelijavuotta
                             </span>
                         </div>
@@ -453,7 +372,7 @@
 
             <!-- Oikeudet -->
             {% if lupa.maaraykset | maaraysFilter(["tyyppi:oikeus", "kohde:opiskelijavuodet", "koodisto:~koulutussektori"]) is notBlank %}
-                <div class="maarays-rivi sisennys2">
+                <div class="maaraykset sisennys2">
                     Seur. tutkintoa/tutkintoja tai koulutusta koskevien opiskelijavuosien tulee olla:
                     {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:oikeus", "kohde:opiskelijavuodet", "koodisto:~koulutussektori"]) %}
                         <div class="loop {{ maarays.tyyppi }}">
@@ -473,13 +392,13 @@
         <div class="otsikko">5) Muut oikeudet, velvollisuudet, ehdot ja tehtävät</div>
         <div class="sisalto">
             {% if lupa.maaraykset | maaraysFilter("kohde:muut") is notBlank %}
-                <div class="maarays-rivi sisennys loop">
+                <div class="maaraykset sisennys loop">
                     {% for maarays in lupa.maaraykset | maaraysFilter("kohde:muut") %}
                         <span class="data {{ maarays.tyyppi }}">{{ maarays.koodi.nimi | translated }}{{ maarays.koodi.kuvaus | translated | withColonPrefix }}</span><br/>
                     {% endfor %}
                 </div>
             {% else %}
-                <div class="maarays-rivi sisennys">
+                <div class="tietoa sisennys">
                     Muita oikeuksia, velvollisuuksia, ehtoja tai tehtäviä ei ole.
                 </div>
             {% endif %}

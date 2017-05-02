@@ -168,9 +168,14 @@ ul.none {
     margin-bottom: 10px;
     page-break-after: avoid;
 }
-.maarays-rivi {
+.tietoa {
     display: block;
-    width: 100%;
+    width: auto;
+    margin-bottom: 15px;
+}
+.maaraykset {
+    display: block;
+    width: auto;
     margin-bottom: 15px;
 }
 .sisennys {
@@ -179,8 +184,11 @@ ul.none {
 .sisennys2 {
     margin-left: 40px;
 }
+.cell {
+    display: table-cell;
+}
 .cell-wide {
-    display: inline-block;
+    display: table-cell;
     width: 300px;
 }
 

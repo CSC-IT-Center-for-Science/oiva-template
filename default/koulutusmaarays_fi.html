@@ -1,0 +1,10 @@
+<div class="loop {{ maarays.tyyppi }}">
+    <span class="data cell-wide">{{ maarays.koodi.nimi | translated }}</span>
+    <span class="data cell">
+        {% if maarays.koodi.voimassaLoppuPvm is notBlank %}
+            {{ maarays.koodi.voimassaLoppuPvm | toDate("yyyy-MM-dd") | date("d.M.yyyy") }} asti
+        {% elseif maarays.koodi.voimassaAlkuPvm is notBlank  %}
+            {{ maarays.koodi.voimassaAlkuPvm | toDate("yyyy-MM-dd") | date("d.M.yyyy") }} lukien
+        {% endif %}
+    </span>
+</div>
