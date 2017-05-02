@@ -1,0 +1,10 @@
+<div class="if">
+    {% if maaraykset is notBlank %}
+        <div class="maaraystyyppiotsikko">Työvoimakoulutus</div>
+        <div class="maaraykset sisennys">
+            {% for maarays in maaraykset %}
+                <span class="data loop {{ maarays.tyyppi }}">{{ maarays.koodi.nimi | translated }}{{ maarays.koodi.kuvaus | translated | withColonPrefix }}</span><br/>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>

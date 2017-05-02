@@ -1,0 +1,16 @@
+{% if maaraykset is notBlank %}
+    <div class="maaraykset sisennys2">
+        {{ otsikko }}
+        {% for maarays in maaraykset %}
+            <div class="loop {{ maarays.tyyppi }}">
+                <span class="data cell-wide">{{ maarays.koodi.nimi | translated }}</span>
+                <span class="cell">
+                    <span class="if">
+                        {% if maarays.isMaaraystyyppi("oikeus") %} vähintään {% else %} enintään {% endif %}
+                    </span>
+                    <span class="data">{{ maarays.arvo }}</span> opiskelijavuotta
+                </span>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

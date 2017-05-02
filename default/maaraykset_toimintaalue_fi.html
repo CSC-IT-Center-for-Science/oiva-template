@@ -1,0 +1,3 @@
+{% for maarays in maaraykset %}
+    <span class="data loop {{ maarays.tyyppi }}">{{ maarays.koodi.nimi | translated | comma }}</span>
+{% endfor %}
