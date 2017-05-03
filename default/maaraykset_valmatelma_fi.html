@@ -1,0 +1,12 @@
+<div class="if">
+    {% if maaraykset is notBlank %}
+        <div class="maaraykset">
+            Koulutuksen järjestäjällä on oikeus järjestää seuraavaa valmentavaa koulutusta:
+            {% for maarays in maaraykset %}
+                <div class="loop sisennys {{ maarays.tyyppi }}">
+                    <span class="data">{{ maarays.koodi.nimi | translated }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>

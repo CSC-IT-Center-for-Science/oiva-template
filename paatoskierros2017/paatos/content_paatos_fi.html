@@ -121,7 +121,6 @@
     <h3>TUTKINTOJEN JA KOULUTUKSEN JÄRJESTÄMISLUPA</h3>
 
     <!-- Tutkinnot ja koulutukset -->
-
     <div class="otsikko">1) Tutkinnot ja koulutukset</div>
     <div class="sisalto">
         <div class="tietoa">
@@ -131,70 +130,45 @@
         <!-- TODO: Velvollisuus ja rajoitus sisennetään oikeuksien alle -->
 
         <!-- Ammatilliset perustutkinnot: koulutustyyppi_1 -->
-        <div class="if">
-            {% if lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_1"]) is notBlank %}
-                <div class="maaraystyyppiotsikko">Ammatilliset perustutkinnot</div>
-
-                LOL
-                <!-- Oikeus -->
-                {% include fromDefault("maaraykset_koulutus") with
-                    { "maaraykset": lupa.maaraykset | maaraysFilter(["tyyppi:oikeus", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_1"]) }
-                %}
-                <!-- Velvoite -->
-                {% include fromDefault("maaraykset_koulutus") with
-                    { "maaraykset": lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_1"]) }
-                %}
-                <!-- Rajoite -->
-                {% include fromDefault("maaraykset_koulutus") with
-                    { "maaraykset": lupa.maaraykset | maaraysFilter(["tyyppi:rajoite", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_1"]) }
-                %}
-            {% endif %}
-        </div>
+        {% include fromDefault("maaraykset_koulutukset") with
+            { "otsikko": "Ammatilliset perustutkinnot",
+              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_1"])
+            }
+        %}
 
         <!-- Ammattitutkinnot: koulutustyyppi_11 -->
-        <div class="if">
-            {% if lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_11"]) is notBlank %}
-                <div class="maaraystyyppiotsikko">Ammattitutkinnot</div>
-
-                <!-- Oikeus -->
-                {% include fromDefault("maaraykset_koulutus") with
-                    { "maaraykset": lupa.maaraykset | maaraysFilter(["tyyppi:oikeus", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_11"]) }
-                %}
-                <!-- Velvoite -->
-                {% include fromDefault("maaraykset_koulutus") with
-                    { "maaraykset": lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_11"]) }
-                %}
-                <!-- Rajoite -->
-                {% include fromDefault("maaraykset_koulutus") with
-                    { "maaraykset": lupa.maaraykset | maaraysFilter(["tyyppi:rajoite", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_11"]) }
-                %}
-            {% endif %}
-        </div>
+        {% include fromDefault("maaraykset_koulutukset") with
+            { "otsikko": "Ammattitutkinnot",
+              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_11"])
+            }
+        %}
 
         <!-- Erikoisammattitutkinnot: koulutustyyppi_12 -->
-        <div class="if">
-            {% if lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_12"]) is notBlank %}
-                <div class="maaraystyyppiotsikko">Erikoisammattitutkinnot</div>
-
-                <!-- Oikeus -->
-                {% include fromDefault("maaraykset_koulutus") with
-                    { "maaraykset": lupa.maaraykset | maaraysFilter(["tyyppi:oikeus", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_12"]) }
-                %}
-                <!-- Velvoite -->
-                {% include fromDefault("maaraykset_koulutus") with
-                    { "maaraykset": lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_12"]) }
-                %}
-                <!-- Rajoite -->
-                {% include fromDefault("maaraykset_koulutus") with
-                    { "maaraykset": lupa.maaraykset | maaraysFilter(["tyyppi:rajoite", "kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_12"]) }
-                %}
-            {% endif %}
-        </div>
+        {% include fromDefault("maaraykset_koulutukset") with
+            { "otsikko": "Erikoisammattitutkinnot",
+              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_12"])
+            }
+        %}
 
         <div class="tietoa">
             Koulutuksen järjestäjä voi järjestää myös em. tutkintoihin liittyvää ammatillisesta koulutuksesta annetun lain
             8 §:n 1 kohdassa tarkoitettua ammatillista osaamista syventävää tai täydentävää koulutusta.
         </div>
+
+        <!-- VALMA ja TELMA -->
+        {% include fromDefault("maaraykset_valmatelma") with
+            { "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_5|koulutustyyppi_18|koulutustyyppi_19"]) }
+        %}
+
+        <!-- Ammatilliseen tehtävään valmistava koulutus -->
+        {% include fromDefault("maaraykset_atvkoulutus") with
+            { "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:ammatilliseentehtavaanvalmistavakoulutus"]) }
+        %}
+
+        <!-- Kuljettajakoulutus -->
+        {% include fromDefault("maaraykset_kuljettajakoulutus") with
+            { "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:kuljettajakoulutus"]) }
+        %}
 
         <!-- Työvoimakoulutus -->
         {% include fromDefault("maaraykset_tyovoimakoulutus") with
@@ -208,9 +182,9 @@
 
         <!-- Oppilaitoksen opetuskieli -->
         {% if lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:opetusjatutkintokieli", "koodisto:oppilaitoksenopetuskieli"]) is notBlank %}
-            <div class="maaraykset sisennys">
+            <div class="maaraykset">
                 Koulutuksen järjestäjän on annettava opetusta seuraavalla opetuskielellä/ seuraavilla opetuskielillä:
-                <div class="sisennys2">
+                <div class="sisennys">
                     {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:opetusjatutkintokieli", "koodisto:oppilaitoksenopetuskieli"]) %}
                         <span class="data loop {{ maarays.tyyppi }}">{{ maarays.koodi.nimi | translated | comma }}</span>
                     {% endfor %}
@@ -223,7 +197,7 @@
         <!-- muut opetuskielet -->
         <div class="if">
             {% if lupa.maaraykset | maaraysFilter(["tyyppi:velvoite|oikeus", "kohde:opetusjatutkintokieli", "koodisto:~oppilaitoksenopetuskieli"]) is notBlank %}
-                <div class="tietoa sisennys">
+                <div class="tietoa">
                     Lisäksi seuraavat tehtävät:
                 </div>
                 <div class="maaraykset sisennys">
@@ -237,7 +211,7 @@
         <!-- Rajoitukset -->
         <div class="if">
             {% if lupa.maaraykset | maaraysFilter(["tyyppi:rajoite", "kohde:opetusjatutkintokieli", "koodisto:~oppilaitoksenopetuskieli"]) is notBlank %}
-                <div class="maaraykset sisennys">
+                <div class="maaraykset">
                     Rajoitukset:
                 </div>
                 <div class="maaraykset sisennys">
@@ -282,7 +256,7 @@
 
         <!-- Koulutussektori opiskelijavuosien vähimmäis/enimmäismäärä -->
         {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:oikeus|rajoite", "kohde:opiskelijavuodet", "koodisto:koulutussektori"]) %}
-            <div class="maaraykset sisennys loop {{ maarays.tyyppi }}">
+            <div class="maaraykset loop {{ maarays.tyyppi }}">
                 Opiskelijavuosien
                 <span class="if">
                     {% if maarays.isMaaraystyyppi("oikeus") %} vähimmäismäärä: {% else %} enimmäismäärä: {% endif %}
@@ -312,12 +286,10 @@
     </div>
 
     <!-- Muut -->
-    <div class="if">
-        <div class="otsikko">5) Muut oikeudet, velvollisuudet, ehdot ja tehtävät</div>
-        <div class="sisalto">
-            {% include fromDefault("maaraykset_muut") with
-                { "maaraykset": lupa.maaraykset | maaraysFilter("kohde:muut") }
-            %}
-        </div>
-   </div>
+    <div class="otsikko">5) Muut oikeudet, velvollisuudet, ehdot ja tehtävät</div>
+    <div class="sisalto">
+        {% include fromDefault("maaraykset_muut") with
+            { "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:muut", "koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat"]) }
+        %}
+    </div>
 </div>

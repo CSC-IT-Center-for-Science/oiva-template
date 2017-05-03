@@ -1,0 +1,18 @@
+<div class="if">
+    {% if maaraykset is notBlank %}
+        <div class="maaraystyyppiotsikko">{{ otsikko }}</div>
+
+        <!-- Oikeus -->
+        {% include fromDefault("maaraykset_koulutus") with
+            { "maaraykset": maaraykset | maaraysFilter("tyyppi:oikeus") }
+        %}
+        <!-- Velvoite -->
+        {% include fromDefault("maaraykset_koulutus") with
+            { "maaraykset": maaraykset | maaraysFilter("tyyppi:velvoite") }
+        %}
+        <!-- Rajoite -->
+        {% include fromDefault("maaraykset_koulutus") with
+            { "maaraykset": maaraykset | maaraysFilter("tyyppi:rajoite") }
+        %}
+    {% endif %}
+</div>

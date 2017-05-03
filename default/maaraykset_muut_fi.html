@@ -1,9 +1,9 @@
 {% if maaraykset is notBlank %}
-    <div class="maaraykset sisennys loop">
-        {% for maarays in maaraykset %}
-            <span class="data {{ maarays.tyyppi }}">{{ maarays.koodi.nimi | translated }}{{ maarays.koodi.kuvaus | translated | withColonPrefix }}</span><br/>
-        {% endfor %}
-    </div>
+    {% for maarays in maaraykset %}
+        <div class="maaraykset loop">
+            <span class="data {{ maarays.tyyppi }}">{{ maarays.koodi.kuvaus | translated }}</span><br/>
+        </div>
+    {% endfor %}
 {% else %}
     <div class="tietoa sisennys">
         Muita oikeuksia, velvollisuuksia, ehtoja tai tehtäviä ei ole.
