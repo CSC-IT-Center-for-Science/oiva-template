@@ -260,12 +260,13 @@
         <!-- Koulutussektori opiskelijavuosien vähimmäis/enimmäismäärä -->
         {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:oikeus|rajoite", "kohde:opiskelijavuodet", "koodisto:koulutussektori"]) %}
             <div class="maaraykset loop {{ maarays.tyyppi }}">
-                Opiskelijavuosien
+                Koulutuksen järjestäjän opiskelijavuosien
                 <span class="if">
                     {% if maarays.isMaaraystyyppi("oikeus") %} vähimmäismäärä {% else %} enimmäismäärä {% endif %}
                 </span>
+                on
                 <span class="data">{{ maarays.arvo }}</span>
-                opiskelijavuotta
+                opiskelijavuotta.
             </div>
         {% endfor %}
 
