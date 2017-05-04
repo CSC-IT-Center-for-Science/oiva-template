@@ -81,7 +81,7 @@
 </div>
 
 <div class="sector">
-    <div class="sector-left">Liitteet</div>
+    <div class="sector-left">Liite</div>
     <div class="sector-right">
         <ul class="none">
             {% if lupa.maaraykset | sallittuKohde("tutkinnotjakoulutukset") | koodisto("kuljettajakoulutus") is notBlank %}
@@ -97,11 +97,14 @@
             <!-- li>
                 <span class="todo">TODO: Valitusosoitus (oikean alueen mukainen)</span>
             </li -->
+            <li>
+              <span class="if">Järjestämislupaehdotus</span>
+            </li>
         </ul>
     </div>
 </div>
 
-<div class="sector">
+<!-- div class="sector">
     <div class="sector-left">Tiedoksi</div>
     <div class="sector-right">
         <ul class="none">
@@ -115,7 +118,7 @@
             {% endif %}
         </ul>
     </div>
-</div>
+</div -->
 
 <div id="maarayksetPage">
     <h3>TUTKINTOJEN JA KOULUTUKSEN JÄRJESTÄMISLUPA</h3>
