@@ -273,7 +273,7 @@
         <!-- Muut opiskelijavuosien vähimmäis/enimmäismäärä -->
         {% if lupa.maaraykset | maaraysFilter(["tyyppi:oikeus|rajoite", "kohde:opiskelijavuodet", "koodisto:~koulutussektori"]) is notBlank %}
             <div class="tietoa">
-                Opiskelijavuosia koskevat rajoitukset:
+                Opiskelijavuosia koskevat seuraavat rajoitukset:
             </div>
             <!-- Rajoitteet: enintään -->
             {% include fromDefault("maaraykset_opiskelijavuosirajoitukset") with
