@@ -9,7 +9,7 @@
 <div class="sector">
     <div class="sector-left">Asia</div>
     <div class="sector-right">
-        <h4>Ammatillisen koulutuksen järjestämislupa</h4>
+        <h4>Ehdotus ammatillisen koulutuksen järjestämisluvaksi</h4>
         <p>
             Koulutuksen järjestäjälle on myönnetty ammatillisesta koulutuksesta annetun lain (mikä laki ja mitkä pykälät?!)
             nojalla ammatillisen koulutuksen järjestämislupa <span class="data">{{ lupa.paatospvm | date("dd.MM.yyyy") }}</span> päivätyllä opetus-
@@ -21,7 +21,7 @@
         <p>
             Tämän päätöksen määräyksiä sovelletaan <span class="data">{{ lupa.alkupvm | date("dd.MM.yyyy") }}</span> alkaen.
         </p>
-        <p>
+        <!-- p>
             <b>Säädökset, joihin päätös perustuu:</b><br/>
             <span class="if">
                 {% if lupa.maaraykset | sallittuKohde("tagi_kokeilu") is notBlank %}
@@ -37,11 +37,11 @@
                     Kuorma- ja linja-auton kuljettajien ammattipätevyydestä <span class="todo">Mikä laki ja mitkä pykälät?!</span>
                 {% endif %}
             </span>
-        </p>
-        <p>
+        </p -->
+        <!-- p>
             {% include fromDefault("maksu") %}
-        </p>
-        <p>
+        </p -->
+        <!-- p>
             <b>Muutoksenhaku:</b><br/>
             <span class="todo">TODO: refaktorointi</span>
             Tähän päätökseen saa hakea muutosta valittamalla
@@ -59,7 +59,7 @@
             Valitus saadaan tehdä sillä perusteella, että päätös on lain vastainen. Valitusaika on 30 päivää
             tiedoksisaannista. Liitteenä olevasta valitusosoituksesta ilmenee, miten muutosta haettaessa on
             meneteltävä.
-        </p>
+        </p -->
 
         <div class="ministeri">
             <div class="ministeri-left">
