@@ -161,6 +161,15 @@ ul.none {
     margin-bottom: 10px;
 }
 
+.koulutusalaotsikko {
+    font-size:16px;
+    font-weight: bold;
+    margin-top: 25px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    page-break-after: avoid;
+    text-transform: uppercase;
+}
 .maaraystyyppiotsikko {
     font-weight: bold;
     margin-top: 15px;

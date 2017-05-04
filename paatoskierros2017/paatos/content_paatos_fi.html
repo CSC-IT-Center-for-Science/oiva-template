@@ -129,24 +129,63 @@
 
         <!-- TODO: Velvollisuus ja rajoitus sisennetään oikeuksien alle -->
 
-        <!-- Ammatilliset perustutkinnot: koulutustyyppi_1 -->
-        {% include fromDefault("maaraykset_koulutukset") with
-            { "otsikko": "Ammatilliset perustutkinnot",
-              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_1"])
+        {% include fromDefault("maaraykset_alat") with
+            { "otsikko": "Yleissivistävä koulutus",
+              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_00"])
             }
         %}
 
-        <!-- Ammattitutkinnot: koulutustyyppi_11 -->
-        {% include fromDefault("maaraykset_koulutukset") with
-            { "otsikko": "Ammattitutkinnot",
-              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_11"])
+        {% include fromDefault("maaraykset_alat") with
+            { "otsikko": "Kasvatusalat",
+              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_01"])
             }
         %}
 
-        <!-- Erikoisammattitutkinnot: koulutustyyppi_12 -->
-        {% include fromDefault("maaraykset_koulutukset") with
-            { "otsikko": "Erikoisammattitutkinnot",
-              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_12"])
+        {% include fromDefault("maaraykset_alat") with
+            { "otsikko": "Humanistiset ja taidealat",
+              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_02"])
+            }
+        %}
+
+        {% include fromDefault("maaraykset_alat") with
+            { "otsikko": "Yhteiskunnalliset alat",
+              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_03"])
+            }
+        %}
+
+        {% include fromDefault("maaraykset_alat") with
+            { "otsikko": "Kauppa, hallinto ja oikeustieteet",
+              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_04"])
+            }
+        %}
+
+        {% include fromDefault("maaraykset_alat") with
+            { "otsikko": "Luonnontieteet",
+              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_05"])
+            }
+        %}
+
+        {% include fromDefault("maaraykset_alat") with
+            { "otsikko": "Tietojenkäsittely ja tietoliikenne (ICT)",
+              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_06"])
+            }
+        %}
+
+        {% include fromDefault("maaraykset_alat") with
+            { "otsikko": "Tekniikan alat",
+              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_07"])
+            }
+        %}
+
+        {% include fromDefault("maaraykset_alat") with
+            { "otsikko": "Maa- ja metsätalousalat",
+              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_08"])
+            }
+        %}
+
+        {% include fromDefault("maaraykset_alat") with
+            { "otsikko": "Terveys- ja hyvinvointialat",
+              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_09"])
             }
         %}
 
