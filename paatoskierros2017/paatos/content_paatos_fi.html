@@ -293,7 +293,7 @@
     <div class="otsikko">5) Muut oikeudet, velvollisuudet, ehdot ja tehtävät</div>
     <div class="sisalto">
         {% include fromDefault("maaraykset_muut") with
-            { "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:muut", "koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "kohde:opiskelijavuodet"]) }
+            { "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:muut", "koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat"]) }
         %}
     </div>
 </div>
