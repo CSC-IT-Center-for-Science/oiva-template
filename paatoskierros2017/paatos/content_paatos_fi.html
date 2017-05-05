@@ -9,7 +9,7 @@
 <div class="sector">
     <div class="sector-left">Asia</div>
     <div class="sector-right">
-        <h4>Ammatillisen koulutuksen järjestämislupa</h4>
+        <h4>Ehdotus ammatillisen koulutuksen järjestämisluvaksi</h4>
         <p>
             Koulutuksen järjestäjälle on myönnetty ammatillisesta koulutuksesta annetun lain (mikä laki ja mitkä pykälät?!)
             nojalla ammatillisen koulutuksen järjestämislupa <span class="data">{{ lupa.paatospvm | date("dd.MM.yyyy") }}</span> päivätyllä opetus-
@@ -18,10 +18,10 @@
         <div class="paatoskohtainenTeksti">
             <span class="data">{{ lupa.meta | field("paatosteksti") | translated }}</span>
         </div>
-        <p>
+        <!-- p>
             Tämän päätöksen määräyksiä sovelletaan <span class="data">{{ lupa.alkupvm | date("dd.MM.yyyy") }}</span> alkaen.
-        </p>
-        <p>
+        </p -->
+        <!-- p>
             <b>Säädökset, joihin päätös perustuu:</b><br/>
             <span class="if">
                 {% if lupa.maaraykset | sallittuKohde("tagi_kokeilu") is notBlank %}
@@ -37,11 +37,11 @@
                     Kuorma- ja linja-auton kuljettajien ammattipätevyydestä <span class="todo">Mikä laki ja mitkä pykälät?!</span>
                 {% endif %}
             </span>
-        </p>
-        <p>
+        </p -->
+        <!-- p>
             {% include fromDefault("maksu") %}
-        </p>
-        <p>
+        </p -->
+        <!-- p>
             <b>Muutoksenhaku:</b><br/>
             <span class="todo">TODO: refaktorointi</span>
             Tähän päätökseen saa hakea muutosta valittamalla
@@ -59,14 +59,14 @@
             Valitus saadaan tehdä sillä perusteella, että päätös on lain vastainen. Valitusaika on 30 päivää
             tiedoksisaannista. Liitteenä olevasta valitusosoituksesta ilmenee, miten muutosta haettaessa on
             meneteltävä.
-        </p>
+        </p -->
 
         <div class="ministeri">
             <div class="ministeri-left">
-                <span class="data">{{ lupa.meta | fieldvalue("ministeri_nimeke") }}</span>
+                <span class="data">Ylijohtaja<!-- {{ lupa.meta | fieldvalue("ministeri_nimeke") }} --></span>
             </div>
             <div class="ministeri-right">
-                <span class="data">{{ lupa.meta | fieldvalue("ministeri_nimi") }}</span>
+                <span class="data">Mika Tammilehto<!-- {{ lupa.meta | fieldvalue("ministeri_nimi") }} --></span>
             </div>
         </div>
         <div class="esittelija">
@@ -81,7 +81,7 @@
 </div>
 
 <div class="sector">
-    <div class="sector-left">Liitteet</div>
+    <div class="sector-left">Liite</div>
     <div class="sector-right">
         <ul class="none">
             {% if lupa.maaraykset | sallittuKohde("tutkinnotjakoulutukset") | koodisto("kuljettajakoulutus") is notBlank %}
@@ -94,14 +94,17 @@
                     <span class="if">Maksua koskeva oikaisuvaatimusosoitus 15/091/2016</span>
                 </li>
             {% endif %}
-            <li>
+            <!-- li>
                 <span class="todo">TODO: Valitusosoitus (oikean alueen mukainen)</span>
+            </li -->
+            <li>
+              <span class="if">Järjestämislupaehdotus</span>
             </li>
         </ul>
     </div>
 </div>
 
-<div class="sector">
+<!-- div class="sector">
     <div class="sector-left">Tiedoksi</div>
     <div class="sector-right">
         <ul class="none">
@@ -115,10 +118,10 @@
             {% endif %}
         </ul>
     </div>
-</div>
+</div -->
 
 <div id="maarayksetPage">
-    <h3>TUTKINTOJEN JA KOULUTUKSEN JÄRJESTÄMISLUPA</h3>
+    <h4>TUTKINTOJEN JA KOULUTUKSEN JÄRJESTÄMISLUPA <span class="data">{{ lupa.alkupvm | date("dd.MM.yyyy") }}</span> LUKIEN</h4>
 
     <!-- Tutkinnot ja koulutukset -->
     <div class="otsikko">1) Tutkinnot ja koulutukset</div>
@@ -296,18 +299,20 @@
         <!-- Koulutussektori opiskelijavuosien vähimmäis/enimmäismäärä -->
         {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:oikeus|rajoite", "kohde:opiskelijavuodet", "koodisto:koulutussektori"]) %}
             <div class="maaraykset loop {{ maarays.tyyppi }}">
-                Opiskelijavuosien
+                Koulutuksen järjestäjän opiskelijavuosien
                 <span class="if">
-                    {% if maarays.isMaaraystyyppi("oikeus") %} vähimmäismäärä: {% else %} enimmäismäärä: {% endif %}
+                    {% if maarays.isMaaraystyyppi("oikeus") %} vähimmäismäärä {% else %} enimmäismäärä {% endif %}
                 </span>
+                on
                 <span class="data">{{ maarays.arvo }}</span>
+                opiskelijavuotta.
             </div>
         {% endfor %}
 
         <!-- Muut opiskelijavuosien vähimmäis/enimmäismäärä -->
         {% if lupa.maaraykset | maaraysFilter(["tyyppi:oikeus|rajoite", "kohde:opiskelijavuodet", "koodisto:~koulutussektori"]) is notBlank %}
-            <div class="tietoa sisennys">
-                Opiskelijavuosia koskevat rajoitukset:
+            <div class="tietoa">
+                Opiskelijavuosia koskevat seuraavat rajoitukset:
             </div>
             <!-- Rajoitteet: enintään -->
             {% include fromDefault("maaraykset_opiskelijavuosirajoitukset") with
