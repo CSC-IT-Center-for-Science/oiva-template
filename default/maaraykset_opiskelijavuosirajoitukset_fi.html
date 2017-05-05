@@ -1,6 +1,6 @@
 {% if maaraykset is notBlank %}
     <div class="maaraykset sisennys2">
-        <!-- {{ otsikko }} -->
+        <!--print header already in parent {{ otsikko }} -->
         {% for maarays in maaraykset %}
             <div class="loop {{ maarays.tyyppi }}">
                 <span class="data cell-wide">{{ maarays.koodi.nimi | translated }}</span>
