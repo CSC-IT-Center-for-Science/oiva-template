@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Luvat</title>
+    </head>
+    <style>
+        table {
+            border: none;
+        }
+        table tr:nth-child(even) {
+            background: #eee
+        }
+        table tr:nth-child(odd) {
+            background: #fff
+        }
+        .header td {
+            font-weight: bold;
+        }
+        td {
+            padding-right: 20px;
+        }
+    </style>
+    <body>
+        <div id="wrapper">
+            <table border="0">
+                <tr class="header">
+                    <td>Diaarinumero</td>
+                    <td>Järjestäjä</td>
+                    <td>Esittelijä</td>
+                    <td>Kunta</td>
+                </tr>
+                {% for lupa in luvat | sortLuvat(["kunta", "esittelija", "diaarinumero"]) %}
+                    <tr>
+                        <td>
+                            <a href="/api/pdf/{{ lupa.diaarinumero }}">{{ lupa.diaarinumero }}</a>
+                        </td>
+                        <td>{{ lupa.jarjestaja.nimi | translated }}</td>
+                        <td>{{ lupa.meta | fieldvalue("esittelija_nimi") }}</td>
+                        <td>
+                            {% if lupa.jarjestaja.kuntaKoodi is notBlank %}
+                                {{ lupa.jarjestaja.kuntaKoodi.nimi | translated }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+</html>
