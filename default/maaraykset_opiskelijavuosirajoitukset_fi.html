@@ -1,7 +1,7 @@
 {% if maaraykset is notBlank %}
     <div class="maaraykset sisennys2">
         <!--print header already in parent {{ otsikko }} -->
-        {% for maarays in maaraykset %}
+        {% for maarays in maaraykset | sortMaaraykset(["koodisto", "koodiarvo"]) %}
             <div class="loop {{ maarays.tyyppi }}">
                 <span class="data cell-wide">{{ maarays.koodi.nimi | translated }}</span>
                 <span class="cell">
