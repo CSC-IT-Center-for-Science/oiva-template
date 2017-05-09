@@ -277,16 +277,14 @@
             <div class="tietoa">
                 Koulutuksen järjestäjällä on velvollisuus järjestäjää tutkintoja ja koulutusta ensisijaisesti seuraavan alueen/ seuraavien alueiden osaamis- ja koulutustarpeeseen:
             </div>
-            <div class="maaraykset sisennys">
-                <!-- Maakunnat -->
-                {% include fromDefault("maaraykset_toimintaalue") with
-                    { "maaraykset": lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:toimintaalue", "koodisto:maakunta"]) }
-                %}
-                <!-- Kunnat -->
-                {% include fromDefault("maaraykset_toimintaalue") with
-                    { "maaraykset": lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:toimintaalue", "koodisto:kunta"]) }
-                %}
-            </div>
+            <!-- Maakunnat -->
+            {% include fromDefault("maaraykset_toimintaalue") with
+                { "maaraykset": lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:toimintaalue", "koodisto:maakunta"]) }
+            %}
+            <!-- Kunnat -->
+            {% include fromDefault("maaraykset_toimintaalue") with
+                { "maaraykset": lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:toimintaalue", "koodisto:kunta"]) }
+            %}
             <div class="tietoa">
                 Tutkintoja ja koulutusta saa lisäksi järjestää Ahvenanmaan maakuntaa lukuun ottamatta myös muualla Suomessa.
             </div>
