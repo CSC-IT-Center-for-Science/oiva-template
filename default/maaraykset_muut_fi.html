@@ -1,11 +1,5 @@
-{% if maaraykset is notBlank %}
-    {% for maarays in maaraykset %}
-        <div class="maaraykset loop">
-            <span class="data {{ maarays.tyyppi }}">{{ maarays.koodi.kuvaus | translated }}</span><br/>
-        </div>
-    {% endfor %}
-{% else %}
-    <div class="tietoa">
-        Muita oikeuksia, velvollisuuksia, ehtoja tai tehtäviä ei ole.
+{% for maarays in maaraykset %}
+    <div class="maaraykset loop">
+        <span class="data {{ maarays.tyyppi }}">{{ maarays.koodi.kuvaus | translated }}</span><br/>
     </div>
-{% endif %}
+{% endfor %}

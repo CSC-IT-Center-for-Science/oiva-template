@@ -1,0 +1,5 @@
+{% for maarays in maaraykset %}
+    <div class="maaraykset loop">
+        <span class="data {{ maarays.tyyppi }}">{{ maarays.koodiarvo }} {{ maarays.koodi.nimi | translated }}</span><br/>
+    </div>
+{% endfor %}
