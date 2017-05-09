@@ -125,7 +125,7 @@
 </div -->
 
 <div id="maarayksetPage">
-    <h4>AMMATILLISTEN TUTKINTOJEN JA KOULUTUKSEN JÄRJESTÄMISLUPA <span class="data">1.1.2018</span> LUKIEN</h4>
+    <h4>AMMATILLISTEN TUTKINTOJEN JA KOULUTUKSEN JÄRJESTÄMISLUPA 1.1.2018 LUKIEN</h4>
 
     <!-- Tutkinnot ja koulutukset -->
     <div class="otsikko">1) Tutkinnot ja koulutukset</div>
@@ -307,25 +307,21 @@
                     {% if maarays.isMaaraystyyppi("oikeus") %} vähimmäismäärä {% else %} enimmäismäärä {% endif %}
                 </span>
                 on
-                <span class="data">{{ maarays.arvo }}</span>
-                opiskelijavuotta.
+                <span class="data">{{ maarays.arvo }}</span>.
             </div>
         {% endfor %}
 
         <!-- Muut opiskelijavuosien vähimmäis/enimmäismäärä -->
         {% if lupa.maaraykset | maaraysFilter(["tyyppi:oikeus|rajoite", "kohde:opiskelijavuodet", "koodisto:~koulutussektori"]) is notBlank %}
-            <div class="tietoa">
-                Opiskelijavuosia koskevat seuraavat rajoitukset:
-            </div>
             <!-- Rajoitteet: enintään -->
             {% include fromDefault("maaraykset_opiskelijavuosirajoitukset") with
-                { "otsikko": "Seur. tutkintoa/tutkintoja tai koulutusta koskevien opiskelijavuosien määrä saa olla:",
+                { "otsikko": "Opiskelijavuosia koskee seuraava rajoitus/ koskevat seuraavat rajoitukset:",
                   "maaraykset": lupa.maaraykset | maaraysFilter(["tyyppi:rajoite", "kohde:opiskelijavuodet", "koodisto:~koulutussektori"])
                 }
             %}
             <!-- Oikeudet: vähintään -->
             {% include fromDefault("maaraykset_opiskelijavuosirajoitukset") with
-                { "otsikko": "Seur. tutkintoa/tutkintoja tai koulutusta koskevien opiskelijavuosien tulee olla:",
+                { "otsikko": "Opiskelijavuosia koskee seuraava velvollisuus / koskevat seuraavat velvollisuudet:",
                   "maaraykset": lupa.maaraykset | maaraysFilter(["tyyppi:oikeus", "kohde:opiskelijavuodet", "koodisto:~koulutussektori"])
                 }
             %}
