@@ -162,10 +162,9 @@ ul.none {
 }
 
 .koulutusalaotsikko {
-    font-size:16px;
     font-weight: bold;
     margin-top: 25px;
-    margin-left: 10px;
+    margin-left: 0px;
     margin-bottom: 10px;
     page-break-after: avoid;
     text-transform: uppercase;
@@ -199,6 +198,10 @@ ul.none {
 .cell-wide {
     display: table-cell;
     width: 300px;
+}
+.cell-wider {
+    display: table-cell;
+    width: 600px;
 }
 
 .muutosperusteluosio {

@@ -3,7 +3,7 @@
         <div class="maaraykset sisennys2">
             {% for maarays in maaraykset %}
                 <div class="loop {{ maarays.tyyppi }}">
-                    <span class="data cell-wide">{{ maarays.koodi.nimi | translated }}</span>
+                    <span class="data cell-wider">{{ maarays.koodi.koodiarvo }} {{ maarays.koodi.nimi | translated }}</span>
                     <span class="data cell">
                         {% if maarays.koodi.voimassaLoppuPvm is dateBetween("2018-01-01", "2019-12-31") %}
                             {{ maarays.koodi.voimassaLoppuPvm | toDate | date("d.M.yyyy") }} asti
