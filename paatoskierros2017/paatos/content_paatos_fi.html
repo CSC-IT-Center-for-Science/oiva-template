@@ -307,7 +307,7 @@
                     {% if maarays.isMaaraystyyppi("oikeus") %} vähimmäismäärä {% else %} enimmäismäärä {% endif %}
                 </span>
                 on
-                <span class="data">{{ maarays.arvo }}</span>.
+                <span class="data">{{ maarays.arvo | number }}</span>.
             </div>
         {% endfor %}
 

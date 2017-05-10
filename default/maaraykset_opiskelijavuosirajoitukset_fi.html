@@ -10,7 +10,7 @@
                     <span class="if">
                         {% if maarays.isMaaraystyyppi("oikeus") %} vähintään {% else %} enintään {% endif %}
                     </span>
-                    <span class="data">{{ maarays.arvo }}</span> opiskelijavuotta
+                    <span class="data">{{ maarays.arvo | number }}</span> opiskelijavuotta
                 </span>
             </div>
         {% endfor %}
