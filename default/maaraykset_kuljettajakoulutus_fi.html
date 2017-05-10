@@ -2,7 +2,7 @@
     {% if maaraykset is notBlank %}
         <div class="maaraykset">
             {% for maarays in maaraykset %}
-                <div class="loop {{ maarays.tyyppi }}">
+                <div class="loop {{ maarays.tyyppi }} kuljettajakoulutusSelite">
                     <span class="data">{{ maarays.koodi.kuvaus | translated }}</span>
                 </div>
             {% endfor %}
