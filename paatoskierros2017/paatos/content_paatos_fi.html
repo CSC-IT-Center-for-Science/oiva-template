@@ -331,11 +331,11 @@
     <div class="otsikko">5) Muut oikeudet, velvollisuudet, ehdot ja tehtävät</div>
     <div class="sisalto">
         {% include fromDefault("maaraykset_muut") with
-        { "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:muut", "koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat"]) }
+            { "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:muut", "koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat"]) }
         %}
 
         {% include fromDefault("maaraykset_muut_koulutukset") with
-        { "maaraykset": lupa.maaraykset | maaraysFilter(["tyyppi:oikeus|rajoite", "kohde:muut", "koodisto:koulutus"]) }
+            { "maaraykset": lupa.maaraykset | maaraysFilter(["tyyppi:oikeus|rajoite", "kohde:muut", "koodisto:koulutus"]) }
         %}
 
         {% if lupa.maaraykset | maaraysFilter(["kohde:muut", "koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat"]) is empty
@@ -343,8 +343,6 @@
                 <div class="tietoa">
                     Koulutuksen järjestäjälle ei tässä järjestämisluvassa määrätä muita oikeuksia, velvollisuuksia, ehtoja tai tehtäviä.
                 </div>
-
         {% endif %}
-
     </div>
 </div>
