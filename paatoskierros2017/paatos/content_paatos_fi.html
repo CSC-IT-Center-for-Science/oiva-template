@@ -11,7 +11,7 @@
 <div class="sector">
     <div class="sector-left">Asia</div>
     <div class="sector-right">
-        <h4>Ehdotus ammatillisen koulutuksen järjestämisluvaksi</h4>
+        <h4>Ehdotus ammatillisen tutkintojen ja koulutuksen järjestämisluvaksi</h4>
         <!--EHDOTUS p>
                 <p>
             Koulutuksen järjestäjälle on myönnetty ammatillisesta koulutuksesta annetun lain (mikä laki ja mitkä pykälät?!)
@@ -75,10 +75,10 @@
         </div>
         <div class="esittelija">
             <div class="esittelija-left">
-                <span class="data">{{ lupa.meta | fieldvalue("esittelija_nimike") }}</span>
+                <span class="data">{{ lupa.meta | fieldvalue("esittelija_nimike") }} {{ lupa.meta | fieldvalue("esittelija_nimeke") }}</span>
             </div>
             <div class="esittelija-right">
-                <span class="data">{{ lupa.meta | fieldvalue("esittelija") }}</span>
+                <span class="data">{{ lupa.meta | fieldvalue("esittelija") }} {{ lupa.meta | fieldvalue("esittelija_nimi") }}</span>
             </div>
         </div>
     </div>
@@ -88,6 +88,7 @@
     <div class="sector-left">Liite</div>
     <div class="sector-right">
         <ul class="none">
+            <!--EHDOTUS li>
             {% if lupa.maaraykset | sallittuKohde("tutkinnotjakoulutukset") | koodisto("kuljettajakoulutus") is notBlank %}
                 <li>
                     <span class="if">Lupa toimia kuorma- ja linja-autonkuljettajien ammattipätevyyskoulutusta antavana koulutuskeskuksena</span>
@@ -98,7 +99,7 @@
                     <span class="if">Maksua koskeva oikaisuvaatimusosoitus 15/091/2016</span>
                 </li>
             {% endif %}
-            <!--EHDOTUS li>
+
                 <span class="todo">TODO: Valitusosoitus (oikean alueen mukainen)</span>
             </li -->
             <li>
