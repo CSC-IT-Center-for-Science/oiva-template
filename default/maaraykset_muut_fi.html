@@ -2,8 +2,18 @@
     {% if maaraykset is notBlank %}
         {% for maarays in maaraykset | sortMaaraykset(["koodisto", "koodiarvo"]) %}
             <div class="maaraykset loop">
-                <span class="data {{ maarays.tyyppi }}">{{ maarays.koodi.kuvaus | translated }}</span><br/>
+                <span class="data {{ maarays.tyyppi }}">
+                    {% if maarays.koodisto == "koulutus" %}
+                        {{ maarays.koodiarvo }} {{ maarays.koodi.nimi | translated }}
+                    {% else %}
+                        {{ maarays.koodi.kuvaus | translated }}
+                    {% endif %}
+                </span><br/>
             </div>
         {% endfor %}
+    {% else %}
+        <div class="tietoa">
+            Koulutuksen järjestäjälle ei tässä järjestämisluvassa määrätä muita oikeuksia, velvollisuuksia, ehtoja tai tehtäviä.
+        </div>
     {% endif %}
 </div>
