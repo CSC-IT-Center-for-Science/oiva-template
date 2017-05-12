@@ -75,10 +75,10 @@
         </div>
         <div class="esittelija">
             <div class="esittelija-left">
-                <span class="data">{{ lupa.meta | fieldvalue("esittelija_nimike") }} {{ lupa.meta | fieldvalue("esittelija_nimeke") }}</span>
+                <span class="data">{{ lupa.meta | fieldvalue("esittelija_nimike") }}</span>
             </div>
             <div class="esittelija-right">
-                <span class="data">{{ lupa.meta | fieldvalue("esittelija") }} {{ lupa.meta | fieldvalue("esittelija_nimi") }}</span>
+                <span class="data">{{ lupa.meta | fieldvalue("esittelija") }}</span>
             </div>
         </div>
     </div>
@@ -134,6 +134,11 @@
         <div class="tietoa">
             Koulutuksen järjestäjällä on oikeus myöntää seuraavia tutkintoja ja antaa niihin tutkintokoulutusta:
         </div>
+
+
+        {% for maarays in lupa.maaraykset | sortMaaraykset("koodiarvo") %}
+            {{maarays}}<br>
+        {% endfor %}
 
         <!-- TODO: Velvollisuus ja rajoitus sisennetään oikeuksien alle -->
 
@@ -194,6 +199,18 @@
         {% include fromDefault("maaraykset_alat") with
             { "otsikko": "09 Terveys- ja hyvinvointialat",
               "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_09"])
+            }
+        %}
+
+        {% include fromDefault("maaraykset_alat") with
+            { "otsikko": "10 Palvelualat",
+              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_10"])
+            }
+        %}
+
+        {% include fromDefault("maaraykset_alat") with
+            { "otsikko": "99 Muut tai tuntemattomat koulutusalat",
+              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_99"])
             }
         %}
 
