@@ -6,12 +6,12 @@
 
         <!-- Maakunnat -->
         {% include fromDefault("maaraykset_toimintaalue") with
-            { "maaraykset": maaraykset | maaraysFilter(["koodisto:maakunta"]) }
+            { "maaraykset": maaraykset | maaraysFilter("koodisto:maakunta") }
         %}
 
         <!-- Kunnat -->
         {% include fromDefault("maaraykset_toimintaalue") with
-            { "maaraykset": maaraykset | maaraysFilter(["koodisto:kunta"]) }
+            { "maaraykset": maaraykset | maaraysFilter("koodisto:kunta") }
         %}
 
         <div class="tietoa">
