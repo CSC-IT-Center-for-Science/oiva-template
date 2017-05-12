@@ -1,0 +1,25 @@
+<div class="if">
+    {% if maaraykset is notBlank %}
+        <div class="tietoa">
+            Koulutuksen järjestäjällä on velvollisuus järjestäjää tutkintoja ja koulutusta ensisijaisesti {{ "seuraavan alueen|seuraavien alueiden" | wording }} osaamis- ja koulutustarpeeseen:
+        </div>
+
+        <!-- Maakunnat -->
+        {% include fromDefault("maaraykset_toimintaalue") with
+            { "maaraykset": maaraykset | maaraysFilter(["koodisto:maakunta"]) }
+        %}
+
+        <!-- Kunnat -->
+        {% include fromDefault("maaraykset_toimintaalue") with
+            { "maaraykset": maaraykset | maaraysFilter(["koodisto:kunta"]) }
+        %}
+
+        <div class="tietoa">
+            Tutkintoja ja koulutusta saa lisäksi järjestää Ahvenanmaan maakuntaa lukuun ottamatta myös muualla Suomessa.
+        </div>
+    {% else %}
+        <div class="tietoa">
+            Tutkintoja ja koulutusta saa järjestää Suomessa Ahvenanmaan maakuntaa lukuun ottamatta.
+        </div>
+    {% endif %}
+</div>

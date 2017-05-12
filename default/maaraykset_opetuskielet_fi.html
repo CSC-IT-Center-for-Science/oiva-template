@@ -1,0 +1,10 @@
+<div class="if">
+    {% if maaraykset is notBlank %}
+        Koulutuksen järjestäjän on annettava opetusta {{ "seuraavalla opetuskielellä|seuraavilla opetuskielillä" | wording }}:
+        <div class="maaraykset sisennys">
+            {% for maarays in maaraykset | sortMaaraykset("koodiarvo") %}
+                <span class="data loop {{ maarays.tyyppi }}">{{ maarays.koodi.nimi | translated | capitalize | comma }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
