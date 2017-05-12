@@ -27,17 +27,10 @@
         </p -->
         <!--EHDOTUS p>
             <b>Säädökset, joihin päätös perustuu:</b><br/>
-            <span class="if">
-                {% if lupa.maaraykset | sallittuKohde("tagi_kokeilu") is notBlank %}
-                    <span class="todo">Mikä laki ja mitkä pykälät?!</span><br/>
-                {% else %}
-                    <span class="todo">Mikä laki ja mitkä pykälät?!</span><br/>
-                {% endif %}
-            </span>
             <span class="todo">Mikä laki ja mitkä pykälät?!</span><br/>
             <span class="todo">Mikä laki ja mitkä pykälät?!</span><br/>
             <span class="if">
-                {% if lupa.maaraykset | sallittuKohde("tutkinnotjakoulutukset") | koodisto("kuljettajakoulutus") is notBlank %}
+                {% if lupa.maaraykset | maaraysFilter(["tyyppi:oikeus|velvoite", "kohde:tutkinnotjakoulutukset", "koodisto:kuljettajakoulutus"]) is notBlank %}
                     Kuorma- ja linja-auton kuljettajien ammattipätevyydestä <span class="todo">Mikä laki ja mitkä pykälät?!</span>
                 {% endif %}
             </span>
@@ -89,6 +82,8 @@
     <div class="sector-right">
         <ul class="none">
             <!--EHDOTUS li>
+            {% if lupa.maaraykset | maaraysFilter(["tyyppi:oikeus|velvoite", "kohde:tutkinnotjakoulutukset", "koodisto:kuljettajakoulutus"]) is notBlank %}
+            
             {% if lupa.maaraykset | sallittuKohde("tutkinnotjakoulutukset") | koodisto("kuljettajakoulutus") is notBlank %}
                 <li>
                     <span class="if">Lupa toimia kuorma- ja linja-autonkuljettajien ammattipätevyyskoulutusta antavana koulutuskeskuksena</span>
@@ -116,11 +111,6 @@
             <li>Opetushallitus</li>
             <li>Opetushallitus/Koulutustoimialan palvelut</li>
             <li>Tilastokeskus</li>
-            {% if lupa.maaraykset | sallittuKohde("tagi_kuljettajakoulutus") is notBlank %}
-                <li>
-                    <span class="if">Trafi</span>
-                </li>
-            {% endif %}
         </ul>
     </div>
 </div -->
@@ -134,11 +124,6 @@
         <div class="tietoa">
             Koulutuksen järjestäjällä on oikeus myöntää seuraavia tutkintoja ja antaa niihin tutkintokoulutusta:
         </div>
-
-
-        {% for maarays in lupa.maaraykset | sortMaaraykset("koodiarvo") %}
-            {{maarays}}<br>
-        {% endfor %}
 
         <!-- TODO: Velvollisuus ja rajoitus sisennetään oikeuksien alle -->
 
@@ -246,46 +231,37 @@
 
         <!-- Oppilaitoksen opetuskieli -->
         {% if lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:opetusjatutkintokieli", "koodisto:oppilaitoksenopetuskieli"]) is notBlank %}
-            <div class="tietoa">
-                Koulutuksen järjestäjän on annettava opetusta seuraavalla opetuskielellä / seuraavilla opetuskielillä:
-            </div>
+            Koulutuksen järjestäjän on annettava opetusta seuraavalla opetuskielellä / seuraavilla opetuskielillä:
             <div class="maaraykset sisennys">
                 {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:opetusjatutkintokieli", "koodisto:oppilaitoksenopetuskieli"]) %}
-                    <span class="data loop {{ maarays.tyyppi }}">{{ maarays.koodi.nimi | translated | comma }}</span>
+                    <span class="data loop {{ maarays.tyyppi }}">{{ maarays.koodi.nimi | translated | capitalize | comma }}</span>
                 {% endfor %}
             </div>
-
         {% endif %}
 
-        <!-- TODO -->
+        <!-- Vieraskieliset: ruotsi -->
+        {% include fromDefault("maaraykset_vieraskieliset") with
+            { "kieli": "sv",
+              "otsikko": "Tutkintokieli on em. opetuskielen/-kielten lisäksi ruotsi seuraavissa tutkinnoissa:",
+              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "alimaarays:koodisto:kieli", "alimaarays:koodiarvo:sv"])
+            }
+        %}
 
-        <!-- muut opetuskielet -->
-        <div class="if">
-            {% if lupa.maaraykset | maaraysFilter(["tyyppi:velvoite|oikeus", "kohde:opetusjatutkintokieli", "koodisto:kieli"]) is notBlank %}
-                <div class="tietoa">
-                    Lisäksi seuraavat tehtävät:
-                </div>
-                <div class="maaraykset sisennys">
-                    {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:velvoite|oikeus", "kohde:opetusjatutkintokieli", "koodisto:kieli"]) %}
-                        <span class="data loop {{ maarays.tyyppi }}">{{ maarays.koodi.nimi | translated }}</span>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        </div>
+        <!-- Vieraskieliset: englanti -->
+        {% include fromDefault("maaraykset_vieraskieliset") with
+            { "kieli": "en",
+              "otsikko": "Tutkintokieli on em. opetuskielen/-kielten lisäksi englanti seuraavissa tutkinnoissa:",
+              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "alimaarays:koodisto:kieli", "alimaarays:koodiarvo:en"])
+            }
+        %}
 
-        <!-- Rajoitukset -->
-        <div class="if">
-            {% if lupa.maaraykset | maaraysFilter(["tyyppi:rajoite", "kohde:opetusjatutkintokieli", "koodisto:~oppilaitoksenopetuskieli"]) is notBlank %}
-                <div class="tietoa">
-                    Rajoitukset:
-                </div>
-                <div class="maaraykset sisennys">
-                    {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:rajoite", "kohde:opetusjatutkintokieli", "koodisto:~oppilaitoksenopetuskieli"]) %}
-                        <span class="data loop {{ maarays.tyyppi }}">{{ maarays.koodi.nimi | translated | comma }}</span>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        </div>
+        <!-- Vieraskieliset: venäjä -->
+        {% include fromDefault("maaraykset_vieraskieliset") with
+            { "kieli": "ru",
+              "otsikko": "Tutkintokieli on em. opetuskielen/-kielten lisäksi venäjä seuraavissa tutkinnoissa:",
+              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "alimaarays:koodisto:kieli", "alimaarays:koodiarvo:ru"])
+            }
+        %}
     </div>
 
     <!-- Toiminta-alue -->
@@ -295,14 +271,17 @@
             <div class="tietoa">
                 Koulutuksen järjestäjällä on velvollisuus järjestäjää tutkintoja ja koulutusta ensisijaisesti seuraavan alueen/ seuraavien alueiden osaamis- ja koulutustarpeeseen:
             </div>
+
             <!-- Maakunnat -->
             {% include fromDefault("maaraykset_toimintaalue") with
                 { "maaraykset": lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:toimintaalue", "koodisto:maakunta"]) }
             %}
+
             <!-- Kunnat -->
             {% include fromDefault("maaraykset_toimintaalue") with
                 { "maaraykset": lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:toimintaalue", "koodisto:kunta"]) }
             %}
+
             <div class="tietoa">
                 Tutkintoja ja koulutusta saa lisäksi järjestää Ahvenanmaan maakuntaa lukuun ottamatta myös muualla Suomessa.
             </div>
@@ -357,9 +336,9 @@
 
         {% if lupa.maaraykset | maaraysFilter(["kohde:muut", "koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat"]) is empty
             and lupa.maaraykset | maaraysFilter(["tyyppi:oikeus|rajoite", "kohde:muut", "koodisto:koulutus"]) is empty %}
-                <div class="tietoa">
-                    Koulutuksen järjestäjälle ei tässä järjestämisluvassa määrätä muita oikeuksia, velvollisuuksia, ehtoja tai tehtäviä.
-                </div>
+            <div class="tietoa">
+                Koulutuksen järjestäjälle ei tässä järjestämisluvassa määrätä muita oikeuksia, velvollisuuksia, ehtoja tai tehtäviä.
+            </div>
         {% endif %}
     </div>
 </div>
