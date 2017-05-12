@@ -1,5 +1,9 @@
-{% for maarays in maaraykset %}
-    <div class="maaraykset loop">
-        <span class="data {{ maarays.tyyppi }}">{{ maarays.koodi.kuvaus | translated }}</span><br/>
-    </div>
-{% endfor %}
+<div class="if">
+    {% if maaraykset is notBlank %}
+        {% for maarays in maaraykset | sortMaaraykset(["koodisto", "koodiarvo"]) %}
+            <div class="maaraykset loop">
+                <span class="data {{ maarays.tyyppi }}">{{ maarays.koodi.kuvaus | translated }}</span><br/>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
