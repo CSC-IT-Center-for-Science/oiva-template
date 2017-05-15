@@ -6,17 +6,39 @@ body {
 @page {
     margin: 2cm;
     font-size: 13px;
+    @top-left {
+        font-family: arial, helvetica, sans-serif;
+        content: string(pagediaari-left);
+        font-size: 12px;
+        color: DarkGrey;
+        margin-top:0.3cm;
+    }
     @top-center {
         font-family: arial, helvetica, sans-serif;
         content: string(pagediaari);
         font-size: 12px;
         color: DarkGrey;
     }
+    @top-right {
+        font-family: arial, helvetica, sans-serif;
+        content: string(pagediaari-right);
+        font-size: 12px;
+        color: DarkGrey;
+    }
+
 }
 
 @page:first {
     margin: 1cm 2cm 2.5cm 2cm;
+    @top-left {
+        font-family: arial, helvetica, sans-serif;
+        content: " ";
+    }
     @top-center {
+        font-family: arial, helvetica, sans-serif;
+        content: " ";
+    }
+    @top-right {
         font-family: arial, helvetica, sans-serif;
         content: " ";
     }
@@ -30,6 +52,17 @@ body {
     string-set: pagediaari content();
     display: none;
 }
+
+#diaari-placeholder-left {
+    string-set: pagediaari-left content();
+    display: none;
+}
+
+#diaari-placeholder-right {
+    string-set: pagediaari-right content();
+    display: none;
+}
+
 
 #debug-info {
     display: none;

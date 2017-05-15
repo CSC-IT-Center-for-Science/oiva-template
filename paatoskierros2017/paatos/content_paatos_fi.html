@@ -44,6 +44,14 @@
 
         <!-- TODO: Velvollisuus ja rajoitus sisennetään oikeuksien alle -->
 
+
+        {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi: poikkeus", "kohde:opetusjatutkintokieli"]) %}
+        <div class="loop {{ maarays.tyyppi }}">
+            <span class="data cell-wider">{{ maarays.koodi.koodiArvo }} {{ maarays.koodi.nimi | translated }} {{ maarays.koodi.voimassaAlkuPvm | toDate | date("d.M.yyyy") }} lukien</span>
+        {% endfor %}
+
+
+
         {% include fromDefault("maaraykset_alat") with
             { "otsikko": "00 Yleissivistävä koulutus",
               "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_00"])
