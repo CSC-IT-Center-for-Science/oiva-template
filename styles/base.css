@@ -8,9 +8,11 @@ body {
     font-size: 13px;
     @top-left {
         font-family: arial, helvetica, sans-serif;
-        content: string(pagediaari-left);
+        content: string(pagediaari-left-top) string(pagediaari-left-bottom);
         font-size: 12px;
         color: DarkGrey;
+        white-space: pre;
+        margin-top:0.3cm;
     }
     @top-center {
         font-family: arial, helvetica, sans-serif;
@@ -20,9 +22,12 @@ body {
     }
     @top-right {
         font-family: arial, helvetica, sans-serif;
-        content: string(pagediaari-right);
+        content: string(pagediaari-right-top) string(pagediaari-right-bottom);
         font-size: 12px;
         color: DarkGrey;
+        white-space: pre;
+        margin-top:0.3cm;
+        margin-right:0.8cm;
     }
 
 }
@@ -52,13 +57,22 @@ body {
     display: none;
 }
 
-#diaari-placeholder-left {
-    string-set: pagediaari-left content();
+#diaari-placeholder-left-top {
+    string-set: pagediaari-left-top content();
+    display: none;
+}
+#diaari-placeholder-left-bottom {
+    string-set: pagediaari-left-bottom content();
     display: none;
 }
 
-#diaari-placeholder-right {
-    string-set: pagediaari-right content();
+#diaari-placeholder-right-top {
+    string-set: pagediaari-right-top content();
+    display: none;
+}
+
+#diaari-placeholder-right-bottom {
+    string-set: pagediaari-right-bottom content();
     display: none;
 }
 

@@ -24,16 +24,20 @@
     </div>
 </div>
 
-<div id="diaari-placeholder-left">
-    {{ jarjestaja.nimi | translated(language) }}     {{jarjestaja.ytunnus}}
+<div id="diaari-placeholder-left-top">
+    {{ jarjestaja.nimi | translated(language) }}
 </div>
-
+<div id="diaari-placeholder-left-bottom">
+    {{jarjestaja.ytunnus}}
+</div>
 <div id="diaari-placeholder">
     EHDOTUS
 </div>
-
-<div id="diaari-placeholder-right">
-    OKM/{{ lupa.diaarinumero }} 9.6.2017
+<div id="diaari-placeholder-right-top">
+    OKM/{{ lupa.diaarinumero }}
+</div>
+<div id="diaari-placeholder-right-bottom">
+    9.6.2017
 </div>
 
 
