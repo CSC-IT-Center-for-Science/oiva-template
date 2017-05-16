@@ -38,88 +38,11 @@
     <!-- Tutkinnot ja koulutukset -->
     <div class="otsikko">1) Tutkinnot ja koulutukset</div>
     <div class="sisalto">
-        <div class="tietoa">
-            Koulutuksen järjestäjällä on oikeus myöntää seuraavia tutkintoja ja antaa niihin tutkintokoulutusta:
-        </div>
 
-        <!-- TODO: Velvollisuus ja rajoitus sisennetään oikeuksien alle -->
-
-        {% include fromDefault("maaraykset_alat") with
-            { "otsikko": "00 Yleissivistävä koulutus",
-              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_00"])
-            }
+        <!-- Koulutusala koulutukset -->
+        {% include fromDefault("maaraykset_koulutusalat") with
+            { "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus"]) }
         %}
-
-        {% include fromDefault("maaraykset_alat") with
-            { "otsikko": "01 Kasvatusalat",
-              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_01"])
-            }
-        %}
-
-        {% include fromDefault("maaraykset_alat") with
-            { "otsikko": "02 Humanistiset ja taidealat",
-              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_02"])
-            }
-        %}
-
-        {% include fromDefault("maaraykset_alat") with
-            { "otsikko": "03 Yhteiskunnalliset alat",
-              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_03"])
-            }
-        %}
-
-        {% include fromDefault("maaraykset_alat") with
-            { "otsikko": "04 Kauppa, hallinto ja oikeustieteet",
-              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_04"])
-            }
-        %}
-
-        {% include fromDefault("maaraykset_alat") with
-            { "otsikko": "05 Luonnontieteet",
-              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_05"])
-            }
-        %}
-
-        {% include fromDefault("maaraykset_alat") with
-            { "otsikko": "06 Tietojenkäsittely ja tietoliikenne (ICT)",
-              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_06"])
-            }
-        %}
-
-        {% include fromDefault("maaraykset_alat") with
-            { "otsikko": "07 Tekniikan alat",
-              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_07"])
-            }
-        %}
-
-        {% include fromDefault("maaraykset_alat") with
-            { "otsikko": "08 Maa- ja metsätalousalat",
-              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_08"])
-            }
-        %}
-
-        {% include fromDefault("maaraykset_alat") with
-            { "otsikko": "09 Terveys- ja hyvinvointialat",
-              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_09"])
-            }
-        %}
-
-        {% include fromDefault("maaraykset_alat") with
-            { "otsikko": "10 Palvelualat",
-              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_10"])
-            }
-        %}
-
-        {% include fromDefault("maaraykset_alat") with
-            { "otsikko": "99 Muut tai tuntemattomat koulutusalat",
-              "maaraykset": lupa.maaraykset | maaraysFilter(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:isced2011koulutusalataso1_99"])
-            }
-        %}
-
-        <div class="tietoa">
-            Koulutuksen järjestäjä voi järjestää myös em. tutkintoihin liittyvää ammatillisesta koulutuksesta annetun lain
-            8 §:n 1 kohdassa tarkoitettua ammatillista osaamista syventävää tai täydentävää koulutusta.
-        </div>
 
         <!-- VALMA ja TELMA -->
         {% include fromDefault("maaraykset_valmatelma") with
@@ -189,10 +112,7 @@
         {% for maarays in lupa.maaraykset | maaraysFilter(["tyyppi:oikeus|rajoite", "kohde:opiskelijavuodet", "koodisto:koulutussektori"]) %}
             <div class="maaraykset loop {{ maarays.tyyppi }}">
                 Koulutuksen järjestäjän opiskelijavuosien
-                <span class="if">
-                    {{ "vähimmäismäärä|enimmäismäärä" | wording(maarays.isMaaraystyyppi("oikeus")) }}
-                </span>
-                on
+                <span class="data">{{ "vähimmäismäärä|enimmäismäärä" | wording(maarays.isMaaraystyyppi("oikeus")) }}</span> on
                 <span class="data">{{ maarays.arvo | number }}</span>.
             </div>
         {% endfor %}

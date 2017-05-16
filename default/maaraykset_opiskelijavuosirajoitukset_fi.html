@@ -7,9 +7,7 @@
             <div class="loop {{ maarays.tyyppi }}">
                 <span class="data cell-wide">{{ maarays.koodi.nimi | translated }}</span>
                 <span class="cell">
-                    <span class="if">
-                        {{ "vähintään|enintään" | wording(maarays.isMaaraystyyppi("oikeus")) }}
-                    </span>
+                    <span class="data">{{ "vähintään|enintään" | wording(maarays.isMaaraystyyppi("oikeus")) }}</span>
                     <span class="data">{{ maarays.arvo | number }}</span> opiskelijavuotta
                 </span>
             </div>
