@@ -29,7 +29,14 @@ body {
         margin-top:0.3cm;
         margin-right:0.8cm;
     }
-
+    @bottom-center {
+        font-family: arial, helvetica, sans-serif;
+        content: string(diaari-pagecounter);
+        font-size: 12px;
+        color: DarkGrey;
+        white-space: pre;
+        margin-top:0.3cm;
+    }
 }
 
 @page:first {
@@ -49,6 +56,9 @@ body {
     @bottom-left {
         width: 660px;
         content: element(footer);
+    }
+    @bottom-center {
+        content: "";
     }
 }
 
@@ -75,7 +85,11 @@ body {
     string-set: pagediaari-right-bottom content();
     display: none;
 }
-
+#diaari-placeholder-pagecounter {
+    string-set: diaari-pagecounter counter(page) "/" counter(pages);
+    counter-increment: page;
+    display: none;
+}
 
 #debug-info {
     display: none;

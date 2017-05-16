@@ -103,7 +103,7 @@
 
     <!-- Toiminta-alue -->
     <div class="otsikko">3) Toiminta-alue</div>
-    <div class="sisalto if">
+    <div class="sisalto">
         {% include fromDefault("maaraykset_toimintaalueet") with
             { "maaraykset": lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:toimintaalue"]) }
         %}
