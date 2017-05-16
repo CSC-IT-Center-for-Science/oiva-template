@@ -7,7 +7,7 @@
         <div class="maaraykset sisennys">
             {% for maarays in maaraykset | sortMaaraykset("koodiarvo") %}
                 <div class="loop {{ maarays.tyyppi }}">
-                    <span class="data loop">{{ maarays.koodi.koodiArvo }} {{ maarays.koodi.nimi | translated }} ({{ maarays.koodi.nimi | translated(kieli) }})</span>
+                    <span class="data loop">{{ maarays.koodi.koodiArvo }} {{ maarays.koodi.nimi | translated }}</span>
                 </div>
             {% endfor %}
         </div>
