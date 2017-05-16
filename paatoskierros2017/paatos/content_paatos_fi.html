@@ -74,6 +74,11 @@
             { "maaraykset": lupa.maaraykset | maaraysFilter(["tyyppi:velvoite", "kohde:opetusjatutkintokieli", "koodisto:oppilaitoksenopetuskieli"]) }
         %}
 
+        <!-- Poikkeukset -->
+        {% include fromDefault("maaraykset_opetuskieli_poikkeukset") with
+            { "maaraykset": lupa.maaraykset | maaraysFilter(["tyyppi:poikkeus", "kohde:opetusjatutkintokieli"]) }
+        %}
+
         <!-- Vieraskieliset: ruotsi -->
         {% include fromDefault("maaraykset_vieraskieliset") with
             { "kieli": "sv",
