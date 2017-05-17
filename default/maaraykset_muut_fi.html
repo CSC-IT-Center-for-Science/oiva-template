@@ -7,6 +7,8 @@
                         {{ maarays.meta | field("kokeilu") | translated }}
                     {% elseif maarays.koodiarvo == "8" %}
                         {{ maarays.meta | field("yhteistyövelvoite") | translated }}
+                    {% elseif maarays.koodiarvo == "" %}
+                        {{ maarays.meta | field("muu") | translated }}
                     {% else %}
                         {{ maarays.koodi.kuvaus | translated }}
                     {% endif %}
