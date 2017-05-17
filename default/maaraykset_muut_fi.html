@@ -5,7 +5,7 @@
                 <span class="data {{ maarays.tyyppi }}">
                     {% if maarays.koodiarvo == "7" %}
                         {{ maarays.meta | field("kokeilu") | translated }}
-                    {% else if maarays.koodiarvo == "8" %}
+                    {% elseif maarays.koodiarvo == "8" %}
                         {{ maarays.meta | field("yhteistyövelvoite") | translated }}
                     {% else %}
                         {{ maarays.koodi.kuvaus | translated }}
