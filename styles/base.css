@@ -154,6 +154,7 @@ body {
 
 #maarayksetPage {
     page-break-before: always;
+    counter-reset: page 1;
 }
 
 .sector {
