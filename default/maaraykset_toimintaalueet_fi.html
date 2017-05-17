@@ -1,25 +1,30 @@
-<div class="if">
-    {% if maaraykset is notBlank %}
-        <div class="tietoa">
-            Koulutuksen järjestäjällä on velvollisuus järjestäjää tutkintoja ja koulutusta ensisijaisesti {{ "seuraavan alueen|seuraavien alueiden" | wording }} osaamis- ja koulutustarpeeseen:
-        </div>
-
-        <!-- Maakunnat -->
-        {% include fromDefault("maaraykset_toimintaalue") with
-            { "maaraykset": maaraykset | maaraysFilter("koodisto:maakunta") }
-        %}
-
-        <!-- Kunnat -->
-        {% include fromDefault("maaraykset_toimintaalue") with
-            { "maaraykset": maaraykset | maaraysFilter("koodisto:kunta") }
-        %}
-
-        <div class="tietoa">
-            Tutkintoja ja koulutusta saa lisäksi järjestää Ahvenanmaan maakuntaa lukuun ottamatta myös muualla Suomessa.
-        </div>
-    {% else %}
-        <div class="tietoa">
-            Tutkintoja ja koulutusta saa järjestää Suomessa Ahvenanmaan maakuntaa lukuun ottamatta.
-        </div>
-    {% endif %}
+<div class="tietoa">
+    Koulutuksen järjestäjällä {{[
+        "01::on velvollisuus järjestää tutkintoja ja koulutusta ensisijaisesti seuraavan kunnan osaamis- ja koulutustarpeeseen:",
+        "02::on velvollisuus järjestää tutkintoja ja koulutusta ensisijaisesti seuraavien kuntien osaamis- ja koulutustarpeeseen:",
+        "10::on velvollisuus järjestää tutkintoja ja koulutusta ensisijaisesti seuraavan maakunnan osaamis- ja koulutustarpeeseen:",
+        "11::on velvollisuus järjestää tutkintoja ja koulutusta ensisijaisesti seuraavan maakunnan ja kunnan osaamis- ja koulutustarpeeseen:",
+        "12::on velvollisuus järjestää tutkintoja ja koulutusta ensisijaisesti seuraavan maakunnan ja seuraavien kuntien osaamis- ja koulutustarpeeseen:",
+        "20::on velvollisuus järjestää tutkintoja ja koulutusta ensisijaisesti seuraavien maakuntien osaamis- ja koulutustarpeeseen:",
+        "21::on velvollisuus järjestää tutkintoja ja koulutusta ensisijaisesti seuraavien maakuntien ja seuraavan kunnan osaamis- ja koulutustarpeeseen:",
+        "22: on velvollisuus järjestää tutkintoja ja koulutusta ensisijaisesti seuraavien maakuntien ja kuntien alueen osaamis- ja koulutustarpeeseen:",
+        "33::on velvollisuus järjestää tutkintoja ja koulutusta Ahvenanmaan maakuntaa lukuun ottamatta koko Suomen osaamis- ja koulutustarpeeseen.",
+        "00::ei ole alueellista velvoitetta järjestää tutkintoja ja koulutusta. Koulutuksenjärjestäjä saa järjestää tutkintoja ja koulutusta koko Suomessa Ahvenanmaan maakuntaa lukuun ottamatta."
+    ] | pick(maaraykset | toToimialueKoodi) }}
 </div>
+
+<!-- Maakunnat -->
+{% include fromDefault("maaraykset_toimintaalue") with
+    { "maaraykset": maaraykset | maaraysFilter("koodisto:maakunta") }
+%}
+
+<!-- Kunnat -->
+{% include fromDefault("maaraykset_toimintaalue") with
+    { "maaraykset": maaraykset | maaraysFilter("koodisto:kunta") }
+%}
+
+{% if (maaraykset | toToimialueKoodi) != "00" and (maaraykset | toToimialueKoodi) != "33" %}
+    <div class="tietoa">
+        Tutkintoja ja koulutusta saa lisäksi järjestää Ahvenanmaan maakuntaa lukuun ottamatta myös muualla Suomessa.
+    </div>
+{% endif %}
