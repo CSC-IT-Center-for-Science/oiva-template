@@ -3,8 +3,10 @@
         {% for maarays in maaraykset | sortMaaraykset(["koodisto", "koodiarvo"]) %}
             <div class="maaraykset loop">
                 <span class="data {{ maarays.tyyppi }}">
-                    {% if maarays.koodisto == "koulutus" %}
-                        {{ maarays.koodiarvo }} {{ maarays.koodi.nimi | translated }}
+                    {% if maarays.koodiarvo == "7" %}
+                        {{ maarays.meta | field("kokeilu") | translated }}
+                    {% else if maarays.koodiarvo == "8" %}
+                        {{ maarays.meta | field("yhteistyövelvoite") | translated }}
                     {% else %}
                         {{ maarays.koodi.kuvaus | translated }}
                     {% endif %}
