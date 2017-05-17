@@ -86,8 +86,7 @@ body {
     display: none;
 }
 #diaari-placeholder-pagecounter {
-    string-set: diaari-pagecounter counter(page) "/" counter(pages);
-    counter-increment: page;
+    string-set: diaari-pagecounter content() counter(page);
     display: none;
 }
 
