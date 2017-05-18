@@ -2,7 +2,7 @@
     {% if maaraykset is notBlank %}
         <div class="maaraykset sisennys">
             {% for maarays in maaraykset %}
-                <span class="data loop {{ maarays.tyyppi }}">{{ maarays.meta | field("opetuskieli_poikkeus") | translated }}</span><br/>
+                <span class="data loop {{ maarays | htmlClass }}">{{ maarays.meta | field("opetuskieli_poikkeus") | translated }}</span><br/>
             {% endfor %}
         </div>
     {% endif %}

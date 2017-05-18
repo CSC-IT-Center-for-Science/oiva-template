@@ -413,12 +413,20 @@ ul.none {
 }
 .debug .data {
     background: #e4ffe4;
+    margin-right: 3px;
 }
 .debug .if {
-    border: 2px solid #e171e1;
+    border: 2px solid #50c1f6;
+    padding: 5px;
+    margin: 5px;
+}
+.debug span.if {
+    padding: 0;
+    margin: 0;
 }
 .debug .loop {
-    border: 2px solid #50c1f6;
+    border: 2px solid #e171e1;
+    margin-bottom: 5px;
 }
 .debug .todo {
     border: 2px solid #d27d7d;

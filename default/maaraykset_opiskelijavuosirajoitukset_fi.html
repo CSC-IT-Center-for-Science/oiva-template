@@ -4,7 +4,7 @@
     </div>
     <div class="maaraykset sisennys2">
         {% for maarays in maaraykset | sortMaarays(["koodisto", "koodiarvo"]) %}
-            <div class="loop {{ maarays.tyyppi }}">
+            <div class="loop {{ maarays | htmlClass }}">
                 <span class="data cell-wide">{{ maarays.koodi.nimi | translated }}</span>
                 <span class="cell">
                     <span class="data">{{ "vähintään|enintään" | wording(maarays.isMaaraystyyppi("oikeus")) }}</span>

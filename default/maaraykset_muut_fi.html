@@ -1,8 +1,8 @@
 <div class="if">
     {% if maaraykset is notBlank %}
         {% for maarays in maaraykset | sortMaarays(["koodisto", "koodiarvo"]) %}
-            <div class="maaraykset loop">
-                <span class="data {{ maarays.tyyppi }}">
+            <div class="maaraykset">
+                <span class="data loop {{ maarays | htmlClass }}">
                     {% if maarays.koodiarvo == "7" %}
                         {{ maarays.meta | field("kokeilu") | translated }}
                     {% elseif maarays.koodiarvo == "8" %}

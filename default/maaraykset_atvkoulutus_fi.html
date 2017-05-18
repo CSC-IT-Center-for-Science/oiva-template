@@ -3,7 +3,7 @@
         <div class="maaraykset">
             Koulutuksen järjestäjällä on oikeus järjestää seuraavaa ammatilliseen tehtävään valmistavaa koulutusta:
             {% for maarays in maaraykset %}
-                <div class="loop sisennys {{ maarays.tyyppi }}">
+                <div class="loop sisennys {{ maarays | htmlClass }}">
                     <span class="data">{{ maarays.koodi.nimi | translated }}</span>
                 </div>
             {% endfor %}
