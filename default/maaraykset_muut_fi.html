@@ -1,6 +1,6 @@
 <div class="if">
     {% if maaraykset is notBlank %}
-        {% for maarays in maaraykset | sortMaaraykset(["koodisto", "koodiarvo"]) %}
+        {% for maarays in maaraykset | sortMaarays(["koodisto", "koodiarvo"]) %}
             <div class="maaraykset loop">
                 <span class="data {{ maarays.tyyppi }}">
                     {% if maarays.koodiarvo == "7" %}

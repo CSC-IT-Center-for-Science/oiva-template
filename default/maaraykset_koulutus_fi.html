@@ -1,7 +1,7 @@
 <div class="if">
     {% if maaraykset is notBlank %}
         <div class="maaraykset sisennys2">
-            {% for maarays in maaraykset | sortMaaraykset("koodiarvo") %}
+            {% for maarays in maaraykset | sortMaarays("koodiarvo") %}
                 <div class="loop {{ maarays.tyyppi }}">
                     <span class="data cell-wider">{{ maarays.koodi.koodiArvo }} {{ maarays.koodi.nimi | translated }}</span>
                     <span class="data cell">
@@ -13,7 +13,7 @@
                     </span>
                 </div>
                 {% include fromDefault("maaraykset_osaamisalarajoitukset") with
-                    { "maaraykset": maarays.aliMaaraykset | maaraysFilter(["tyyppi:rajoite", "kohde:tutkinnotjakoulutukset", "koodisto:osaamisala"]) }
+                    { "maaraykset": maarays.aliMaaraykset | filterMaarays(["tyyppi:rajoite", "kohde:tutkinnotjakoulutukset", "koodisto:osaamisala"]) }
                 %}
             {% endfor %}
         </div>

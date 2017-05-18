@@ -4,15 +4,15 @@
 
         <!-- Oikeus -->
         {% include fromDefault("maaraykset_koulutus") with
-            { "maaraykset": maaraykset | maaraysFilter("tyyppi:oikeus") }
+            { "maaraykset": maaraykset | filterMaarays("tyyppi:oikeus") }
         %}
         <!-- Velvoite -->
         {% include fromDefault("maaraykset_koulutus") with
-            { "maaraykset": maaraykset | maaraysFilter("tyyppi:velvoite") }
+            { "maaraykset": maaraykset | filterMaarays("tyyppi:velvoite") }
         %}
         <!-- Rajoite -->
         {% include fromDefault("maaraykset_koulutus") with
-            { "maaraykset": maaraykset | maaraysFilter("tyyppi:rajoite") }
+            { "maaraykset": maaraykset | filterMaarays("tyyppi:rajoite") }
         %}
     {% endif %}
 </div>

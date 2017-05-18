@@ -4,7 +4,7 @@
             Koulutuksen järjestäjän on annettava opetusta {{ "seuraavalla opetuskielellä|seuraavilla opetuskielillä" | wording }}:
         </div>
         <div class="maaraykset sisennys">
-            {% for maarays in maaraykset | sortMaaraykset("koodiarvo") %}
+            {% for maarays in maaraykset | sortMaarays("koodiarvo") %}
                 <span class="data loop {{ maarays.tyyppi }}">{{ maarays.koodi.nimi | translated | comma }}</span>
             {% endfor %}
         </div>

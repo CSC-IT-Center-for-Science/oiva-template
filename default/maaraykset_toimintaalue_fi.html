@@ -1,7 +1,7 @@
 <div class="if">
     {% if maaraykset is notBlank %}
         <div class="maaraykset sisennys">
-            {% for maarays in maaraykset | sortMaaraykset("koodinimi") %}
+            {% for maarays in maaraykset | sortMaarays("koodinimi") %}
                 <span class="data loop {{ maarays.tyyppi }}">{{ maarays.koodi.nimi | translated | comma }}</span>
             {% endfor %}
         </div>

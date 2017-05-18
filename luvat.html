@@ -28,7 +28,7 @@
                     <td>Esittelijä</td>
                     <td>Kunta</td>
                 </tr>
-                {% for lupa in luvat | sortLuvat(["kunta", "esittelija", "diaarinumero"]) %}
+                {% for lupa in luvat | sortLupa(["kunta", "esittelija", "diaarinumero"]) %}
                     <tr>
                         <td>
                             <a href="/api/pdf/{{ lupa.diaarinumero }}">{{ lupa.diaarinumero }}</a>
