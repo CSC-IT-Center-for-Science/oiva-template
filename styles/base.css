@@ -11,23 +11,30 @@ body {
         content: string(pagediaari-left-top) string(pagediaari-left-bottom);
         font-size: 12px;
         color: DarkGrey;
-        white-space: pre;
-        margin-top:0.3cm;
+        white-space: pre-line;
+        margin-top:0.8cm;
+        margin-left:0.3cm;
+        width:270px;
+        vertical-align: text-top;
     }
     @top-center {
         font-family: arial, helvetica, sans-serif;
         content: string(pagediaari);
         font-size: 12px;
         color: DarkGrey;
+        vertical-align: text-top;
+        margin-top:0.8cm;
     }
     @top-right {
         font-family: arial, helvetica, sans-serif;
         content: string(pagediaari-right-top) string(pagediaari-right-bottom);
         font-size: 12px;
         color: DarkGrey;
-        white-space: pre;
-        margin-top:0.3cm;
+        white-space: pre-line;
+        margin-top:0.8cm;
         margin-right:0.8cm;
+        vertical-align: text-top;
+
     }
     @bottom-center {
         font-family: arial, helvetica, sans-serif;
