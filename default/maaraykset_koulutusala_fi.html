@@ -4,21 +4,21 @@
     <!-- Ammatilliset perustutkinnot: koulutustyyppi_1 -->
     {% include fromDefault("maaraykset_koulutukset") with
         { "otsikko": "Ammatilliset perustutkinnot",
-          "maaraykset": maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus|osaamisala", "ylakoodi:koulutustyyppi_1"])
+          "maaraykset": maaraykset | filterMaarays(["ylakoodi:koulutustyyppi_1"])
         }
     %}
 
     <!-- Ammattitutkinnot: koulutustyyppi_11 -->
     {% include fromDefault("maaraykset_koulutukset") with
         { "otsikko": "Ammattitutkinnot",
-          "maaraykset": maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus|osaamisala", "ylakoodi:koulutustyyppi_11"])
+          "maaraykset": maaraykset | filterMaarays(["ylakoodi:koulutustyyppi_11"])
         }
     %}
 
     <!-- Erikoisammattitutkinnot: koulutustyyppi_12 -->
     {% include fromDefault("maaraykset_koulutukset") with
         { "otsikko": "Erikoisammattitutkinnot",
-          "maaraykset": maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus|osaamisala", "ylakoodi:koulutustyyppi_12"])
+          "maaraykset": maaraykset | filterMaarays(["ylakoodi:koulutustyyppi_12"])
         }
     %}
 {% endif %}
