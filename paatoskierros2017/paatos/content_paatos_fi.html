@@ -99,6 +99,14 @@
               "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "alimaarays:koodisto:kieli", "alimaarays:koodiarvo:ru"])
             }
         %}
+
+        <!-- Vieraskieliset: suomi (ruotsinkielisille järjestäjille) -->
+        {% include fromDefault("maaraykset_vieraskieliset") with
+        { "kieli": "fi",
+        "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "alimaarays:koodisto:kieli", "alimaarays:koodiarvo:fi"])
+        }
+        %}
+
     </div>
 
     <!-- Toiminta-alue -->
