@@ -121,16 +121,23 @@
     <div class="otsikko">4) Opiskelijavuodet</div>
     <div class="sisalto">
 
-        <!-- Koulutussektori opiskelijavuosien vähimmäis/enimmäismäärä -->
-        <div class="maaraykset">
-        {% for maarays in lupa.maaraykset | filterMaarays(["tyyppi:oikeus|rajoite", "kohde:opiskelijavuodet", "koodisto:koulutussektori"]) %}
-            <span class="loop {{ maarays | htmlClass }}">
-                Koulutuksen järjestäjän opiskelijavuosien
-                <span class="data">{{ "vähimmäismäärä|enimmäismäärä" | wording(maarays.isMaaraystyyppi("oikeus")) }}</span> on
-                <span class="data">{{ maarays.arvo | number }}</span>.
-            </span>
-        </div>
-        {% endfor %}
+        <!-- Saamelaisalueen koulutuskeskus on valtion oppilaitos eikä sille määritetä opiskelijavuosien vähimmäismäärää -->
+        <!-- TODO: fiksumpi toteutus -->
+        {% if jarjestaja.ytunnus == "0244767-4" %}
+            Valtion oppilaitokselle ei määritetä opiskelijavuosien määrää.
+        {% else %}
+            <!-- Koulutussektori opiskelijavuosien vähimmäis/enimmäismäärä -->
+            <div class="maaraykset">
+                {% for maarays in lupa.maaraykset | filterMaarays(["tyyppi:oikeus|rajoite", "kohde:opiskelijavuodet", "koodisto:koulutussektori"]) %}
+                <span class="loop {{ maarays | htmlClass }}">
+                    Koulutuksen järjestäjän opiskelijavuosien
+                    <span class="data">{{ "vähimmäismäärä|enimmäismäärä" | wording(maarays.isMaaraystyyppi("oikeus")) }}</span> on
+                    <span class="data">{{ maarays.arvo | number }}</span>.
+                </span>
+            </div>
+            {% endfor %}
+        {% endif %}
+
 
         <!-- Rajoitteet: enintään -->
         {% include fromDefault("maaraykset_opiskelijavuosirajoitukset") with
