@@ -1,0 +1,19 @@
+{% if maaraykset is notBlank %}
+    <div class="maaraykset sisennys2 if">
+        {% for maarays in maaraykset | sortMaarays("koodiarvo") %}
+            <div class="loop {{ maarays | htmlClass }}">
+                <span class="data cell-wider">{{ maarays.koodi.koodiArvo }} {{ maarays.koodi.nimi | translated }}</span>
+                <span class="data cell">
+                    {% if maarays.koodi.voimassaLoppuPvm is dateBetween("2018-01-01", "2019-12-31") %}
+                        {{ maarays.koodi.voimassaLoppuPvm | toDate | date("d.M.yyyy") }} asti
+                    {% elseif maarays.koodi.voimassaAlkuPvm is dateBetween("2018-01-02", "2019-12-31") %}
+                        {{ maarays.koodi.voimassaAlkuPvm | toDate | date("d.M.yyyy") }} lukien
+                    {% endif %}
+                </span>
+            </div>
+            {% include fromDefault("maaraykset_osaamisalarajoitukset") with
+                { "maaraykset": maarays.aliMaaraykset | filterMaarays(["tyyppi:rajoite", "kohde:tutkinnotjakoulutukset", "koodisto:osaamisala"]) }
+            %}
+        {% endfor %}
+    </div>
+{% endif %}

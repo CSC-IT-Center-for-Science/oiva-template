@@ -1,0 +1,15 @@
+<div class="if">
+    {% if maaraykset is notBlank %}
+        <div class="tietoa">
+            Tutkintokieli on em. {{ "opetuskielen|opetuskielten" | wording(lupa.maaraykset | filterMaarays(["tyyppi:velvoite", "kohde:opetusjatutkintokieli", "koodisto:oppilaitoksenopetuskieli"])) }}
+            lisäksi {{ "fi::suomi|sv::ruotsi|en::englanti|ru::venäjä" | pick(kieli) }} {{ "seuraavassa tutkinnossa|seuraavissa tutkinnoissa" | wording }}:
+        </div>
+        <div class="maaraykset sisennys">
+            {% for maarays in maaraykset | sortMaarays("koodiarvo") %}
+                <div class="loop {{ maarays | htmlClass }}">
+                    <span class="data">{{ maarays.koodi.koodiArvo }} {{ maarays.koodi.nimi | translated }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>

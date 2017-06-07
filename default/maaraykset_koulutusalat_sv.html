@@ -1,0 +1,99 @@
+<div class="if">
+    {% if maaraykset is notBlank %}
+        <div class="tietoa">
+            Koulutuksen järjestäjällä on oikeus myöntää seuraavia tutkintoja ja antaa niihin tutkintokoulutusta:
+        </div>
+
+        {% include fromDefault("maaraykset_koulutusala") with
+            { "otsikko": "00 Yleissivistävä koulutus",
+              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_00")
+            }
+        %}
+
+        {% include fromDefault("maaraykset_koulutusala") with
+            { "otsikko": "01 Kasvatusalat",
+              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_01")
+            }
+        %}
+
+        {% include fromDefault("maaraykset_koulutusala") with
+            { "otsikko": "02 Humanistiset ja taidealat",
+              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_02")
+            }
+        %}
+
+        {% include fromDefault("maaraykset_koulutusala") with
+            { "otsikko": "03 Yhteiskunnalliset alat",
+              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_03")
+            }
+        %}
+
+        {% include fromDefault("maaraykset_koulutusala") with
+            { "otsikko": "04 Kauppa, hallinto ja oikeustieteet",
+              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_04")
+            }
+        %}
+
+        {% include fromDefault("maaraykset_koulutusala") with
+            { "otsikko": "05 Luonnontieteet",
+              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_05")
+            }
+        %}
+
+        {% include fromDefault("maaraykset_koulutusala") with
+            { "otsikko": "06 Tietojenkäsittely ja tietoliikenne (ICT)",
+              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_06")
+            }
+        %}
+
+        {% include fromDefault("maaraykset_koulutusala") with
+            { "otsikko": "07 Tekniikan alat",
+              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_07")
+            }
+        %}
+
+        {% include fromDefault("maaraykset_koulutusala") with
+            { "otsikko": "08 Maa- ja metsätalousalat",
+              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_08")
+            }
+        %}
+
+        {% include fromDefault("maaraykset_koulutusala") with
+            { "otsikko": "09 Terveys- ja hyvinvointialat",
+              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_09")
+            }
+        %}
+
+        {% include fromDefault("maaraykset_koulutusala") with
+            { "otsikko": "10 Palvelualat",
+              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_10")
+            }
+        %}
+
+        {% include fromDefault("maaraykset_koulutusala") with
+            { "otsikko": "99 Muut tai tuntemattomat koulutusalat",
+              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_99")
+            }
+        %}
+
+        <div class="tietoa">
+            Koulutuksen järjestäjä voi järjestää myös em. tutkintoihin liittyvää ammatillisesta koulutuksesta annetun lain
+            8 §:n 1 kohdassa tarkoitettua ammatillista osaamista syventävää tai täydentävää koulutusta.
+        </div>
+
+        <!-- Lisätekstejä -->
+        {% include fromDefault("maaraykset_koulutus_lisatekstit") with
+            {
+              "maaraykset1": maaraykset | filterMaarays("koodiarvo:384201|487203|331101|351407|351703|458103|361201|374115|477103|384501|384202"),
+              "maaraykset2": maaraykset | filterMaarays("koodiarvo:477102|354102|364902|467905|374111|477101|384112|487102|487103")
+            }
+        %}
+        {% if maaraykset | filterMaarays("koodiarvo:371113") is notBlank %}
+            <div class="tietoa">
+                Ammatillisen koulutuksen tutkintorakenteen muuttamisesta annetun asetuksen (137/2017) mukaan välinehuoltoalan perustutkinto
+                tulee voimaan 1.8.2018 alkaen. Tällöin em. tutkinto ”371113 Välinehuoltoalan perustutkinto (kokeilu)” korvautuu tutkinnolla
+                ”371113 Välinehuoltoalan perustutkinto”.
+            </div>
+        {% endif %}
+    {% endif %}
+</div>

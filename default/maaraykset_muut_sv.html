@@ -1,0 +1,23 @@
+<div class="if">
+    {% if maaraykset is notBlank %}
+        {% for maarays in maaraykset | sortMaarays(["koodisto", "koodiarvo"]) %}
+            <div class="maaraykset">
+                <span class="data loop {{ maarays | htmlClass }}">
+                    {% if maarays.koodiarvo == "7" %}
+                        {{ maarays.meta | field("kokeilu") | translated }}
+                    {% elseif maarays.koodiarvo == "8" %}
+                        {{ maarays.meta | field("yhteistyövelvoite") | translated }}
+                    {% elseif maarays.koodiarvo == "" %}
+                        {{ maarays.meta | field("muu") | translated }}
+                    {% else %}
+                        {{ maarays.koodi.kuvaus | translated }}
+                    {% endif %}
+                </span><br/>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="tietoa">
+            Koulutuksen järjestäjälle ei tässä järjestämisluvassa määrätä muita oikeuksia, velvollisuuksia, ehtoja tai tehtäviä.
+        </div>
+    {% endif %}
+</div>

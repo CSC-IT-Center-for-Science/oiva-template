@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAEA,IAAK;EACH,WAAW,EAHN,4BAAK;;AAMZ,KAWC;EAVC,MAAM,EAAE,GAAG;EAEX,SAGC;IAFC,WAAW,EAVR,4BAAK;IAWR,OAAO,EAAE,OAAO;EAElB,aAGC;IAFC,OAAO,EAAE,aAAa;IACtB,UAAU,EAAE,MAAM",
-"sources": ["example.scss"],
-"names": [],
-"file": "example.css"
-}

@@ -1,0 +1,16 @@
+{% if maaraykset is notBlank %}
+    <div class="tietoa">
+        {{ otsikko | wording }}:
+    </div>
+    <div class="maaraykset sisennys2">
+        {% for maarays in maaraykset | sortMaarays(["koodisto", "koodiarvo"]) %}
+            <div class="loop {{ maarays | htmlClass }}">
+                <span class="data cell-wide">{{ maarays.koodi.nimi | translated }}</span>
+                <span class="cell">
+                    <span class="data">{{ "vähintään|enintään" | wording(maarays.isMaaraystyyppi("oikeus")) }}</span>
+                    <span class="data">{{ maarays.arvo | number }}</span> opiskelijavuotta
+                </span>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
