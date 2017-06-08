@@ -191,29 +191,15 @@ ul.none {
     margin-bottom: 15px;
 }
 
-.koulutusala-otsikko {
-    page-break-after: avoid;
-}
-
 .koulutus {
     font-style: normal;
     margin-left: 15px;
     margin-top: 5px;
 }
 
-.koulutusKokeilu {
-    font-style: normal;
-    margin-left: 25px;
-}
-
 .osaamisala {
     font-style: normal;
     margin-left: 25px;
-}
-
-.osaamisalaKokeilu {
-    font-style: normal;
-    margin-left: 35px;
 }
 
 .otsikko {
@@ -274,20 +260,6 @@ ul.none {
     width: 500px;
 }
 
-.muutosperusteluosio {
-    margin-left: 25px;
-}
-
-.muutosperusteluosio div.perustelutosio-fi > p:first-child:before {
-    content: 'Perustelut: ';
-    font-style: italic;
-}
-
-.paatoskohtainenTeksti {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
 .ministeri {
     display: table;
     width: 100%;
@@ -322,56 +294,9 @@ ul.none {
     display: table-cell;
 }
 
-.taulukko_opiskelijamaara {
-    display: table;
-    width: 100%;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    page-break-inside: avoid;
-}
-
 .rivi {
     display: table-row;
     width: 100%;
-}
-
-.solu_levea {
-    display: table-cell;
-    width: 60%;
-}
-
-.solu_kapea {
-    display: table-cell;
-    text-align: center;
-}
-
-.solu_kapea_bold {
-    display: table-cell;
-    text-align: center;
-    font-weight: bold;
-}
-
-.muutMaarayksetOtsikko {
-    font-style: italic;
-    margin-top: 20px;
-    page-break-after: avoid;
-}
-
-.muutMaarayksetSelite {
-    margin-top: 10px;
-}
-
-.liitteenAlku {
-    font-weight: bold;
-}
-
-#kuljettajakoulutusPage {
-    page-break-before: always;
-}
-
-.kuljettajakoulutusOtsikko {
-    font-weight: bold;
-    margin-top: 20px;
 }
 
 .kuljettajakoulutusSelite {
