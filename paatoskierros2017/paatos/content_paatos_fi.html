@@ -141,14 +141,14 @@
 
         <!-- Rajoitteet: enintään -->
         {% include fromDefault("maaraykset_opiskelijavuosirajoitukset") with
-            { "otsikko": "Opiskelijavuosia koskee seuraava rajoitus|Opiskelijavuosia koskevat seuraavat rajoitukset",
+            { "otsikko": "Opiskelijavuosien vähimmäismäärää koskee seuraava rajoitus|Opiskelijavuosien vähimmäismäärää koskevat seuraavat rajoitukset",
               "maaraykset": lupa.maaraykset | filterMaarays(["tyyppi:rajoite", "kohde:opiskelijavuodet", "koodisto:~koulutussektori", "arvo:>0"])
             }
         %}
 
         <!-- Oikeudet: vähintään -->
         {% include fromDefault("maaraykset_opiskelijavuosirajoitukset") with
-            { "otsikko": "Opiskelijavuosia koskee seuraava velvollisuus|Opiskelijavuosia koskevat seuraavat velvollisuudet",
+            { "otsikko": "Opiskelijavuosien vähimmäismäärää koskee seuraava velvollisuus| Opiskelijavuosien vähimmäismäärää koskevat seuraavat velvollisuudet",
               "maaraykset": lupa.maaraykset | filterMaarays(["tyyppi:oikeus", "kohde:opiskelijavuodet", "koodisto:~koulutussektori", "arvo:>0"])
             }
         %}
