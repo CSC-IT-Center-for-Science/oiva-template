@@ -1,24 +1,10 @@
 {% if maaraykset is notBlank %}
-    <div class="koulutusalaotsikko">{{ otsikko }}</div>
-
-    <!-- Ammatilliset perustutkinnot: koulutustyyppi_1 -->
-    {% include fromDefault("maaraykset_koulutukset") with
-        { "otsikko": "Ammatilliset perustutkinnot",
-          "maaraykset": maaraykset | filterMaarays(["ylakoodi:koulutustyyppi_1"])
-        }
-    %}
-
-    <!-- Ammattitutkinnot: koulutustyyppi_11 -->
-    {% include fromDefault("maaraykset_koulutukset") with
-        { "otsikko": "Ammattitutkinnot",
-          "maaraykset": maaraykset | filterMaarays(["ylakoodi:koulutustyyppi_11"])
-        }
-    %}
-
-    <!-- Erikoisammattitutkinnot: koulutustyyppi_12 -->
-    {% include fromDefault("maaraykset_koulutukset") with
-        { "otsikko": "Erikoisammattitutkinnot",
-          "maaraykset": maaraykset | filterMaarays(["ylakoodi:koulutustyyppi_12"])
-        }
-    %}
+    <div class="koulutusalaotsikko data">{{ koulutusalaKoodi.koodiArvo }} {{ koulutusalaKoodi.nimi | translated }}</div>
+    {% for koodiarvo in ["1", "11", "12"] %}
+        {% include fromDefault("maaraykset_koulutukset") with
+            { "koulutustyyppiKoodi": maaraykset | ylakoodi("koulutustyyppi_" + koodiarvo),
+              "maaraykset": maaraykset | filterMaarays(["ylakoodi:koulutustyyppi_" + koodiarvo])
+            }
+        %}
+    {% endfor %}
 {% endif %}

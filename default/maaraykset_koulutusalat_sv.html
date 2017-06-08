@@ -4,77 +4,13 @@
             Koulutuksen järjestäjällä on oikeus myöntää seuraavia tutkintoja ja antaa niihin tutkintokoulutusta:
         </div>
 
-        {% include fromDefault("maaraykset_koulutusala") with
-            { "otsikko": "00 Yleissivistävä koulutus",
-              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_00")
-            }
-        %}
-
-        {% include fromDefault("maaraykset_koulutusala") with
-            { "otsikko": "01 Kasvatusalat",
-              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_01")
-            }
-        %}
-
-        {% include fromDefault("maaraykset_koulutusala") with
-            { "otsikko": "02 Humanistiset ja taidealat",
-              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_02")
-            }
-        %}
-
-        {% include fromDefault("maaraykset_koulutusala") with
-            { "otsikko": "03 Yhteiskunnalliset alat",
-              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_03")
-            }
-        %}
-
-        {% include fromDefault("maaraykset_koulutusala") with
-            { "otsikko": "04 Kauppa, hallinto ja oikeustieteet",
-              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_04")
-            }
-        %}
-
-        {% include fromDefault("maaraykset_koulutusala") with
-            { "otsikko": "05 Luonnontieteet",
-              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_05")
-            }
-        %}
-
-        {% include fromDefault("maaraykset_koulutusala") with
-            { "otsikko": "06 Tietojenkäsittely ja tietoliikenne (ICT)",
-              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_06")
-            }
-        %}
-
-        {% include fromDefault("maaraykset_koulutusala") with
-            { "otsikko": "07 Tekniikan alat",
-              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_07")
-            }
-        %}
-
-        {% include fromDefault("maaraykset_koulutusala") with
-            { "otsikko": "08 Maa- ja metsätalousalat",
-              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_08")
-            }
-        %}
-
-        {% include fromDefault("maaraykset_koulutusala") with
-            { "otsikko": "09 Terveys- ja hyvinvointialat",
-              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_09")
-            }
-        %}
-
-        {% include fromDefault("maaraykset_koulutusala") with
-            { "otsikko": "10 Palvelualat",
-              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_10")
-            }
-        %}
-
-        {% include fromDefault("maaraykset_koulutusala") with
-            { "otsikko": "99 Muut tai tuntemattomat koulutusalat",
-              "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_99")
-            }
-        %}
+        {% for koodiarvo in ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "99"] %}
+            {% include fromDefault("maaraykset_koulutusala") with
+                { "koulutusalaKoodi": maaraykset | ylakoodi("isced2011koulutusalataso1_" + koodiarvo),
+                  "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_" + koodiarvo)
+                }
+            %}
+        {% endfor %}
 
         <div class="tietoa">
             Koulutuksen järjestäjä voi järjestää myös em. tutkintoihin liittyvää ammatillisesta koulutuksesta annetun lain

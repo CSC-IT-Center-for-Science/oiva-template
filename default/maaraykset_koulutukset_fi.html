@@ -1,16 +1,8 @@
 {% if maaraykset is notBlank %}
-    <div class="maaraystyyppiotsikko">{{ otsikko }}</div>
-
-    <!-- Oikeus -->
-    {% include fromDefault("maaraykset_koulutus") with
-        { "maaraykset": maaraykset | filterMaarays("tyyppi:oikeus") }
-    %}
-    <!-- Velvoite -->
-    {% include fromDefault("maaraykset_koulutus") with
-        { "maaraykset": maaraykset | filterMaarays("tyyppi:velvoite") }
-    %}
-    <!-- Rajoite -->
-    {% include fromDefault("maaraykset_koulutus") with
-        { "maaraykset": maaraykset | filterMaarays("tyyppi:rajoite") }
-    %}
+    <div class="maaraystyyppiotsikko data">{{ koulutustyyppiKoodi.nimi | translated }}</div>
+    {% for maaraystyyppi in ["oikeus", "velvoite", "rajoite"] %}
+        {% include fromDefault("maaraykset_koulutus") with
+            { "maaraykset": maaraykset | filterMaarays("tyyppi:" + maaraystyyppi) }
+        %}
+    {% endfor %}
 {% endif %}
