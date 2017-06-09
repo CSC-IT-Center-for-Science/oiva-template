@@ -3,7 +3,7 @@ body {
     font-size: 13px;
 }
 
-@page {
+@page maarays {
     margin: 2cm;
     font-size: 13px;
     @top-left {
@@ -159,6 +159,7 @@ body {
 }
 
 #maarayksetPage {
+    page: maarays;
     page-break-before: always;
     counter-reset: page 1;
 }
