@@ -1,7 +1,7 @@
 <div class="if">
     {% if maaraykset is notBlank %}
         <div class="tietoa">
-            Koulutuksen järjestäjällä on oikeus järjestää seuraavaa valmentavaa koulutusta:
+            Utbildningsanordnaren har rätt att ordna följande handledande utbildningar:
         </div>
             {% for maarays in maaraykset %}
                 <div class="loop sisennys {{ maarays | htmlClass }}">

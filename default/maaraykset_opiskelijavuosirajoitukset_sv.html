@@ -7,8 +7,8 @@
             <div class="loop {{ maarays | htmlClass }}">
                 <span class="data cell-wide">{{ maarays.koodi.nimi | translated }}</span>
                 <span class="cell">
-                    <span class="data">{{ "vähintään|enintään" | wording(maarays.isMaaraystyyppi("oikeus")) }}</span>
-                    <span class="data">{{ maarays.arvo | number }}</span> opiskelijavuotta
+                    <span class="data">{{ "minst|högst" | wording(maarays.isMaaraystyyppi("oikeus")) }}</span>
+                    <span class="data">{{ maarays.arvo | number }}</span> studerandeår
                 </span>
             </div>
         {% endfor %}
