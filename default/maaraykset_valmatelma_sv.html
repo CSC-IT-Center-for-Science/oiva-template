@@ -3,10 +3,10 @@
         <div class="tietoa">
             Koulutuksen järjestäjällä on oikeus järjestää seuraavaa valmentavaa koulutusta:
         </div>
-            {% for maarays in maaraykset %}
-                <div class="loop sisennys {{ maarays | htmlClass }}">
-                    <span class="data">{{maarays.koodiarvo}} {{ maarays.koodi.nimi | translated }}</span>
-                </div>
-            {% endfor %}
+        {% for maarays in maaraykset %}
+            <div class="loop sisennys {{ maarays | htmlClass }}">
+                <span class="data">{{maarays.koodiarvo}} {{ maarays.koodi.nimi | translated }}</span>
+            </div>
+        {% endfor %}
     {% endif %}
 </div>
