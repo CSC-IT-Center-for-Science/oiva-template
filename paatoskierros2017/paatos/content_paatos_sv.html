@@ -1,13 +1,13 @@
 <div class="sector">
-    <div class="sector-left">Asia</div>
+    <div class="sector-left">Ärende</div>
     <div class="sector-right">
-        <h4>Ehdotus ammatillisen tutkintojen ja koulutuksen järjestämisluvaksi 1.1.2018 alkaen</h4>
+        <h4>Förslag till tillstånd att ordna yrkesinriktade examina och yrkesutbildning från 1.1.2018</h4>
         <div>
             {{ lupa.meta | fieldvalue("kirje") }}
         </div>
         <div class="ministeri">
             <div class="ministeri-left">
-                <span class="data">Ylijohtaja<!--EHDOTUS {{ lupa.meta | fieldvalue("ministeri_nimike") }} --></span>
+                <span class="data">Överdirektör<!--EHDOTUS {{ lupa.meta | fieldvalue("ministeri_nimike") }} --></span>
             </div>
             <div class="ministeri-right">
                 <span class="data">Mika Tammilehto<!--EHDOTUS {{ lupa.meta | fieldvalue("ministeri_nimi") }} --></span>
@@ -25,21 +25,21 @@
 </div>
 
 <div class="sector">
-    <div class="sector-left">Liite</div>
+    <div class="sector-left">Bilaga</div>
     <div class="sector-right">
         <ul class="none">
             <li>
-              <span class="if">Järjestämislupaehdotus</span>
+              <span class="if">Förslag till anordnartillstånd</span>
             </li>
         </ul>
     </div>
 </div>
 
 <div id="maarayksetPage">
-    <h4>AMMATILLISTEN TUTKINTOJEN JA KOULUTUKSEN JÄRJESTÄMISLUPA 1.1.2018 LUKIEN</h4>
+    <h4>TILLSTÅND ATT ORDNA YRKESINRIKTADE EXAMINA OCH YRKESUTBILDNING FRÅN 1.1.2018</h4>
 
     <!-- Tutkinnot ja koulutukset -->
-    <div class="otsikko">1) Tutkinnot ja koulutukset</div>
+    <div class="otsikko">1) Examina och utbildningar</div>
     <div class="sisalto">
 
         <!-- Koulutusala koulutukset -->
@@ -69,7 +69,7 @@
     </div>
 
     <!-- Opetus- ja tutkintokieli -->
-    <div class="otsikko">2) Opetus- ja tutkintokieli</div>
+    <div class="otsikko">2) Undervisnings- och examensspråk</div>
     <div class="sisalto">
 
         <!-- Oppilaitoksen opetuskieli -->
@@ -113,7 +113,7 @@
     </div>
 
     <!-- Toiminta-alue -->
-    <div class="otsikko">3) Toiminta-alue</div>
+    <div class="otsikko">3) Verksamhetsområde</div>
     <div class="sisalto">
         {% include fromDefault("maaraykset_toimintaalueet") with
             { "maaraykset": lupa.maaraykset | filterMaarays(["tyyppi:velvoite", "kohde:toimintaalue"]) }
@@ -121,7 +121,7 @@
     </div>
 
     <!-- Opiskelijavuodet -->
-    <div class="otsikko">4) Opiskelijavuodet</div>
+    <div class="otsikko">4) Studerandeår</div>
     <div class="sisalto">
 
         <!-- Saamelaisalueen koulutuskeskus on valtion oppilaitos eikä sille määritetä opiskelijavuosien vähimmäismäärää -->
@@ -133,8 +133,8 @@
             <div class="maaraykset">
                 {% for maarays in lupa.maaraykset | filterMaarays(["tyyppi:oikeus|rajoite", "kohde:opiskelijavuodet", "koodisto:koulutussektori"]) %}
                 <span class="loop {{ maarays | htmlClass }}">
-                    Koulutuksen järjestäjän opiskelijavuosien
-                    <span class="data">{{ "vähimmäismäärä|enimmäismäärä" | wording(maarays.isMaaraystyyppi("oikeus")) }}</span> on
+                    Utbildningsanordnarens
+                    <span class="data">{{ "minimiantal|maximiantal" | wording(maarays.isMaaraystyyppi("oikeus")) }}</span> studerandeår är
                     <span class="data">{{ maarays.arvo | number }}</span>.
                 </span>
             </div>
@@ -144,21 +144,21 @@
 
         <!-- Rajoitteet: enintään -->
         {% include fromDefault("maaraykset_opiskelijavuosirajoitukset") with
-            { "otsikko": "Opiskelijavuosia koskee seuraava rajoitus|Opiskelijavuosia koskevat seuraavat rajoitukset",
+            { "otsikko": "Följande begränsning gäller för studerandeåren|Följande begränsningar gäller för studerandeåren",
               "maaraykset": lupa.maaraykset | filterMaarays(["tyyppi:rajoite", "kohde:opiskelijavuodet", "koodisto:~koulutussektori", "arvo:>0"])
             }
         %}
 
         <!-- Oikeudet: vähintään -->
         {% include fromDefault("maaraykset_opiskelijavuosirajoitukset") with
-            { "otsikko": "Opiskelijavuosia koskee seuraava velvollisuus|Opiskelijavuosia koskevat seuraavat velvollisuudet",
+            { "otsikko": "Följande skyldighet gäller för studerandeåren|Följande skyldigheter gäller för studerandeåren",
               "maaraykset": lupa.maaraykset | filterMaarays(["tyyppi:oikeus", "kohde:opiskelijavuodet", "koodisto:~koulutussektori", "arvo:>0"])
             }
         %}
     </div>
 
     <!-- Muut -->
-    <div class="otsikko">5) Muut oikeudet, velvollisuudet, ehdot ja tehtävät</div>
+    <div class="otsikko">5) Övriga rättigheter, skyldigheter, villkor och uppgifter</div>
     <div class="sisalto">
         {% include fromDefault("maaraykset_muut") with
             { "maaraykset": lupa.maaraykset | filterMaarays(["kohde:muut"]) }

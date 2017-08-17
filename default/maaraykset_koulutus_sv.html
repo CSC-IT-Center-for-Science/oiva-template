@@ -5,9 +5,9 @@
                 <span class="data cell-wider">{{ maarays.koodi.koodiArvo }} {{ maarays.koodi.nimi | translated }}</span>
                 <span class="data cell">
                     {% if maarays.koodi.voimassaLoppuPvm is dateBetween("2018-01-01", "2019-12-31") %}
-                        {{ maarays.koodi.voimassaLoppuPvm | toDate | date("d.M.yyyy") }} asti
+                        till {{ maarays.koodi.voimassaLoppuPvm | toDate | date("d.M.yyyy") }}
                     {% elseif maarays.koodi.voimassaAlkuPvm is dateBetween("2018-01-02", "2019-12-31") %}
-                        {{ maarays.koodi.voimassaAlkuPvm | toDate | date("d.M.yyyy") }} lukien
+                        från {{ maarays.koodi.voimassaAlkuPvm | toDate | date("d.M.yyyy") }}
                     {% endif %}
                 </span>
             </div>

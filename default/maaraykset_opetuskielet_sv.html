@@ -1,7 +1,7 @@
 <div class="if">
     {% if maaraykset is notBlank %}
         <div class="tietoa">
-            Koulutuksen järjestäjän on annettava opetusta {{ "seuraavalla opetuskielellä|seuraavilla opetuskielillä" | wording }}:
+            Utbildningsanordnaren ska meddela undervisningen på följande språk:
         </div>
         <div class="maaraykset sisennys">
             {% for maarays in maaraykset | sortMaarays("koodiarvo") %}
