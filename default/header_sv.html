@@ -7,8 +7,8 @@
             <span class="data">{{ jarjestaja.nimi | translated(language) }}</span><br/>
             <span class="if">
                 {% if jarjestaja.postiosoite is notBlank %}
-                    <span class="data">{{ jarjestaja.postiosoite.osoite }}</span><br/>
-                    <span class="data">{{ jarjestaja.postiosoite.postiKoodi }} {{ jarjestaja.postiosoite.postitoimipaikka }}</span>
+                    <span class="data">{{ jarjestaja.postiosoite.osoite | translated(language) }}</span><br/>
+                    <span class="data">{{ jarjestaja.postiosoite.postiKoodi }} {{ jarjestaja.postiosoite.postitoimipaikka | translated(language) }}</span>
                 {% endif %}
             </span>
         </p>
