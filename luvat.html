@@ -42,7 +42,7 @@
                             <a href="/api/pdf/{{ lupa.diaarinumero }}">{{ lupa.diaarinumero }}</a>
                         </td>
                         <td>{{ lupa.jarjestaja.nimi | translated }}</td>
-                        <td>{{ lupa.meta | fieldvalue("esittelija_nimi") }}</td>
+                        <td>{{ lupa.meta | fieldvalue("esittelija") }}</td>
                         <td>
                             {% if lupa.jarjestaja.maakuntaKoodi is notBlank %}
                                 {{ lupa.jarjestaja.maakuntaKoodi.nimi | translated }}
