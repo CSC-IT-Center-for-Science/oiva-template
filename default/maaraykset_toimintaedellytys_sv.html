@@ -1,0 +1,13 @@
+{% if maaraykset is notBlank %}
+
+    <p><b>Selvitys toimintaedellytyksistä (på svenska)</b></p>
+
+    {% for maarays in maaraykset %}
+        <div class="maaraykset">
+            <span class="data loop {{ maarays | htmlClass }}">
+                {{ maarays.koodi.kuvaus | translated }}
+            </span><br/>
+        </div>
+    {% endfor %}
+
+{% endif %}

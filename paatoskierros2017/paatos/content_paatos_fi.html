@@ -1,7 +1,7 @@
 <div class="sector">
     <div class="sector-left">Asia</div>
     <div class="sector-right">
-        <h4>Ehdotus ammatillisen tutkintojen ja koulutuksen järjestämisluvaksi 1.1.2018 alkaen</h4>
+        <h4>Ammatillisten tutkintojen ja koulutuksen järjestämislupa 1.1.2018 alkaen</h4>
         <div>
 
             {{ lupa.meta | fieldvalue("kirje") }}
@@ -10,10 +10,10 @@
 
         <div class="ministeri">
             <div class="ministeri-left">
-                <span class="data">Ylijohtaja<!--EHDOTUS {{ lupa.meta | fieldvalue("ministeri_nimike") }} --></span>
+                <span class="data">{{ lupa.meta | fieldvalue("ministeri_nimike") }}</span>
             </div>
             <div class="ministeri-right">
-                <span class="data">Mika Tammilehto<!--EHDOTUS {{ lupa.meta | fieldvalue("ministeri") }} --></span>
+                <span class="data">{{ lupa.meta | fieldvalue("ministeri") }}</span>
             </div>
         </div>
         <div class="esittelija">
@@ -32,14 +32,14 @@
     <div class="sector-right">
         <ul class="none">
             <li>
-              <span class="if">Järjestämislupaehdotus</span>
+              <span class="if">Järjestämislupa</span>
             </li>
         </ul>
     </div>
 </div>
 
 <div id="maarayksetPage">
-    <h4>AMMATILLISTEN TUTKINTOJEN JA KOULUTUKSEN JÄRJESTÄMISLUPA 1.1.2018 LUKIEN</h4>
+    <h4>AMMATILLISTEN TUTKINTOJEN JA KOULUTUKSEN JÄRJESTÄMISLUPA 1.1.2018 ALKAEN</h4>
 
     <!-- Tutkinnot ja koulutukset -->
     <div class="otsikko">1) Tutkinnot ja koulutukset</div>
@@ -52,7 +52,7 @@
 
         <!-- VALMA ja TELMA -->
         {% include fromDefault("maaraykset_valmatelma") with
-            { "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_5|koulutustyyppi_18|koulutustyyppi_19"]) }
+            { "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_5|koulutustyyppi_26|koulutustyyppi_18|koulutustyyppi_19"]) }
         %}
 
         <!-- Ammatilliseen tehtävään valmistava koulutus -->
@@ -128,7 +128,6 @@
     <div class="sisalto">
 
         <!-- Saamelaisalueen koulutuskeskus on valtion oppilaitos eikä sille määritetä opiskelijavuosien vähimmäismäärää -->
-        <!-- TODO: fiksumpi toteutus -->
         {% if jarjestaja.ytunnus == "0244767-4" %}
             Valtion oppilaitokselle ei määritetä opiskelijavuosien määrää.
         {% else %}
@@ -163,8 +162,10 @@
     <!-- Muut -->
     <div class="otsikko">5) Muut oikeudet, velvollisuudet, ehdot ja tehtävät</div>
     <div class="sisalto">
+
         {% include fromDefault("maaraykset_muut") with
             { "maaraykset": lupa.maaraykset | filterMaarays(["kohde:muut"]) }
         %}
+
     </div>
 </div>

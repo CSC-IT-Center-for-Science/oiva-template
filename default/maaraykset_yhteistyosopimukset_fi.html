@@ -1,0 +1,13 @@
+{% if maaraykset is notBlank %}
+
+    <p><b>Yhteistyösopimukset</b></p>
+
+    {% for maarays in maaraykset %}
+        <div class="maaraykset">
+            <span class="data loop {{ maarays | htmlClass }}">
+                {{ maarays.meta | field("yhteistyösopimus") | translated }}
+            </span><br/>
+        </div>
+    {% endfor %}
+
+{% endif %}

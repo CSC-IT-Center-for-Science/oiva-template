@@ -1,0 +1,24 @@
+{% if maaraykset is notBlank %}
+
+    <p><b>Vaativan erityisen tuen tehtävä (på svenska)</b></p>
+
+    {% for maarays in maaraykset %}
+        <div class="maaraykset">
+            <span class="data loop {{ maarays | htmlClass }}">
+                {{ maarays.koodi.kuvaus | translated }}
+            </span><br/>
+        </div>
+
+        <!-- lisätty yhteistyösopimus vaativaan tuen yhteyteen, koodiarvo="2"
+             laitetaan myöh. koodistoon jotta saadaan oikea järjestys määräyksille pdf:ään -->
+        {% if maarays.meta != "" %}
+            <div class="maaraykset">
+                <span class="data loop {{ maarays | htmlClass }}">
+                    {{ maarays.meta | field("vaativatuki_yhteistyo") | translated }}
+                </span><br/>
+            </div>
+        {% endif %}
+
+    {% endfor %}
+
+{% endif %}

@@ -1,11 +1,11 @@
 {% if maaraykset1 is notBlank or maaraykset2 is notBlank %}
     <div class="tietoa">
         {% if maaraykset1.size() >= 1 and maaraykset2.size() >= 1 %}
-            Ammatillisen koulutuksen tutkintorakenteen muuttamisesta annetun asetuksen (137/2017) liitteen mukaan osan em. tutkinnoista nimi muuttuu 1.8.2018 ja osan 1.1.2019 alkaen.
+            Ammatillisen koulutuksen lain (531/2017) 6 §:n nojalla tutkintorakenteesta annetun asetuksen liitteen mukaan osan em. tutkinnoista nimi muuttuu 1.8.2018 ja osan 1.1.2019 alkaen.
         {% elseif maaraykset1.size() >= 1 and maaraykset2.isEmpty() %}
-            Ammatillisen koulutuksen tutkintorakenteen muuttamisesta annetun asetuksen (137/2017) liitteen mukaan osan em. tutkinnoista nimi muuttuu 1.8.2018 alkaen.
+            Ammatillisen koulutuksen lain (531/2017) 6 §:n nojalla tutkintorakenteesta annetun asetuksen liitteen mukaan osan em. tutkinnoista nimi muuttuu 1.8.2018 alkaen.
         {% elseif maaraykset1.isEmpty() and maaraykset2.size() >= 1 %}
-            Ammatillisen koulutuksen tutkintorakenteen muuttamisesta annetun asetuksen (137/2017) liitteen mukaan osan em. tutkinnoista nimi muuttuu 1.1.2019 alkaen.
+            Ammatillisen koulutuksen lain (531/2017) 6 §:n nojalla tutkintorakenteesta annetun asetuksen liitteen mukaan osan em. tutkinnoista nimi muuttuu 1.1.2019 alkaen.
         {% endif %}
     </div>
 {% endif %}
