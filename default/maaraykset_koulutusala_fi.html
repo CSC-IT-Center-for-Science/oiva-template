@@ -1,6 +1,6 @@
 {% if maaraykset is notBlank %}
     <div class="koulutusalaotsikko data">{{ koulutusalaKoodi.koodiArvo }} {{ koulutusalaKoodi.nimi | translated }}</div>
-    {% for koodiarvo in ["1", "26", "11", "12"] %}
+    {% for koodiarvo in ["1", "11", "12"] %}
         {% include fromDefault("maaraykset_koulutukset") with
             { "koulutustyyppiKoodi": maaraykset | ylakoodi("koulutustyyppi_" + koodiarvo),
               "maaraykset": maaraykset | filterMaarays(["ylakoodi:koulutustyyppi_" + koodiarvo])
