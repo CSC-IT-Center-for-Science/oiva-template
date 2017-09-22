@@ -2,15 +2,15 @@
     <div class="sector-left">Ärende</div>
     <div class="sector-right">
         <h4>Förslag till tillstånd att ordna yrkesinriktade examina och yrkesutbildning från 1.1.2018</h4>
-        <div>
-            {{ lupa.meta | fieldvalue("kirje") }}
+        <div style="margin-top:100px;">
+            <!-- {{ lupa.meta | fieldvalue("kirje") }} -->
         </div>
         <div class="ministeri">
             <div class="ministeri-left">
-                <span class="data">Överdirektör<!--EHDOTUS {{ lupa.meta | fieldvalue("ministeri_nimike") }} --></span>
+                <span class="data">{{ lupa.meta | fieldvalue("ministeri_nimike") }}</span>
             </div>
             <div class="ministeri-right">
-                <span class="data">Mika Tammilehto<!--EHDOTUS {{ lupa.meta | fieldvalue("ministeri") }} --></span>
+                <span class="data">{{ lupa.meta | fieldvalue("ministeri") }}</span>
             </div>
         </div>
         <div class="esittelija">
