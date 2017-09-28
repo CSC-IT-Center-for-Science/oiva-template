@@ -47,6 +47,15 @@
             { "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus"]) }
         %}
 
+        <!-- POIKKEUS: Svenska Österbottens förbund för Utbildning och Kultur -->
+        {% if jarjestaja.ytunnus == "0988182-8" %}
+        <div class="tietoa">
+            Därutöver har utbildningsanordnaren rätt att anordna följande examen och att ge examensutbildning för den:
+            371113 Grundexamen i instrumentvård från 1.8.2018
+        </div>
+        {% endif %}
+
+
         <!-- VALMA ja TELMA -->
         {% include fromDefault("maaraykset_valmatelma") with
             { "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_5|koulutustyyppi_18|koulutustyyppi_19"]) }
@@ -66,6 +75,7 @@
         {% include fromDefault("maaraykset_tyovoimakoulutus") with
             { "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:oivatyovoimakoulutus"]) }
         %}
+
     </div>
 
     <!-- Opetus- ja tutkintokieli -->
