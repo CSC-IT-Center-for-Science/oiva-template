@@ -58,7 +58,7 @@
         </div>
         {% endif %}
 
-        
+
         <!-- VALMA ja TELMA -->
         {% include fromDefault("maaraykset_valmatelma") with
             { "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_5|koulutustyyppi_18|koulutustyyppi_19"]) }
