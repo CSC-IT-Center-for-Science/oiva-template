@@ -14,7 +14,7 @@ if [[ $1 == "publish" ]]; then
             git checkout master
         fi
         git merge --no-ff -m "Merge latest development version" develop
-        git tag -a $releaseVersion
+        git tag -a $releaseVersion -m "Release $releaseVersion"
         git push
         git push origin $releaseVersion
     else
