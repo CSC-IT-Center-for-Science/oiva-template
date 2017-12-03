@@ -17,6 +17,7 @@ if [[ $1 == "publish" ]]; then
         git tag -a $releaseVersion -m "Release $releaseVersion"
         git push
         git push origin $releaseVersion
+        git checkout develop
     else
         echo "Release preparation cancelled"
     fi
