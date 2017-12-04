@@ -3,6 +3,8 @@
 if [[ $1 == "publish" ]]; then
     read -p "Write YES to confirm new release creation: " confirmation
     if [[ $confirmation == "YES" ]]; then
+        echo "Existing releases:"
+        git tag
         echo -ne "What is the release version: "
         read releaseVersion
         if [ -z "$releaseVersion" ]; then
