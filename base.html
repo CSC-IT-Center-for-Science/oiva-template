@@ -8,10 +8,8 @@
             {% include "debug" %}
         </div>
         <div id="wrapper">
-            <div id="header">
-                {% block header %}{% endblock %}
-            </div>
             <div id="content">
+                {% block header %}{% endblock %}
                 {% block content %}{% endblock %}
             </div>
         </div>
