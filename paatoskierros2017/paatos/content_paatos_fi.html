@@ -142,10 +142,7 @@
         {% include fromDefault("maaraykset_tyovoimakoulutus_lisateksti") with
             { "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:oivatyovoimakoulutus", "koodiarvo:3"]) }
         %}
-
-        {% if jarjestaja.ytunnus == "1019670-5" %}
-            Koulutuksen järjestäjälle ei määritetä opiskelijavuosien vähimmäismäärää.
-        {% endif %}
+        
 
     </div>
 
