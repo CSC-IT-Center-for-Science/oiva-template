@@ -11,11 +11,7 @@
     OKM/{{ lupa.diaarinumero }}
 </div>
 <div id="diaari-placeholder-right-bottom">
-    {% if jarjestaja.ytunnus == "1019670-5" %}
-        16.2.2018
-    {% else %}
-        6.10.2017
-    {% endif %}
+    {{ lupa.paatospvm | toDate | date("d.M.yyyy") }}
 </div>
 
 <div id="diaari-placeholder-pagecounter">Sivu </div>
