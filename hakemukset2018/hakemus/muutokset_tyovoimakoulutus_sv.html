@@ -1,0 +1,17 @@
+<div class="if">
+    {% if muutokset_tyovoimakoulutus is notBlank %}
+    <div class="otsikko">
+        Työvoimakoulutus:
+    </div>
+    <div class="maaraykset">
+        {% for muutos in muutokset_tyovoimakoulutus %}
+        <div class="loop {{ maarays | htmlClass }} tyovoimakoulutusSelite">
+            <span class="data">{{muutos.tila | lower | capitalize}}: {{ muutos.koodi.kuvaus | translated }}</span>
+        </div>
+        <div class="loop {{ maarays | htmlClass }}">
+            <span class="data cell-wider padding40">{{ muutos.meta | fieldvalue("perusteluteksti") }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>

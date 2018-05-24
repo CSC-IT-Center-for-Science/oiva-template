@@ -1,0 +1,12 @@
+<div class="if">
+    {% if muutokset is notBlank %}
+    <div class="maaraykset sisennys">
+        {% for muutos in muutokset %}
+        <span class="data loop {{ maarays | htmlClass }}">{{muutos.tila | lower | capitalize}}: {{ muutos.koodi.nimi | translated | comma }}</span>
+        <div class="loop {{ maarays | htmlClass }}">
+            <span class="data cell-wider padding20">{{ muutos.meta | fieldvalue("perusteluteksti") }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>

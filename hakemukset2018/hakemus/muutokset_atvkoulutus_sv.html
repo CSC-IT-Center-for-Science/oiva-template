@@ -1,0 +1,15 @@
+<div class="if">
+    {% if muutokset_atvkoulutus is notBlank %}
+    <div class="tietoa">
+        Ammatilliseen tehtävään valmistava koulutus:
+    </div>
+    {% for muutos in muutokset_atvkoulutus %}
+    <div class="loop sisennys {{ maarays | htmlClass }}">
+        <span class="data">{{muutos.tila | lower | capitalize}}: {{ muutos.koodi.nimi | translated }}</span>
+    </div>
+    <div class="loop {{ maarays | htmlClass }}">
+        <span class="data cell-wider padding40">{{ muutos.meta | fieldvalue("perusteluteksti") }}</span>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>

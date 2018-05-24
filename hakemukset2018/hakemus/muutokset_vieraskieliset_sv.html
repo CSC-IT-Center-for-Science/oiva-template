@@ -1,0 +1,14 @@
+<div class="if">
+    {% if muutokset is notBlank %}
+    <div class="otsikko">
+        Tutkintokielet:
+    </div>
+    <div class="maaraykset sisennys">
+        {% for muutos in muutokset %}
+        <div class="loop {{ maarays | htmlClass }}">
+            <span class="data">{{ muutos.koodi.koodiArvo }} {{ muutos.koodi.nimi | translated }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
