@@ -1,0 +1,17 @@
+<div class="if">
+    {% if muutokset_kuljettajakoulutus is notBlank %}
+        <div class="otsikko">
+            Kuljettajakoulutus:
+        </div>
+        <div class="maaraykset">
+            {% for muutos in muutokset_kuljettajakoulutus %}
+                <div class="loop {{ maarays | htmlClass }} kuljettajakoulutusSelite">
+                    <span class="data">{{muutos.tila | lower | capitalize}}:  {{ muutos.koodi.kuvaus | translated }}</span>
+                </div>
+                <div class="loop {{ maarays | htmlClass }}">
+                    <span class="data cell-wider padding40">{{ muutos.meta | fieldvalue("perusteluteksti") }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>

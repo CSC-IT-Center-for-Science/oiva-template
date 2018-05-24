@@ -1,0 +1,11 @@
+{% if muutokset is notBlank %}
+    <div class="maaraystyyppiotsikko data">{{ koulutustyyppiKoodi.nimi | translated }}</div>
+    {% for muutos in muutokset %}
+        <div class="loop {{ maarays | htmlClass }}">
+        <span class="data cell-wider padding20">{{muutos.tila | lower | capitalize}}: {{ muutos.koodi.koodiarvo }} {{ muutos.koodi.nimi | translated }}</span>
+        </div>
+        <div class="loop {{ maarays | htmlClass }}">
+        <span class="data cell-wider padding40">{{ muutos.meta | fieldvalue("perusteluteksti") }}</span>
+        </div>
+    {% endfor %}
+{% endif %}

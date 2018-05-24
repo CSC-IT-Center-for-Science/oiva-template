@@ -234,6 +234,13 @@ ul.none {
     width: 500px;
 }
 
+.padding20 {
+    padding-left:20px;
+}
+
+.padding40 {
+    padding-left:40px;
+}
 
 .rivi {
     display: table-row;

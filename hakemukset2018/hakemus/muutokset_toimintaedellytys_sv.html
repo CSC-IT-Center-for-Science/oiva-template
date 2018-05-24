@@ -1,0 +1,17 @@
+{% if muutokset is notBlank %}
+
+    <p><b>Utredning om verksamhetsförutsättningarna</b></p>
+
+
+    {% for muutos in muutokset %}
+        <div class="maaraykset">
+            <span class="data loop {{ maarays | htmlClass }}">
+                {{muutos.tila | lower | capitalize}}: {{ muutos.koodi.kuvaus | translated }}
+            </span>
+            <div class="loop {{ maarays | htmlClass }}">
+                <span class="data cell-wider padding40">{{ muutos.meta | fieldvalue("perusteluteksti") }}</span>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endif %}

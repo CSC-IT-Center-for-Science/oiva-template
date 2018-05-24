@@ -1,0 +1,26 @@
+<div class="if">
+    {% if muutokset is notBlank %}
+        <div class="otsikko">
+            Tutkintokielet:
+        </div>
+        <div class="maaraykset sisennys">
+            {% for muutos in muutokset %}
+                <div class="loop {{ maarays | htmlClass }}">
+                    <span class="data">{{ muutos.koodi.koodiarvo }} {{ muutos.koodi.nimi | translated }},
+                        {{muutos.tila | lower | capitalize}}:
+                    {% if muutos.koodiarvo == "1" %}
+                        Suomi
+                    {% elseif muutos.koodiarvo == "2" %}
+                        Englanti
+                    {% elseif muutos.koodiarvo == "4" %}
+                        Venäjä
+                    {% endif %}
+                    </span>
+                </div>
+                <div class="loop {{ maarays | htmlClass }}">
+                    <span class="data cell-wider padding40">{{ muutos.meta | fieldvalue("perusteluteksti") }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>

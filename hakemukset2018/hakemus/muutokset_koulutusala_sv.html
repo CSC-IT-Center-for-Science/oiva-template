@@ -1,0 +1,10 @@
+{% if muutokset is notBlank %}
+<div class="koulutusalaotsikko data">{{ koulutusalaKoodi.koodiArvo }} {{ koulutusalaKoodi.nimi | translated }}</div>
+{% for koodiarvo in ["1", "11", "12"] %}
+{% include fromContext("muutokset_koulutukset") with
+{ "koulutustyyppiKoodi": maaraykset | ylakoodi("koulutustyyppi_" + koodiarvo),
+"muutokset": muutokset | filterMaarays(["ylakoodi:koulutustyyppi_" + koodiarvo])
+}
+%}
+{% endfor %}
+{% endif %}
