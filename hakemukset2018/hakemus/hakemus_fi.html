@@ -1,0 +1,57 @@
+<div class="sector">
+
+    <div>
+        {{ jarjestaja.nimi | translated(language) }}
+    </div>
+    <div>
+        {{jarjestaja.ytunnus}}
+    </div>
+
+</div>
+
+
+<div class="sector">
+
+    <div class="sector-left">
+        Asia
+    </div>
+
+    <div class="sector-right">
+
+        <h4>Ammatillisen peruskoulutuksen järjestämisluvan muutoksenhaku</h4>
+
+        <!-- Yleinen johdanto 1 -->
+        <p>Tänne mahdollisesti hakemuksen yleinen hakuteksti</p>
+
+        <!-- muutokset ends -->
+
+        <div class="paatoskohtainenTeksti">
+            <p>Perustelut hakemukselle?</p>
+        </div>
+        <!-- yleinen johdanto 1 ends -->
+
+        <div class="paatoskohtainenTeksti">
+            <p>Yhteystiedot</p>
+        </div>
+
+        <div class="ministeri">
+            <div class="ministeri-left" style="padding-bottom:5px; font-weight:bold;">nimi</div>
+            <div class="ministeri-right">{{ muutospyynto.meta | fieldvalue("nimi") }}</div>
+        </div>
+        <div class="ministeri">
+            <div class="ministeri-left" style="padding-top:10px; padding-bottom:5px; font-weight:bold;">puhelin</div>
+            <div class="ministeri-right">{{ muutospyynto.meta | fieldvalue("puhelin") }}</div>
+        </div>
+        <div class="ministeri">
+            <div class="ministeri-left" style="padding-top:10px; padding-bottom:5px; font-weight:bold;">email</div>
+            <div class="ministeri-right">{{ muutospyynto.meta | fieldvalue("email") }}</div>
+        </div>
+
+        <div class="ministeri">
+            <div class="ministeri-left" style="padding-top:20px; padding-bottom:5px; font-weight:bold;">allekirjoittajat</div>
+            <div class="ministeri-right">{{ muutospyynto.meta | fieldvalue("hyvaksyjat") }}</div>
+        </div>
+
+    </div>
+</div>
+

@@ -5,7 +5,12 @@
     {% include fromContext("hakemus/header") %}
 {% endblock %}
 
-<!-- CONTENT -->
+<!-- HAKEMUKSEN TIEDOT -->
+{% block header %}
+{% include fromContext("hakemus/hakemus") %}
+{% endblock %}
+
+<!-- LUVAN TIEDOT -->
 {% block content %}
     {% include fromContext("hakemus/content_hakemus") %}
 {% endblock %}
