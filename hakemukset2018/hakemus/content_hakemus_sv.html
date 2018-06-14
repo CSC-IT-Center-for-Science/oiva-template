@@ -1,0 +1,20 @@
+<div id="maarayksetPage">
+    <h4>HAKEMUS AMMATILLISTEN TUTKINTOJEN JA KOULUTUKSEN JÄRJESTÄMISLUVAKSI {{ muutospyynto.hakupvm | toDate | date("d.M.yyyy") }}</h4>
+
+    <!-- Tutkinnot ja koulutukset -->
+    <div class="otsikko">1) Tutkinnot ja koulutukset</div>
+    <div class="sisalto">
+
+        <!-- Koulutusala koulutukset -->
+        {% include fromContext("hakemus/muutokset_koulutusalat") with
+        { "muutokset": muutospyynto.muutokset | filterMuutos(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus"]) }
+        %}
+
+        <!-- VALMA ja TELMA -->
+        {% include fromDefault("maaraykset_valmatelma") with
+        { "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_5|koulutustyyppi_18|koulutustyyppi_19"]) }
+        %}
+
+    </div>
+
+</div>

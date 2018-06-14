@@ -1,0 +1,10 @@
+{% if muutokset is notBlank %}
+<div class="maaraykset sisennys2 if">
+    {% for muutos in muutokset | sortMaarays("koodiarvo") %}
+    <div class="loop {{ maarays | htmlClass }}">
+        <span class="data cell-wider">{{ muutos.koodi.koodiArvo }} {{ muutos.koodi.nimi | translated }}</span>
+    </div>
+
+    {% endfor %}
+</div>
+{% endif %}

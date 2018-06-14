@@ -1,0 +1,15 @@
+<!-- Maakunnat -->
+{% include fromContext("hakemus/muutokset_toimintaalue") with
+    { "muutokset": muutokset | filterMuutos("koodisto:maakunta") }
+%}
+
+<!-- Kunnat -->
+{% include fromContext("hakemus/muutokset_toimintaalue") with
+    { "muutokset": muutokset | filterMuutos("koodisto:kunta") }
+%}
+
+{% if (muutos != null) %}
+    <div class="tietoa">
+        Tutkintoja ja koulutusta saa lisäksi järjestää Ahvenanmaan maakuntaa lukuun ottamatta myös muualla Suomessa.
+    </div>
+{% endif %}

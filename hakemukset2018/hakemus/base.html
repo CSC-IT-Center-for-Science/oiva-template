@@ -1,0 +1,16 @@
+{% extends "base" %}
+
+<!-- HEADER -->
+{% block header %}
+    {% include fromContext("hakemus/header") %}
+{% endblock %}
+
+<!-- HAKEMUKSEN TIEDOT -->
+{% block header %}
+{% include fromContext("hakemus/hakemus") %}
+{% endblock %}
+
+<!-- LUVAN TIEDOT -->
+{% block content %}
+    {% include fromContext("hakemus/content_hakemus") %}
+{% endblock %}

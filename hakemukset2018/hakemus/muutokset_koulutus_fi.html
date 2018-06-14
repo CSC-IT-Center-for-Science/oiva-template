@@ -1,0 +1,8 @@
+{% for muutos in muutokset %}
+    <div class="loop {{ maarays | htmlClass }}">
+        <span class="data cell-wider">{{muutos.tila}} {{ muutos.koodi.koodiarvo }} {{ muutos.koodi.nimi | translated }}</span>
+    </div>
+    <div class="loop {{ maarays | htmlClass }}">
+        <span class="data cell-wider sisennys">{{ muutos.meta | fieldvalue("perusteluteksti") }}</span>
+    </div>
+{% endfor %}
