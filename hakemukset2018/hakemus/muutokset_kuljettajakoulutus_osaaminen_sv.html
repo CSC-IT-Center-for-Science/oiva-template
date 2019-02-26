@@ -1,0 +1,102 @@
+<div class="sector">
+    <div class="rivi">
+        <div class="cell width50 bold">
+            Liikenneopettajalupa
+        </div>
+        <div class="cell padding20">
+           {% if osaaminen | fieldvalue("lupa") == 'true' %} Kyllä {% else %} Ei {% endif %}
+        </div>
+    </div>
+    <div class="rivi">
+        <div class="cell width50">
+            Voimassaoleva kuorma-autokuljettajan ammattipätevyys
+        </div>
+        <div class="cell padding20">
+            {% if osaaminen | fieldvalue("voimassa_kuorma_auto") == 'true' %} Kyllä {% else %} Ei {% endif %}
+        </div>
+    </div>
+    <div class="rivi">
+        <div class="cell width50">
+            Voimassaoleva linja-autokuljettajan ammattipätevyys
+        </div>
+        <div class="cell padding20">
+            {% if osaaminen | fieldvalue("voimassa_linja_auto") == 'true' %} Kyllä {% else %} Ei {% endif %}
+        </div>
+    </div>
+</div>
+
+<span class="bold">
+    a) vähintään 1 vuoden kokemus johonkin seuraavista luokista kuuluvan ajoneuvon päätoimisena kuljettajana:
+</span>
+<div class="sector">
+    <div class="rivi">
+        <div class="cell width50">
+            C-luokka
+        </div>
+        <div class="cell padding20">
+            {% if osaaminen | fieldvalue("luokka_C") == 'true' %} Kyllä {% else %} Ei {% endif %}
+        </div>
+    </div>
+    <div class="rivi">
+        <div class="cell width50">
+            CE-luokka
+        </div>
+        <div class="cell padding20">
+            {% if osaaminen | fieldvalue("luokka_CE") == 'true' %} Kyllä {% else %} Ei {% endif %}
+        </div>
+    </div>
+    <div class="rivi">
+        <div class="cell width50">
+            D-luokka
+        </div>
+        <div class="cell padding20">
+            {% if osaaminen | fieldvalue("luokka_D") == 'true' %} Kyllä {% else %} Ei {% endif %}
+        </div>
+    </div>
+</div>
+
+<span class="bold">
+    b) jokin seuraavista tutkinnoista:
+</span>
+<div class="sector">
+    <div class="rivi">
+        <div class="cell width50">
+            Linja-autonkuljettajan ammattitutkinto
+        </div>
+        <div class="cell padding20">
+            {% if osaaminen | fieldvalue("tutkinto_linja_auto") == 'true' %} Kyllä {% else %} Ei {% endif %}
+        </div>
+    </div>
+    <div class="rivi">
+        <div class="cell width50">
+            Yhdistelmäajoneuvonkuljettajan ammattitutkinto
+        </div>
+        <div class="cell padding20">
+            {% if osaaminen | fieldvalue("tutkinto_yhdistelma") == 'true' %} Kyllä {% else %} Ei {% endif %}
+        </div>
+    </div>
+    <div class="rivi">
+        <div class="cell width50">
+            Puutavaran autokuljetuksen ammattitutkinto
+        </div>
+        <div class="cell padding20">
+            {% if osaaminen | fieldvalue("tutkinto_puutavara") == 'true' %} Kyllä {% else %} Ei {% endif %}
+        </div>
+    </div>
+    <div class="rivi">
+        <div class="cell width50">
+            Kuljetuspalvelujen koulutusohjelmassa suoritettu logistiikan perustutkinto
+        </div>
+        <div class="cell padding20">
+            {% if osaaminen | fieldvalue("tutkinto_kuljetuspalvelu") == 'true' %} Kyllä {% else %} Ei {% endif %}
+        </div>
+    </div>
+    <div class="rivi">
+        <div class="cell width50">
+            Kuljetusalan ammattitutkinto
+        </div>
+        <div class="cell padding20">
+            {% if osaaminen | fieldvalue("tutkinto_kuljetusala") == 'true' %} Kyllä {% else %} Ei {% endif %}
+        </div>
+    </div>
+</div>

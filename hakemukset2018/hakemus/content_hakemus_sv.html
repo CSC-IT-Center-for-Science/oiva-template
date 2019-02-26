@@ -1,18 +1,117 @@
-<div id="maarayksetPage">
-    <h4>HAKEMUS AMMATILLISTEN TUTKINTOJEN JA KOULUTUKSEN JÄRJESTÄMISLUVAKSI {{ muutospyynto.hakupvm | toDate | date("d.M.yyyy") }}</h4>
+<div class="sector">
+    <h3>Ammatillisten tutkintojen ja koulutuksen järjestämisluvan muutoshakemus</h3>
 
     <!-- Tutkinnot ja koulutukset -->
-    <div class="otsikko">1) Tutkinnot ja koulutukset</div>
+    <h4>1) Tutkinnot ja koulutukset</h4>
     <div class="sisalto">
 
         <!-- Koulutusala koulutukset -->
         {% include fromContext("hakemus/muutokset_koulutusalat") with
-        { "muutokset": muutospyynto.muutokset | filterMuutos(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus"]) }
+            { "muutokset": muutospyynto.muutokset | filterMuutos(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus"]) }
         %}
 
         <!-- VALMA ja TELMA -->
-        {% include fromDefault("maaraykset_valmatelma") with
-        { "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_5|koulutustyyppi_18|koulutustyyppi_19"]) }
+        {% include fromContext("hakemus/muutokset_valmatelma") with
+        { "muutokset_valmatelma": muutospyynto.muutokset | filterMuutos(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_5|koulutustyyppi_18|koulutustyyppi_19"]) }
+        %}
+
+        <!-- Ammatilliseen tehtävään valmistava koulutus -->
+        {% include fromContext("hakemus/muutokset_atvkoulutus") with
+        { "muutokset_atvkoulutus": muutospyynto.muutokset | filterMuutos(["kohde:tutkinnotjakoulutukset", "koodisto:ammatilliseentehtavaanvalmistavakoulutus"]) }
+        %}
+
+        <!-- Kuljettajakoulutus -->
+        {% include fromContext("hakemus/muutokset_kuljettajakoulutus") with
+        { "muutokset_kuljettajakoulutus": muutospyynto.muutokset | filterMuutos(["kohde:tutkinnotjakoulutukset", "koodisto:kuljettajakoulutus"]) }
+        %}
+
+        <!-- Työvoimakoulutus -->
+        {% include fromContext("hakemus/muutokset_tyovoimakoulutus") with
+        { "muutokset_tyovoimakoulutus": muutospyynto.muutokset | filterMuutos(["kohde:tutkinnotjakoulutukset", "koodisto:oivatyovoimakoulutus"]) }
+        %}
+
+    </div>
+
+    <!-- Opetus- ja tutkintokieli -->
+    <h4>2) Opetus- ja tutkintokieli</h4>
+    <div class="sisalto">
+
+        <!-- Oppilaitoksen opetuskieli -->
+        {% include fromContext("hakemus/muutokset_opetuskielet") with
+        { "muutokset": muutospyynto.muutokset | filterMuutos(["kohde:opetusjatutkintokieli", "koodisto:oppilaitoksenopetuskieli"]) }
+        %}
+
+        <!-- Vieraskieliset: ruotsi -->
+        {% include fromContext("hakemus/muutokset_vieraskieliset") with
+        { "kieli": "sv",
+        "muutokset": muutospyynto.muutokset | filterMuutos(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "alimaarays:koodisto:kieli", "alimaarays:koodiarvo:sv"])
+        }
+        %}
+
+        <!-- Vieraskieliset: englanti -->
+        {% include fromContext("hakemus/muutokset_vieraskieliset") with
+        { "kieli": "en",
+        "muutokset": muutospyynto.muutokset | filterMuutos(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "alimaarays:koodisto:kieli", "alimaarays:koodiarvo:en"])
+        }
+        %}
+
+        <!-- Vieraskieliset: venäjä -->
+        {% include fromContext("hakemus/muutokset_vieraskieliset") with
+        { "kieli": "ru",
+        "muutokset": muutospyynto.muutokset | filterMuutos(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "alimaarays:koodisto:kieli", "alimaarays:koodiarvo:ru"])
+        }
+        %}
+
+        <!-- Vieraskieliset: suomi (ruotsinkielisille järjestäjille) -->
+        {% include fromContext("hakemus/muutokset_vieraskieliset") with
+        { "kieli": "fi",
+        "muutokset": muutospyynto.muutokset | filterMuutos(["kohde:opetusjatutkintokieli", "koodisto:kieli"])
+        }
+        %}
+
+    </div>
+
+    <!-- Toiminta-alue -->
+    <h4>3) Toiminta-alue</h4>
+    <div class="sisalto">
+        {% include fromContext("hakemus/muutokset_toimintaalueet") with
+        { "muutokset": muutospyynto.muutokset | filterMuutos(["kohde:toimintaalue"]) }
+        %}
+    </div>
+
+
+    <!-- Opiskelijavuodet -->
+    <h4>4) Opiskelijavuodet</h4>
+    <div class="sisalto">
+
+        <!-- Koulutussektori opiskelijavuosien vähimmäis/enimmäismäärä -->
+        <div class="maaraykset">
+            {% for muutos in muutospyynto.muutokset | filterMuutos(["kohde:opiskelijavuodet", "koodisto:koulutussektori"]) %}
+            <span class="loop {{ maarays | htmlClass }}">
+                    Haettu uusi
+                    <span class="data">{{ "vähimmäismäärä|enimmäismäärä" | wording(muutos.isMaaraystyyppi("oikeus")) }}</span> on
+                    <span class="data">{{ muutos.arvo | number }}</span>.
+             </span>
+            <div class="loop {{ maarays | htmlClass }}">
+                <span class="data cell-wider padding40">{{ muutos.meta | fieldvalue("perusteluteksti") }}</span>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Rajoitteet: enintään -->
+        {% include fromContext("hakemus/muutokset_opiskelijavuosirajoitukset") with
+        { "otsikko": "Opiskelijavuosien vähimmäismäärää koskee seuraava rajoitus|Opiskelijavuosien vähimmäismäärää koskevat seuraavat rajoitukset",
+        "muutokset": muutospyynto.muutokset | filterMuutos([ "kohde:opiskelijavuodet", "koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "arvo:>0"])
+        }
+        %}
+    </div>
+
+    <!-- Muut -->
+    <h4>5) Muut oikeudet, velvollisuudet, ehdot ja tehtävät</h4>
+    <div class="sisalto">
+
+        {% include fromContext("hakemus/muutokset_muut") with
+        { "muutokset": muutospyynto.muutokset | filterMuutos(["kohde:muut"]) }
         %}
 
     </div>

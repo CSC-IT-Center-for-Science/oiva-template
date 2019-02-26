@@ -1,32 +1,14 @@
 <div class="if">
     {% if muutokset is notBlank %}
-    <div class="otsikko">
-        Lisättäväksi haetut tutkinnot :
+    {% for koodiarvo in ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "99"] %}
+    <div class="loop">
+        {% include fromContext("hakemus/muutokset_koulutusala") with
+        {
+        "koulutusalaKoodi": muutokset | muutosYlakoodi("isced2011koulutusalataso1_" + koodiarvo),
+        "muutokset": muutokset | filterMuutos("ylakoodi:isced2011koulutusalataso1_" + koodiarvo)
+        }
+        %}
     </div>
-    {% for muutos in muutokset %}
-    {% if muutos.tila == "LISAYS" %}
-    <div class="loop {{ maarays | htmlClass }}">
-        <span class="data cell-wider">{{ muutos.koodi.koodiarvo }} {{ muutos.koodi.nimi | translated }}</span>
-    </div>
-    <div class="loop {{ maarays | htmlClass }}">
-        <span class="data cell-wider sisennys">{{ muutos.meta | fieldvalue("perusteluteksti") }}</span>
-    </div>
-    {% endif %}
     {% endfor %}
-
-    <div class="otsikko">
-        Poistettavaksi haetut tutkinnot :
-    </div>
-    {% for muutos in muutokset %}
-    {% if muutos.tila == "POISTO" %}
-    <div class="loop {{ maarays | htmlClass }}">
-        <span class="data cell-wider">{{ muutos.koodi.koodiarvo }} {{ muutos.koodi.nimi | translated }}</span>
-    </div>
-    <div class="loop {{ maarays | htmlClass }}">
-        <span class="data cell-wider sisennys">{{ muutos.meta | fieldvalue("perusteluteksti")}}</span>
-    </div>
-    {% endif %}
-    {% endfor %}
-
     {% endif %}
 </div>
