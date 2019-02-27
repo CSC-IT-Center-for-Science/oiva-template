@@ -1,0 +1,8 @@
+{% if maaraykset is notBlank %}
+<div class="maaraystyyppiotsikko data">{{ koulutustyyppiKoodi.nimi | translated }}</div>
+{% for maaraystyyppi in ["oikeus", "velvoite", "rajoite"] %}
+{% include fromContext("maaraykset_koulutus") with
+{ "maaraykset": maaraykset | filterMaarays("tyyppi:" + maaraystyyppi) }
+%}
+{% endfor %}
+{% endif %}

@@ -1,0 +1,21 @@
+<div class="if">
+    {% if maaraykset is notBlank %}
+        <div class="tietoa">
+            Utbildningsanordnaren har rätt att utfärda följande examina och att ge examensutbildning för dem:
+        </div>
+
+        {% for koodiarvo in ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "99"] %}
+            {% include fromContext("maaraykset_koulutusala") with
+            { "koulutusalaKoodi": maaraykset | ylakoodi("isced2011koulutusalataso1_" + koodiarvo),
+            "maaraykset": maaraykset | filterMaarays("ylakoodi:isced2011koulutusalataso1_" + koodiarvo)
+            }
+            %}
+        {% endfor %}
+
+        <div class="tietoa">
+            I anknytning till ovannämnda examina kan utbildningsanordnaren också ordna sådan utbildning som
+fördjupar eller kompletterar yrkeskompetensen som avses i 8 § 1 punkten i lagen om yrkesutbildning
+(531/2017).
+        </div>
+    {% endif %}
+</div>
