@@ -1,8 +1,8 @@
-<div id="maarayksetPage">
-    <h4>HAKEMUS AMMATILLISTEN TUTKINTOJEN JA KOULUTUKSEN JÄRJESTÄMISLUVAKSI {{ muutospyynto.hakupvm | toDate | date("d.M.yyyy") }}</h4>
+<div class="sector">
+    <h3>Ammatillisten tutkintojen ja koulutuksen järjestämisluvan muutoshakemus</h3>
 
     <!-- Tutkinnot ja koulutukset -->
-    <div class="otsikko">1) Tutkinnot ja koulutukset</div>
+    <h4>1) Tutkinnot ja koulutukset</h4>
     <div class="sisalto">
 
         <!-- Koulutusala koulutukset -->
@@ -33,7 +33,7 @@
     </div>
 
     <!-- Opetus- ja tutkintokieli -->
-    <div class="otsikko">2) Opetus- ja tutkintokieli</div>
+    <h4>2) Opetus- ja tutkintokieli</h4>
     <div class="sisalto">
 
         <!-- Oppilaitoksen opetuskieli -->
@@ -72,7 +72,7 @@
     </div>
 
     <!-- Toiminta-alue -->
-    <div class="otsikko">3) Toiminta-alue</div>
+    <h4>3) Toiminta-alue</h4>
     <div class="sisalto">
         {% include fromContext("hakemus/muutokset_toimintaalueet") with
         { "muutokset": muutospyynto.muutokset | filterMuutos(["kohde:toimintaalue"]) }
@@ -81,7 +81,7 @@
 
 
     <!-- Opiskelijavuodet -->
-    <div class="otsikko">4) Opiskelijavuodet</div>
+    <h4>4) Opiskelijavuodet</h4>
     <div class="sisalto">
 
         <!-- Koulutussektori opiskelijavuosien vähimmäis/enimmäismäärä -->
@@ -107,7 +107,7 @@
     </div>
 
     <!-- Muut -->
-    <div class="otsikko">5) Muut oikeudet, velvollisuudet, ehdot ja tehtävät</div>
+    <h4>5) Muut oikeudet, velvollisuudet, ehdot ja tehtävät</h4>
     <div class="sisalto">
 
         {% include fromContext("hakemus/muutokset_muut") with

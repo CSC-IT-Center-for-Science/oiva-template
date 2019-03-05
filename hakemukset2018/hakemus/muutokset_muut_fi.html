@@ -3,37 +3,37 @@
 
         <!-- Laajennettu oppisopimuskoulutuksen järjestämistehtävä -->
         {% include fromContext("hakemus/muutokset_laajennettuoppisopimuskoulutus") with
-            { "muutokset": muutokset | filterMuutos(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "koodiarvo:1"]) }
+            { "muutokset": muutokset | filterMuutos(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "kasite:laajennettu"]) }
         %}
 
         <!-- Vaativan erityisen tuen tehtävä  -->
         {% include fromContext("hakemus/muutokset_vaativatuki") with
-            { "muutokset": muutokset | filterMuutos(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "koodiarvo:2|3|12"]) }
+            { "muutokset": muutokset | filterMuutos(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "kasite:vaativa"]) }
         %}
 
         <!-- Sisäoppilaitosmuotoinen koulutus  -->
         {% include fromContext("hakemus/muutokset_sisaoppilaitos") with
-            { "muutokset": muutokset | filterMuutos(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "koodiarvo:4"]) }
+            { "muutokset": muutokset | filterMuutos(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "kasite:sisaoppilaitos"]) }
         %}
 
         <!-- Vankilaopetus  -->
         {% include fromContext("hakemus/muutokset_vankilaopetus") with
-            { "muutokset": muutokset | filterMuutos(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "koodiarvo:5|13"]) }
+            { "muutokset": muutokset | filterMuutos(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "kasite:vankila"]) }
         %}
 
         <!-- Urheilijat  -->
         {% include fromContext("hakemus/muutokset_urheilijat") with
-            { "muutokset": muutokset | filterMuutos(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "koodiarvo:6"]) }
+            { "muutokset": muutokset | filterMuutos(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "kasite:urheilu"]) }
         %}
 
         <!-- Kokeilut  -->
         {% include fromContext("hakemus/muutokset_kokeilut") with
-            { "muutokset": muutokset | filterMuutos(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "koodiarvo:7"]) }
+            { "muutokset": muutokset | filterMuutos(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "kasite:kokeilu"]) }
         %}
 
         <!-- Yhteistyösopimukset  -->
         {% include fromContext("hakemus/muutokset_yhteistyosopimukset") with
-            { "muutokset": muutokset | filterMuutos(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "koodiarvo:8"]) }
+            { "muutokset": muutokset | filterMuutos(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "kasite:yhteistyosopimus"]) }
         %}
 
         <!-- Yhteistyö musiikkialan koulutuksen järjestämisessä  -->
