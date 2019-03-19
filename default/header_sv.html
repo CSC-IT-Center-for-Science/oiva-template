@@ -11,7 +11,7 @@
     OKM/{{ lupa.diaarinumero }}
 </div>
 <div id="diaari-placeholder-right-bottom">
-    6.10.2017
+    {{ lupa.paatospvm | toDate | date("d.M.yyyy") }}
 </div>
 
 <div id="diaari-placeholder-pagecounter">Sida </div>
