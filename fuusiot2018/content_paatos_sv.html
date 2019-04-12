@@ -1,0 +1,149 @@
+<div id="maarayksetPage">
+    <h4>TILLSTÅND ATT ORDNA YRKESINRIKTADE EXAMINA OCH YRKESUTBILDNING FRÅN {{ lupa.alkupvm | toDate | date("d.M.yyyy") }}</h4>
+
+    <!-- Tutkinnot ja koulutukset -->
+    <div class="otsikko">1) Examina och utbildningar</div>
+    <div class="sisalto">
+
+        <!-- Koulutusala koulutukset -->
+        {% include fromContext("maaraykset_koulutusalat") with
+        { "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus"]) }
+        %}
+
+        <!-- VALMA ja TELMA -->
+        {% include fromDefault("maaraykset_valmatelma") with
+        { "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "ylakoodi:koulutustyyppi_5|koulutustyyppi_18|koulutustyyppi_19"]) }
+        %}
+
+        <!-- Ammatilliseen tehtävään valmistava koulutus -->
+        {% include fromDefault("maaraykset_atvkoulutus") with
+        { "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:ammatilliseentehtavaanvalmistavakoulutus"]) }
+        %}
+
+        <!-- Kuljettajakoulutus -->
+        {% include fromContext("maaraykset_kuljettajakoulutus") with
+        { "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:kuljettajakoulutus"]) }
+        %}
+
+        <!-- Työvoimakoulutus -->
+        {% include fromDefault("maaraykset_tyovoimakoulutus") with
+        { "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:oivatyovoimakoulutus"]) }
+        %}
+
+        <!-- POIKKEUS: Meyer -->
+        {% if jarjestaja.ytunnus == "0772017-4" %}
+        <div class="tietoa">
+            Lisäksi lain (531/2017) 134 §:n nojalla koulutuksen järjestäjä saa järjestää 8 §:n 1 kohdassa tarkoitettua ammatillista osaamista syventävää tai täydentävää koulutusta muutenkin kuin työvoimakoulutuksena 31 päivään joulukuut$
+
+        </div>
+        {% endif %}
+
+
+
+    </div>
+
+    <!-- Opetus- ja tutkintokieli -->
+    <div class="otsikko">2) Undervisnings- och examensspråk</div>
+    <div class="sisalto">
+
+        <!-- Oppilaitoksen opetuskieli -->
+        {% include fromDefault("maaraykset_opetuskielet") with
+        { "maaraykset": lupa.maaraykset | filterMaarays(["tyyppi:velvoite", "kohde:opetusjatutkintokieli", "koodisto:oppilaitoksenopetuskieli"]) }
+        %}
+
+        <!-- Poikkeukset -->
+        {% include fromDefault("maaraykset_opetuskieli_poikkeukset") with
+        { "maaraykset": lupa.maaraykset | filterMaarays(["tyyppi:poikkeus", "kohde:opetusjatutkintokieli"]) }
+        %}
+
+        <!-- Vieraskieliset: ruotsi -->
+        {% include fromDefault("maaraykset_vieraskieliset") with
+        { "kieli": "sv",
+        "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "alimaarays:koodisto:kieli", "alimaarays:koodiarvo:sv"])
+        }
+        %}
+
+        <!-- Vieraskieliset: englanti -->
+        {% include fromDefault("maaraykset_vieraskieliset") with
+        { "kieli": "en",
+        "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "alimaarays:koodisto:kieli", "alimaarays:koodiarvo:en"])
+        }
+        %}
+
+
+        <!-- Vieraskieliset: venäjä -->
+        {% include fromDefault("maaraykset_vieraskieliset") with
+        { "kieli": "ru",
+        "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "alimaarays:koodisto:kieli", "alimaarays:koodiarvo:ru"])
+        }
+        %}
+
+        <!-- Vieraskieliset: suomi (ruotsinkielisille järjestäjille) -->
+        {% include fromDefault("maaraykset_vieraskieliset") with
+        { "kieli": "fi",
+        "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "alimaarays:koodisto:kieli", "alimaarays:koodiarvo:fi"])
+        }
+        %}
+
+    </div>
+
+    <!-- Toiminta-alue -->
+    <div class="otsikko">3) Verksamhetsområde</div>
+    <div class="sisalto">
+        {% include fromDefault("maaraykset_toimintaalueet") with
+        { "maaraykset": lupa.maaraykset | filterMaarays(["tyyppi:velvoite", "kohde:toimintaalue"]) }
+        %}
+    </div>
+
+    <!-- Opiskelijavuodet -->
+    <div class="otsikko">4) Studerandeår</div>
+    <div class="sisalto">
+
+        <!-- Saamelaisalueen koulutuskeskus on valtion oppilaitos eikä sille määritetä opiskelijavuosien vähimmäismäärää -->
+        {% if jarjestaja.ytunnus == "0244767-4" %}
+        Valtion oppilaitokselle ei määritetä opiskelijavuosien määrää.
+        {% else %}
+        <!-- Koulutussektori opiskelijavuosien vähimmäis/enimmäismäärä -->
+        <div class="maaraykset">
+            {% for maarays in lupa.maaraykset | filterMaarays(["tyyppi:oikeus|rajoite", "kohde:opiskelijavuodet", "koodisto:koulutussektori"]) %}
+            <span class="loop {{ maarays | htmlClass }}">
+                    Utbildningsanordnarens
+                    <span class="data">{{ "minimiantal|maximiantal" | wording(maarays.isMaaraystyyppi("oikeus")) }}</span> studerandeår är
+                    <span class="data">{{ maarays.arvo | number }}</span>.
+                </span>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <!-- Rajoitteet: enintään -->
+        {% include fromDefault("maaraykset_opiskelijavuosirajoitukset") with
+        { "otsikko": "Följande begränsning gäller för studerandeåren|Följande begränsningar gäller för studerandeåren",
+        "maaraykset": lupa.maaraykset | filterMaarays(["tyyppi:rajoite", "kohde:opiskelijavuodet", "koodisto:~koulutussektori", "arvo:>0"])
+        }
+        %}
+
+        <!-- Oikeudet: vähintään -->
+        {% include fromDefault("maaraykset_opiskelijavuosirajoitukset") with
+        { "otsikko": "Följande skyldighet gäller för studerandeåren|Följande skyldigheter gäller för studerandeåren",
+        "maaraykset": lupa.maaraykset | filterMaarays(["tyyppi:oikeus", "kohde:opiskelijavuodet", "koodisto:~koulutussektori", "arvo:>0"])
+        }
+        %}
+
+        <!-- Vain työvoimakoulutus -> tulee lisäteksti -->
+        {% include fromDefault("maaraykset_tyovoimakoulutus_lisateksti") with
+        { "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:oivatyovoimakoulutus", "koodiarvo:3"]) }
+        %}
+
+
+    </div>
+
+    <!-- Muut -->
+    <div class="otsikko">5) Övriga rättigheter, skyldigheter, villkor och uppgifter</div>
+    <div class="sisalto">
+
+        {% include fromContext("maaraykset_muut") with
+        { "maaraykset": lupa.maaraykset | filterMaarays(["kohde:muut"]) }
+        %}
+
+    </div>
+</div>

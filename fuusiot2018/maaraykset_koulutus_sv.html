@@ -1,0 +1,13 @@
+{% if maaraykset is notBlank %}
+<div class="maaraykset sisennys2 if">
+    {% for maarays in maaraykset | sortMaarays("koodiarvo") %}
+    <div class="loop {{ maarays | htmlClass }}">
+        <span class="data cell-wider">{{ maarays.koodi.koodiArvo }} {{ maarays.koodi.nimi | translated }}</span>
+        <span class="data cell"></span>
+    </div>
+    {% include fromDefault("maaraykset_osaamisalarajoitukset") with
+    { "maaraykset": maarays.aliMaaraykset | filterMaarays(["tyyppi:rajoite", "kohde:tutkinnotjakoulutukset", "koodisto:osaamisala"]) }
+    %}
+    {% endfor %}
+</div>
+{% endif %}
