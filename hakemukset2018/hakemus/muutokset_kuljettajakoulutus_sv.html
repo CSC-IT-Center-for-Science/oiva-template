@@ -1,17 +1,98 @@
 <div class="if">
     {% if muutokset_kuljettajakoulutus is notBlank %}
-    <div class="otsikko">
-        Kuljettajakoulutus:
-    </div>
-    <div class="maaraykset">
-        {% for muutos in muutokset_kuljettajakoulutus %}
-        <div class="loop {{ maarays | htmlClass }} kuljettajakoulutusSelite">
-            <span class="data">{{muutos.tila | lower | capitalize}}:  {{ muutos.koodi.kuvaus | translated }}</span>
+        <div class="otsikko">
+            Kuljettajakoulutus:
         </div>
-        <div class="loop {{ maarays | htmlClass }}">
-            <span class="data cell-wider padding40">{{ muutos.meta | fieldvalue("perusteluteksti") }}</span>
+        <div class="maaraykset sisennys">
+            {% for muutos in muutokset_kuljettajakoulutus %}
+                {% set perustelu = muutos.meta | field("perusteluteksti_kuljetus_perus") %}
+                <div class="loop kuljettajakoulutusSelite">
+                    <span class="data">{{muutos.tila | lower | capitalize}}:  {{ muutos.koodi.kuvaus | translated }}</span>
+                </div>
+                <div class="loop with-counter">
+                    <h5>Tehtävän tarpeellisuus</h5>
+                    <span>{{ perustelu | fieldvalue("tarpeellisuus") }}</span>
+
+                    <h5>Onko hakijalla voimassaolevaa Liikenne- ja turvallisuusviraston (Trafi) myötämää lupaa</h5>
+                    <span>
+                        {% if perustelu | fieldvalue("voimassaoleva") == 'true' %}
+                        Kyllä, voimassa {{ perustelu | fieldvalue("voimassaoleva_pvm") }}
+                        {% else %}
+                        Ei
+                        {% endif %}
+                    </span>
+
+                    <h5>Suunnitelma ammattipätevyyskoulutuksen järjestämikseksi</h5>
+                    <span>{{ perustelu | fieldvalue("suunnitelma") }}</span>
+
+                    {% if muutos.koodiarvo == "2" or muutos.koodiarvo == "3" %}
+                    <h5>Koulutusohjelmien edellyttämä osaaminen</h5>
+                    <span>{{ perustelu | fieldvalue("osaaminen") }}</span>
+                    {% endif %}
+
+                    <h5>Opetuksesta vastaavan johtajan kelpoisuus ja työkokemus</h5>
+                    <p>Valtioneuvoston asetus 434/2018 10 §</p>
+
+                    {% set toimipiste = perustelu | field("toimipisteet") %}
+                    <p class="bold">{{ toimipiste | fieldvalue("nimi") }}</p>
+                    {% include fromContext("hakemus/muutokset_kuljettajakoulutus_osaaminen") with
+                        { "osaaminen": toimipiste }
+                    %}
+                    <h5>Opettajien kelpoisuus ja työkokemus</h5>
+                    <p>Valtioneuvoston asetus 434/2018 10 §</p>
+
+                    {% for henkilo in perustelu | field("henkilot") %}
+                    <hr>
+                    <p class="bold">{{ henkilo | fieldvalue("nimi") }}</p>
+                    {% include fromContext("hakemus/muutokset_kuljettajakoulutus_osaaminen") with
+                        { "osaaminen": henkilo }
+                    %}
+                    {% endfor %}
+                    <h5>Ajoneuvokanta</h5>
+                    <div class="sector">
+                        <div class="rivi">
+                            <div class="cell width50">
+                                Linja-autot (kpl)
+                            </div>
+                            <div class="cell padding20">
+                                {{ perustelu | fieldvalue("kanta_linja_auto") }}
+                            </div>
+                        </div>
+                        <div class="rivi">
+                            <div class="cell width50">
+                                Kuorma-autot (kpl)
+                            </div>
+                            <div class="cell padding20">
+                                {{ perustelu | fieldvalue("kanta_kuorma_auto") }}
+                            </div>
+                        </div>
+                        <div class="rivi">
+                            <div class="cell width50">
+                                Perävaunut (kpl)
+                            </div>
+                            <div class="cell padding20">
+                                {{ perustelu | fieldvalue("kanta_peravaunu") }}
+                            </div>
+                        </div>
+                    </div>
+                    <h5>Muut opetusvälineet</h5>
+                    <span>
+                        Asetuksen mukaiset opetus- ja havaintovälineet (VnAsetus 434/2018, 11§ 1 ja 2 mom.):
+                    </span><br/>
+                    <span class="sisennys">
+                        {{ perustelu | fieldvalue("valineet_asetus") }}
+                    </span>
+                    <br/><br/>
+                    <span>
+                        Muut opetus- ja havaintovälineet:
+                    </span><br/>
+                    <span class="sisennys">
+                        {{ perustelu | fieldvalue("valineet_muut") }}
+                    </span>
+                    <!--
+                    {{ perustelu | fieldvalue("kanta_muut") }}-->
+            {% endfor %}
+            </div>
         </div>
-        {% endfor %}
-    </div>
     {% endif %}
 </div>

@@ -1,0 +1,69 @@
+<h3>Taloudelliset edellytykset</h3>
+{% for edellytys in muutospyynto.meta | field("taloudelliset") %}
+<span class="otsikko">
+    Taloudelliset edellytykset:
+</span><br/>
+<span class="sisennys">
+    {{ edellytys | fieldvalue("edellytykset") }}
+</span><br/><br/>
+<span class="otsikko">
+    Vaikutukset taloudellisten resurssien kohdentamiseen:
+</span><br/>
+<span class="sisennys">
+    {{ edellytys | fieldvalue("vaikutukset") }}
+</span><br/><br/>
+<span class="otsikko">
+    Toiminnan ja talouden sopeuttaminen:
+</span><br/>
+<span class="sisennys">
+    {{ edellytys | fieldvalue("sopeuttaminen") }}
+</span><br/><br/>
+<span class="otsikko">
+    Tarvittavat investoinnit:
+</span><br/>
+<span class="sisennys">
+    {{ edellytys | fieldvalue("investoinnit") }}
+</span><br/><br/>
+<span class="otsikko">
+    Investointien kustannukset:
+</span><br/>
+<span class="sisennys">
+    {{ edellytys | fieldvalue("kustannukset") }}
+</span><br/><br/>
+<span class="otsikko">
+    Investointien rahoitus:
+</span><br/>
+<span class="sisennys">
+    {{ edellytys | fieldvalue("rahoitus") }}
+</span><br/><br/>
+<span class="otsikko">
+    Omavaraisuusaste:
+</span><br/>
+<span class="sisennys">
+    {{ edellytys | fieldvalue("omavaraisuusaste") }}
+</span><br/><br/>
+<span class="otsikko">
+    Maksuvalmius:
+</span><br/>
+<span class="sisennys">
+    {{ edellytys | fieldvalue("maksuvalmius") }}
+</span><br/><br/>
+<span class="otsikko">
+    Velkaantuneisuus:
+</span><br/>
+<span class="sisennys">
+    {{ edellytys | fieldvalue("velkaantuneisuus") }}
+</span><br/><br/>
+<span class="otsikko">
+    Kannattavuus:
+</span><br/>
+<span class="sisennys">
+    {{ edellytys | fieldvalue("kannattavuus") }}
+</span><br/><br/>
+<span class="otsikko">
+    Kumulatiivinen yli- tai alijäämä:
+</span><br/>
+<span class="sisennys">
+    {{ edellytys | fieldvalue("kumulatiivinen") }}
+</span>
+{% endfor %}

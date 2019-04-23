@@ -2,15 +2,16 @@
 
 <!-- HEADER -->
 {% block header %}
-    {% include fromContext("hakemus/header") %}
+{% include fromContext("hakemus/header") %}
 {% endblock %}
 
-<!-- HAKEMUKSEN TIEDOT -->
-{% block header %}
-{% include fromContext("hakemus/hakemus") %}
-{% endblock %}
-
-<!-- LUVAN TIEDOT -->
 {% block content %}
+<div id="maarayksetPage">
+    <!-- HAKEMUKSEN TIEDOT -->
+    {% include fromContext("hakemus/hakemus") %}
+    <!-- LUVAN TIEDOT -->
     {% include fromContext("hakemus/content_hakemus") %}
+    <!-- TALOUDELLISET EDELLYTYKSET -->
+    {% include fromContext("hakemus/taloudelliset_edellytykset") %}
+</div>
 {% endblock %}

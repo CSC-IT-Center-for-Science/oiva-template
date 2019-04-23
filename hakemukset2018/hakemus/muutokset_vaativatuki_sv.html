@@ -1,19 +1,70 @@
 {% if muutokset is notBlank %}
-
-<p><b>Uppgift att ordna krävande särkskilt stöd</b></p>
+    <div class="otsikko">
+        Vaativan erityisen tuen tehtävä:
+    </div>
 
     {% for muutos in muutokset %}
-        <div class="maaraykset">
-            <span class="data loop {{ maarays | htmlClass }}">
-                {{muutos.tila | lower | capitalize}}: {{ muutos.koodi.kuvaus | translated }}
-            </span>
-            <div class="loop {{ maarays | htmlClass }}">
-                <span class="data cell-wider padding40">{{ muutos.meta | fieldvalue("perusteluteksti") }}</span>
+    <div class="maaraykset sisennys">
+        <span class="data">
+            {{muutos.tila | lower | capitalize}}: {{ muutos.koodi.kuvaus | translated }}
+        </span>
+        {% set perustelu = muutos.meta | field("perusteluteksti_vaativa") %}
+        <div class="loop with-counter">
+            <h5>Tehtävän tarpeellisuus</h5>
+            <span>{{ perustelu | fieldvalue("tarpeellisuus") }}</span>
+            <h5>Toiminnaliset edellytykset vaativan erityisen tuen tehtävän järjestämiseksi</h5>
+            <div class="sector">
+                <div class="rivi">
+                    <div class="cell width30">
+                        <span>Henkilöstöresurssit:</span>
+                    </div>
+                    <div class="cell">
+                        <span>{{ perustelu | fieldvalue("henkilosto") }}</span>
+                    </div>
+                </div>
+                <div class="rivi">
+                    <div class="cell width30">
+                        <span>Osaaminen:</span>
+                    </div>
+                    <div class="cell">
+                        <span>{{ perustelu | fieldvalue("osaaminen") }}</span>
+                    </div>
+                </div>
+                <div class="rivi">
+                    <div class="cell width30">
+                        <span>Pedagogiset järjestelyt:</span>
+                    </div>
+                    <div class="cell">
+                        <span>{{ perustelu | fieldvalue("pedagogiset") }}</span>
+                    </div>
+                </div>
+                <div class="rivi">
+                    <div class="cell width30">
+                        <span>Sidosryhmäyhteistyö:</span>
+                    </div>
+                    <div class="cell">
+                        <span>{{ perustelu | fieldvalue("sidosryhma") }}</span>
+                    </div>
+                </div>
+            </div>
+            <h5>Suunnitelma vaativan erityisen tuen tehtävän järjestämiseksi</h5>
+            <span>{{ perustelu | fieldvalue("suunnitelma") }}</span>
+            <h5>Arvio koulutukseen suunnattavista opiskelijavuosista seuraavana kolmena vuotena</h5>
+            {% set vuodet = perustelu | field("vuodet") %}
+            <div class="sector">
+                {% for arvo in ["arvo_1", "arvo_2", "arvo_3"] %}
+                {% set vuosi = vuodet | field(arvo) %}
+                <div class="rivi">
+                    <div class="sector-left">
+                        <span>{{ vuosi | fieldvalue("vuosi") }}:</span>
+                    </div>
+                    <div class="cell">
+                        <span>{{ vuosi | fieldvalue("maara") }}</span>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
         </div>
+    </div>
     {% endfor %}
-
 {% endif %}
-
-
-

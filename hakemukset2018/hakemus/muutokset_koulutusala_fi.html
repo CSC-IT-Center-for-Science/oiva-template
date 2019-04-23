@@ -2,8 +2,9 @@
     <div class="koulutusalaotsikko data">{{ koulutusalaKoodi.koodiArvo }} {{ koulutusalaKoodi.nimi | translated }}</div>
     {% for koodiarvo in ["1", "11", "12"] %}
         {% include fromContext("hakemus/muutokset_koulutukset") with
-            { "koulutustyyppiKoodi": muutokset | muutosYlakoodi("koulutustyyppi_" + koodiarvo),
-              "muutokset": muutokset | filterMuutos(["ylakoodi:koulutustyyppi_" + koodiarvo])
+            {
+                "koulutustyyppiKoodi": muutokset | muutosYlakoodi("koulutustyyppi_" + koodiarvo),
+                "muutokset": muutokset | filterMuutos(["ylakoodi:koulutustyyppi_" + koodiarvo])
             }
         %}
     {% endfor %}

@@ -1,0 +1,11 @@
+<div class="if">
+    {% if maaraykset is notBlank %}
+    <div class="maaraykset">
+        {% for maarays in maaraykset %}
+        <div class="loop {{ maarays | htmlClass }} kuljettajakoulutusSelite">
+                    <span class="data">Utbildningsanordnaren har med stöd av 23 § 2 mom. i lagen om yrkesutbildning rätt att vara ett utbildningscentrum som ger utbildning för grundläggande yrkeskompetens för lastbils- och bussförare. U$
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>

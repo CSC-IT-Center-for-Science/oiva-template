@@ -33,16 +33,6 @@
                     </div>
                 </div>
             </div>
-            <div class="sector">
-                <div class="rivi">
-                    <div class="cell">
-                        {{ muutospyynto.meta | fieldvalue("allekirjoittajan_nimike") }}
-                    </div>
-                    <div class="cell">
-                        {{ muutospyynto.meta | fieldvalue("allekirjoittajan_nimi") }}
-                    </div>
-                </div>
-            </div>
             <div class="otsikko">{{ jarjestaja.nimi | translated(language) }}</div>
             <div class="sector">
                 <div class="rivi">
@@ -101,7 +91,7 @@
             Liitteet
         </div>
         <div class="sector-right">
-            Ammatillisten tutkintojen ja koulutuksen järjestämisluvan muutoshakemus
+            Ammatillisten tukintojen ja koulutuksen järjestämisluvan muutoshakemus
         </div>
     </div>
     {% for liite in muutospyynto.liitteet %}

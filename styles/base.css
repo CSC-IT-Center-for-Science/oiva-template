@@ -3,6 +3,15 @@ body {
     font-size: 13px;
 }
 
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #c9c9c9;
+    margin: 1em 0;
+    padding: 0;
+}
+
 @page maarays {
     margin: 2cm;
     font-size: 13px;
@@ -183,6 +192,10 @@ ul.none {
     page-break-after: avoid;
 }
 
+.bold {
+    font-weight: bold;
+}
+
 .sisalto {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -225,6 +238,12 @@ ul.none {
 .cell {
     display: table-cell;
 }
+.width50 {
+    width: 50%;
+}
+.width30 {
+    width: 30%;
+}
 .cell-wide {
     display: table-cell;
     width: 300px;
@@ -254,6 +273,23 @@ ul.none {
 .tyovoimakoulutusSelite {
     margin-top: 10px;
 }
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.with-counter {
+    counter-reset: section;
+}
+
+.with-counter > h5 {
+    counter-increment: section;
+}
+
+.with-counter > h5::before {
+    content: counter(section)". ";
+}
+
 
 /*
  * Output

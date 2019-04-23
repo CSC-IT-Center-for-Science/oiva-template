@@ -1,13 +1,14 @@
 <div class="if">
     {% if muutokset is notBlank %}
-
         {% for koodiarvo in ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "99"] %}
+            <div class="loop">
             {% include fromContext("hakemus/muutokset_koulutusala") with
-            { "koulutusalaKoodi": muutokset | muutosYlakoodi("isced2011koulutusalataso1_" + koodiarvo),
-              "muutokset": muutokset | filterMuutos("ylakoodi:isced2011koulutusalataso1_" + koodiarvo)
-            }
+                {
+                    "koulutusalaKoodi": muutokset | muutosYlakoodi("isced2011koulutusalataso1_" + koodiarvo),
+                    "muutokset": muutokset | filterMuutos("ylakoodi:isced2011koulutusalataso1_" + koodiarvo)
+                }
             %}
+            </div>
         {% endfor %}
-
     {% endif %}
 </div>
