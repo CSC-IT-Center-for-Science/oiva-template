@@ -12,24 +12,10 @@
             %}
         {% endfor %}
 
-        <div class="tietoa">
-            l anknytning till ovannämnda examina kan utbildningsanordnaren också ordna sådan utbildning som fördjupar
-            eller kompletterar yrkeskompetensen som avses i 8 § 1 punkten i lagen om yrkesutbildning (531/2017).
-        </div>
-
-        <!-- Lisätekstejä -->
-        {% include fromDefault("maaraykset_koulutus_lisatekstit") with
-            {
-              "maaraykset1": maaraykset | filterMaarays("koodiarvo:384201|487203|331101|351407|351703|458103|361201|374115|477103|384501|384202|487202"),
-              "maaraykset2": maaraykset | filterMaarays("koodiarvo:477102|354102|364902|467905|374111|477101|384112|487102|487103")
-            }
-        %}
-        {% if maaraykset | filterMaarays("koodiarvo:371113") is notBlank %}
-            <div class="tietoa">
-                Ammatillisen koulutuksen tutkintorakenteen muuttamisesta annetun asetuksen (137/2017) mukaan välinehuoltoalan perustutkinto
-                tulee voimaan 1.8.2018 alkaen. Tällöin em. tutkinto ”371113 Välinehuoltoalan perustutkinto (kokeilu)” korvautuu tutkinnolla
-                ”371113 Välinehuoltoalan perustutkinto”.
-            </div>
-        {% endif %}
+    <div class="tietoa">
+        I anknytning till ovannämnda examina kan utbildningsanordnaren också ordna sådan utbildning som
+        fördjupar eller kompletterar yrkeskompetensen som avses i 8 § 1 punkten i lagen om yrkesutbildning
+        (531/2017).
+    </div>
     {% endif %}
 </div>
