@@ -1,11 +1,12 @@
 <h2>Opetus- ja kulttuuriministeriö</h2>
+{% set yhteenveto = muutospyynto.meta | field("yhteenveto") %}
 <div class="sector">
     <div class="rivi">
         <div class="sector-left">
             Viite
         </div>
         <div class="sector-right">
-            {{ muutospyynto.meta | fieldvalue("viite") }}
+            {{ yhteenveto | fieldvalue("viite") }}
         </div>
     </div>
     <div class="rivi">
@@ -14,32 +15,32 @@
         </div>
         <div class="cell">
             <div class="otsikko">Ammatillisen peruskoulutuksen järjestämisluvan muutos</div>
-            <p>{{ muutospyynto.meta | fieldvalue("saate") }}</p>
+            <p>{{ yhteenveto | fieldvalue("saate") }}</p>
             <p>Järjestämisluvan muutosta haetaan {{ muutospyynto.voimassaalkupvm | toDate | date("d.M.yyyy") }}
                 alkaen.</p>
             <div class="sector">
                 <div class="rivi">
+                    {% set yhteyshenkilo = yhteenveto | field("yhteyshenkilo") %}
                     <div class="cell">
                         Yhteyshenkilö:
                     </div>
                     <div class="cell">
-                        {{ muutospyynto.meta | fieldvalue("nimike") }} {{ muutospyynto.meta | fieldvalue("nimi") }}
+                        {{ yhteyshenkilo | fieldvalue("nimike") }} {{ yhteyshenkilo | fieldvalue("nimi") }}
                     </div>
                 </div>
                 <div class="rivi">
                     <div class="cell"></div>
                     <div class="cell">
-                        {{ muutospyynto.meta | fieldvalue("puhelin") }}, {{ muutospyynto.meta | fieldvalue("email") }}
+                        {{ yhteyshenkilo | fieldvalue("puhelin") }}, {{ yhteyshenkilo | fieldvalue("email") }}
                     </div>
                 </div>
-            </div>
-            <div class="sector">
                 <div class="rivi">
+                    {% set allekirjoittaja = yhteenveto | field("allekirjoittaja") %}
                     <div class="cell">
-                        {{ muutospyynto.meta | fieldvalue("allekirjoittajan_nimike") }}
+                        Allekirjoittaja:
                     </div>
                     <div class="cell">
-                        {{ muutospyynto.meta | fieldvalue("allekirjoittajan_nimi") }}
+                        {{ allekirjoittaja | fieldvalue("nimike") }} {{ allekirjoittaja | fieldvalue("nimi") }}
                     </div>
                 </div>
             </div>
