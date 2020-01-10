@@ -8,7 +8,7 @@
         <span class="data">
             {{muutos.tila | lower | capitalize}}: {{ muutos.koodi.kuvaus | translated }}
         </span>
-        {% set perustelu = muutos.meta | field("perusteluteksti_tyovoima") %}
+        {% set perustelu = muutos.meta | field("perusteluteksti_tyovoimakoulutus") %}
         <div class="loop with-counter">
             <h5>Tehtävän tarpeellisuus</h5>
             <span>{{ perustelu | fieldvalue("tarpeellisuus") }}</span>
@@ -56,16 +56,14 @@
             {% endfor %}
             </span>
             <h5>Arvio koulutukseen suunnattavista opiskelijavuosista seuraavana kolmena vuotena</h5>
-            {% set vuodet = perustelu | field("vuodet") %}
             <div class="sector">
-                {% for arvo in ["arvo_1", "arvo_2", "arvo_3"] %}
-                {% set vuosi = vuodet | field(arvo) %}
+                {% for v in perustelu | field("opiskelija_vuodet") %}
                 <div class="rivi">
                     <div class="sector-left">
-                        <span>{{ vuosi | fieldvalue("vuosi") }}:</span>
+                        <span>{{ v | fieldvalue("vuosi") }}:</span>
                     </div>
                     <div class="cell">
-                        <span>{{ vuosi | fieldvalue("maara") }}</span>
+                        <span>{{ v | fieldvalue("arvo") }}</span>
                     </div>
                 </div>
                 {% endfor %}

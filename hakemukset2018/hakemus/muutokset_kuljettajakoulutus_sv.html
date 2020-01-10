@@ -5,10 +5,17 @@
         </div>
         <div class="maaraykset sisennys">
             {% for muutos in muutokset_kuljettajakoulutus %}
-                {% set perustelu = muutos.meta | field("perusteluteksti_kuljetus_perus") %}
+                {% set perustelu = muutos.meta | field("perusteluteksti_kuljetus") %}
                 <div class="loop kuljettajakoulutusSelite">
                     <span class="data">{{muutos.tila | lower | capitalize}}:  {{ muutos.koodi.kuvaus | translated }}</span>
                 </div>
+                {% if muutos.tila == "POISTO" %}
+                <div class="loop {{ maarays | htmlClass }}">
+                    {% for teksti in muutos.meta | field("perusteluteksti") %}
+                    <span class="data cell-wider padding40">{{ teksti | fieldvalue("value")}}</span><br>
+                    {% endfor %}
+                </div>
+                {% else %}
                 <div class="loop with-counter">
                     <h5>Tehtävän tarpeellisuus</h5>
                     <span>{{ perustelu | fieldvalue("tarpeellisuus") }}</span>
@@ -23,31 +30,40 @@
                     </span>
 
                     <h5>Suunnitelma ammattipätevyyskoulutuksen järjestämikseksi</h5>
-                    <span>{{ perustelu | fieldvalue("suunnitelma") }}</span>
+                    <span>{{ perustelu | fieldvalue("suunnitelma_koulutus_toteutus") }}</span>
 
-                    {% if muutos.koodiarvo == "2" or muutos.koodiarvo == "3" %}
-                    <h5>Koulutusohjelmien edellyttämä osaaminen</h5>
-                    <span>{{ perustelu | fieldvalue("osaaminen") }}</span>
-                    {% endif %}
+                    <h5>Ammattipätevyyskoulutuksen järjestämispaikat</h5>
+                    <span>{{ perustelu | fieldvalue("suunnitelma_koulutus_paikka") }}</span>
+
+                    <h5>Arvio koulutukseen suunnattavista opiskelijavuosista</h5>
+                    <div class="sector">
+                        {% for v in perustelu | field("opiskelija_vuodet") %}
+                        <div class="rivi">
+                            <div class="sector-left">
+                                <span>{{ v | fieldvalue("vuosi") }}:</span>
+                            </div>
+                            <div class="cell">
+                                <span>{{ v | fieldvalue("arvo") }}</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
 
                     <h5>Opetuksesta vastaavan johtajan kelpoisuus ja työkokemus</h5>
                     <p>Valtioneuvoston asetus 434/2018 10 §</p>
 
-                    {% set toimipiste = perustelu | field("toimipisteet") %}
-                    <p class="bold">{{ toimipiste | fieldvalue("nimi") }}</p>
+                    {% set johtajat = perustelu | field("johtajat") %}
                     {% include fromContext("hakemus/muutokset_kuljettajakoulutus_osaaminen") with
-                        { "osaaminen": toimipiste }
+                        { "osaaminen": johtajat }
                     %}
                     <h5>Opettajien kelpoisuus ja työkokemus</h5>
                     <p>Valtioneuvoston asetus 434/2018 10 §</p>
 
-                    {% for henkilo in perustelu | field("henkilot") %}
-                    <hr>
-                    <p class="bold">{{ henkilo | fieldvalue("nimi") }}</p>
+                    {% set opettajat = perustelu | field("opettajat") %}
                     {% include fromContext("hakemus/muutokset_kuljettajakoulutus_osaaminen") with
-                        { "osaaminen": henkilo }
+                        { "osaaminen": opettajat }
                     %}
-                    {% endfor %}
+
                     <h5>Ajoneuvokanta</h5>
                     <div class="sector">
                         <div class="rivi">
@@ -91,8 +107,10 @@
                     </span>
                     <!--
                     {{ perustelu | fieldvalue("kanta_muut") }}-->
+
+                </div>
+                {% endif %}
             {% endfor %}
-            </div>
         </div>
     {% endif %}
 </div>

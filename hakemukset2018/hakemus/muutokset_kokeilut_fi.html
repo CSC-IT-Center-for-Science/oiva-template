@@ -8,7 +8,9 @@
                 {{muutos.tila | lower | capitalize}}: {{ muutos.meta | fieldvalue("kokeilu") }}
             </span>
             <div class="loop {{ maarays | htmlClass }}">
-                <span class="data cell-wider padding40">{{ muutos.meta | fieldvalue("perusteluteksti") }}</span>
+                {% for teksti in muutos.meta | field("perusteluteksti") %}
+                <span class="data cell-wider padding40">{{ teksti | fieldvalue("value")}}</span><br>
+                {% endfor %}
             </div>
         </div>
     {% endfor %}
