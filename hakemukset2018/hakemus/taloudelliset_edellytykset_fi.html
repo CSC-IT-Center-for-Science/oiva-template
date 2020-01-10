@@ -1,5 +1,5 @@
 <h3>Taloudelliset edellytykset</h3>
-{% for edellytys in muutospyynto.meta | field("taloudelliset") %}
+{% set edellytys = muutospyynto.meta | field("taloudelliset") %}
 <span class="otsikko">
     Taloudelliset edellytykset:
 </span><br/>
@@ -64,6 +64,5 @@
     Kumulatiivinen yli- tai alijäämä:
 </span><br/>
 <span class="sisennys">
-    {{ edellytys | fieldvalue("kumulatiivinen") }}
+    {{ edellytys | fieldvalue("jaama") }}
 </span>
-{% endfor %}

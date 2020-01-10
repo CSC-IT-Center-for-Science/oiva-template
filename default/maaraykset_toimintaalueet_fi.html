@@ -1,3 +1,4 @@
+{% set arvo = maaraykset | toimintaAlueArvo %}
 <div class="tietoa">
     {{[ "00::Koulutuksen järjestäjällä ei ole alueellista velvoitetta järjestää tutkintoja ja koulutusta. Koulutuksen järjestäjä saa järjestää tutkintoja ja koulutusta koko Suomessa Ahvenanmaan maakuntaa lukuun ottamatta.",
         "01::Koulutuksen järjestäjällä on velvollisuus järjestää tutkintoja ja koulutusta ensisijaisesti seuraavan kunnan osaamis- ja koulutustarpeeseen:",
@@ -9,7 +10,7 @@
         "21::Koulutuksen järjestäjällä on velvollisuus järjestää tutkintoja ja koulutusta ensisijaisesti seuraavien maakuntien ja seuraavan kunnan osaamis- ja koulutustarpeeseen:",
         "22::Koulutuksen järjestäjällä on velvollisuus järjestää tutkintoja ja koulutusta ensisijaisesti seuraavien maakuntien ja kuntien alueen osaamis- ja koulutustarpeeseen:",
         "33::Koulutuksen järjestäjällä on velvollisuus järjestää tutkintoja ja koulutusta Ahvenanmaan maakuntaa lukuun ottamatta koko Suomen osaamis- ja koulutustarpeeseen."
-    ]| pick(maaraykset | toimintaAlueArvo) }}
+    ]| pick(arvo) }}
 </div>
 
 <!-- Maakunnat -->
@@ -22,7 +23,7 @@
     { "maaraykset": maaraykset | filterMaarays("koodisto:kunta") }
 %}
 
-{% if maaraykset | toimintaAlueArvo is not any(["00", "33"]) %}
+{% if arvo != null and arvo is not any(["00", "33"]) %}
     <div class="tietoa">
         Tutkintoja ja koulutusta saa lisäksi järjestää Ahvenanmaan maakuntaa lukuun ottamatta myös muualla Suomessa.
     </div>
