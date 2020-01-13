@@ -22,8 +22,9 @@
 
                     <h5>Onko hakijalla voimassaolevaa Liikenne- ja turvallisuusviraston (Trafi) myötämää lupaa</h5>
                     <span>
+                        {% set pvm = perustelu | fieldvalue("voimassaoleva_pvm") %}
                         {% if perustelu | fieldvalue("voimassaoleva") == 'true' %}
-                        Kyllä, voimassa {{ perustelu | fieldvalue("voimassaoleva_pvm") }}
+                        Kyllä{% if pvm is notBlank %}, voimassa {{ pvm }}{% endif %}
                         {% else %}
                         Ei
                         {% endif %}

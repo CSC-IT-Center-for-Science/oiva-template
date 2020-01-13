@@ -40,16 +40,14 @@
                 </div>
             </div>
             <h5>Arvio koulutukseen suunnattavista opiskelijavuosista seuraavana kolmena vuotena</h5>
-            {% set vuodet = perustelu | field("vuodet") %}
             <div class="sector">
-                {% for arvo in ["arvo_1", "arvo_2", "arvo_3"] %}
-                {% set vuosi = vuodet | field(arvo) %}
+                {% for v in perustelu | field("opiskelija_vuodet") %}
                 <div class="rivi">
                     <div class="sector-left">
-                        <span>{{ vuosi | fieldvalue("vuosi") }}:</span>
+                        <span>{{ v | fieldvalue("vuosi") }}:</span>
                     </div>
                     <div class="cell">
-                        <span>{{ vuosi | fieldvalue("maara") }}</span>
+                        <span>{{ v | fieldvalue("arvo") }}</span>
                     </div>
                 </div>
                 {% endfor %}
