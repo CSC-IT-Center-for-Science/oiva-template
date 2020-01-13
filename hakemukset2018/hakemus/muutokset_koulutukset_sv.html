@@ -1,8 +1,16 @@
 {% if muutokset is notBlank %}
 <div class="maaraystyyppiotsikko data">{{ koulutustyyppiKoodi.nimi | translated }}</div>
-{% for maaraystyyppi in ["oikeus", "velvoite", "rajoite"] %}
-{% include fromContext("muutokset_koulutus") with
-{ "muutokset": muutokset | filterMaarays("tyyppi:" + maaraystyyppi) }
+{% for muutos in muutokset %}
+<div class="loop {{ maarays | htmlClass }}">
+    <span class="data cell-wider padding20">{{muutos.tila | lower | capitalize}}: {{ muutos.koodi.koodiarvo }} {{ muutos.koodi.nimi | translated }}</span>
+</div>
+{% include fromContext("hakemus/muutokset_osaamisalarajoitukset") with
+{ "muutokset": muutos.aliMaaraykset | filterMuutos(["kohde:tutkinnotjakoulutukset", "koodisto:osaamisala"]) }
 %}
+<div class="loop {{ maarays | htmlClass }}">
+    {% for teksti in muutos.meta | field("perusteluteksti") %}
+    <span class="data cell-wider padding40">{{ teksti | fieldvalue("value")}}</span><br>
+    {% endfor %}
+</div>
 {% endfor %}
 {% endif %}
