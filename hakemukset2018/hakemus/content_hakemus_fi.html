@@ -22,7 +22,7 @@
 
         <!-- Kuljettajakoulutus -->
         {% include fromContext("hakemus/muutokset_kuljettajakoulutus") with
-        { "muutokset_kuljettajakoulutus": muutospyynto.muutokset | filterMuutos(["kohde:tutkinnotjakoulutukset", "koodisto:kuljettajakoulutus"]) }
+        { "muutokset_kuljettajakoulutus": muutospyynto.muutokset | filterMuutos(["kohde:tutkinnotjakoulutukset", "koodisto:kuljettajakoulutus", "koodiarvo:1|2"]) }
         %}
 
         <!-- Työvoimakoulutus -->
@@ -91,9 +91,11 @@
                     Haettu uusi
                     <span class="data">{{ "vähimmäismäärä|enimmäismäärä" | wording(muutos.isMaaraystyyppi("oikeus")) }}</span> on
                     <span class="data">{{ muutos.arvo | number }}</span>.
-             </span>
+            </span>
             <div class="loop {{ maarays | htmlClass }}">
-                <span class="data cell-wider padding40">{{ muutos.meta | fieldvalue("perusteluteksti") }}</span>
+                {% for teksti in muutos.meta | field("perusteluteksti") %}
+                <span class="data cell-wider padding40">{{ teksti | fieldvalue("value")}}</span><br>
+                {% endfor %}
             </div>
             {% endfor %}
         </div>
