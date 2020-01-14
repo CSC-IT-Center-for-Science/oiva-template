@@ -8,7 +8,7 @@
 
         <!-- Vaativan erityisen tuen tehtävä  -->
         {% include fromContext("hakemus/muutokset_vaativatuki") with
-            { "muutokset": muutokset | filterMuutos(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "kasite:vaativa"]) }
+            { "muutokset": muutokset | filterMuutos(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "kasite:vaativa", "koodiarvo:~23"]) }
         %}
 
         <!-- Sisäoppilaitosmuotoinen koulutus  -->
