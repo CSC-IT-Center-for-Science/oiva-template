@@ -8,6 +8,13 @@
         <span class="data">
             {{muutos.tila | lower | capitalize}}: {{ muutos.koodi.kuvaus | translated }}
         </span>
+        {% if muutos.tila == "POISTO" %}
+        <div class="loop {{ maarays | htmlClass }}">
+            {% for teksti in muutos.meta | field("perusteluteksti") %}
+            <span class="data cell-wider padding40">{{ teksti | fieldvalue("value")}}</span><br>
+            {% endfor %}
+        </div>
+        {% else %}
         {% set perustelu = muutos.meta | field("perusteluteksti_vaativa") %}
         <div class="loop with-counter">
             <h5>Tehtävän tarpeellisuus</h5>
@@ -63,6 +70,7 @@
                 {% endfor %}
             </div>
         </div>
+        {% endif %}
     </div>
     {% endfor %}
 {% endif %}

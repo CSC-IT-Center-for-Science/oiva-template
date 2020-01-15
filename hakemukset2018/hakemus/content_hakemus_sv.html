@@ -22,12 +22,12 @@
 
         <!-- Kuljettajakoulutus -->
         {% include fromContext("hakemus/muutokset_kuljettajakoulutus") with
-        { "muutokset_kuljettajakoulutus": muutospyynto.muutokset | filterMuutos(["kohde:tutkinnotjakoulutukset", "koodisto:kuljettajakoulutus", "koodiarvo:1|2"]) }
+        { "muutokset_kuljettajakoulutus": muutospyynto.muutokset | filterMuutos(["kohde:tutkinnotjakoulutukset", "koodisto:kuljettajakoulutus", "koodiarvo:~3", "koodiarvo:~7"]) }
         %}
 
         <!-- Työvoimakoulutus -->
         {% include fromContext("hakemus/muutokset_tyovoimakoulutus") with
-        { "muutokset_tyovoimakoulutus": muutospyynto.muutokset | filterMuutos(["kohde:tutkinnotjakoulutukset", "koodisto:oivatyovoimakoulutus"]) }
+        { "muutokset_tyovoimakoulutus": muutospyynto.muutokset | filterMuutos(["kohde:tutkinnotjakoulutukset", "koodisto:oivatyovoimakoulutus", "koodiarvo:~4"]) }
         %}
 
     </div>
@@ -91,7 +91,7 @@
                     Haettu uusi
                     <span class="data">{{ "vähimmäismäärä|enimmäismäärä" | wording(muutos.isMaaraystyyppi("oikeus")) }}</span> on
                     <span class="data">{{ muutos.arvo | number }}</span>.
-             </span>
+            </span>
             <div class="loop {{ maarays | htmlClass }}">
                 {% for teksti in muutos.meta | field("perusteluteksti") %}
                 <span class="data cell-wider padding40">{{ teksti | fieldvalue("value")}}</span><br>
