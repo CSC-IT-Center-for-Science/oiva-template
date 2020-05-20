@@ -94,7 +94,7 @@
             </span>
             <div class="loop {{ maarays | htmlClass }}">
                 {% for teksti in muutos.meta | field("perusteluteksti") %}
-                <span class="data cell-wider padding40">{{ teksti | fieldvalue("value")}}</span><br>
+                <span class="data cell-wider padding40">{{ teksti | fieldvalue("value")}}</span><br/>
                 {% endfor %}
             </div>
             {% endfor %}
