@@ -1,6 +1,6 @@
 {% if muutokset is notBlank %}
     <div class="sisennys3 if">
-        {% for muutos in muutokset | sortMaarays("koodiarvo") %}
+        {% for muutos in muutokset | sortMuutos("koodiarvo") %}
             <div class="loop {{ maarays | htmlClass }}">
                 lukuun ottamatta: <span class="data">{{ muutos.koodi.koodiArvo }} {{ muutos.koodi.nimi | translated }}</span>
             </div>

@@ -2,7 +2,11 @@
 
 <!-- TITLE -->
 {% block title %}
-    OKM/{{ lupa.diaarinumero }}
+    {% if lupa.asianumero is empty %}
+        OKM/{{ lupa.diaarinumero }}
+    {% else %}
+        {{ lupa.asianumero }}
+    {% endif %}
 {% endblock %}
 
 <!-- HEADER -->

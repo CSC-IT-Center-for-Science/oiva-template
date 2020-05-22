@@ -5,7 +5,7 @@
         <span class="data loop {{ maarays | htmlClass }}">{{muutos.tila | lower | capitalize}}: {{ muutos.koodi.nimi | translated | comma }}</span>
         <div class="loop {{ maarays | htmlClass }}">
             {% for teksti in muutos.meta | field("perusteluteksti") %}
-                <span class="data cell-wider padding40">{{ teksti | fieldvalue("value")}}</span><br>
+                <span class="data cell-wider padding40">{{ teksti | fieldvalue("value")}}</span><br/>
                 {% endfor %}
         </div>
         {% endfor %}
