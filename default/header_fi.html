@@ -5,10 +5,14 @@
     {{jarjestaja.ytunnus}}
 </div>
 <div id="diaari-placeholder">
-    PÄÄTÖS
+    PÄÄTÖS{% if lupa.lupatila.tunniste == 'LUONNOS' %}LUONNOS{% endif %}
 </div>
 <div id="diaari-placeholder-right-top">
-    OKM/{{ lupa.diaarinumero }}
+    {% if lupa.asianumero is empty %}
+        OKM/{{ lupa.diaarinumero }}
+    {% else %}
+        {{ lupa.asianumero }}
+    {% endif %}
 </div>
 <div id="diaari-placeholder-right-bottom">
     {{ lupa.paatospvm | toDate | date("d.M.yyyy") }}
