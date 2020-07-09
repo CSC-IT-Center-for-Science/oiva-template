@@ -131,13 +131,6 @@
             }
         %}
 
-        <!-- Oikeudet: vähintään -->
-        {% include fromDefault("maaraykset_opiskelijavuosirajoitukset") with
-            { "otsikko": "Opiskelijavuosien vähimmäismäärää koskee seuraava velvollisuus| Opiskelijavuosien vähimmäismäärää koskevat seuraavat velvollisuudet",
-              "maaraykset": lupa.maaraykset | filterMaarays(["tyyppi:oikeus", "kohde:opiskelijavuodet", "koodisto:~koulutussektori", "arvo:>0"])
-            }
-        %}
-
         <!-- Vain työvoimakoulutus -> tulee lisäteksti -->
         {% include fromDefault("maaraykset_tyovoimakoulutus_lisateksti") with
             { "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:oivatyovoimakoulutus", "koodiarvo:3"]) }
