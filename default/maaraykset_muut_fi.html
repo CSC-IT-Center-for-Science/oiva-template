@@ -51,6 +51,10 @@
             { "maaraykset": maaraykset | filterMaarays(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "koodiarvo:9"]) }
         %}
 
+        {% include fromDefault("maaraykset_muu") with
+            { "maaraykset": maaraykset | filterMaarays(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "koodiarvo:15"]) }
+        %}
+
     {% else %}
         <div class="tietoa">
             Koulutuksen järjestäjälle ei tässä järjestämisluvassa määrätä muita oikeuksia, velvollisuuksia, ehtoja tai tehtäviä.
