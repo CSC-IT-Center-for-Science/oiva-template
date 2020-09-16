@@ -1,0 +1,19 @@
+<!-- tutkintokieliMaaraykset is a map. Key = language, value = tutkinnot as a list of strings -->
+<div class="if">
+    {% if tutkintokieliMaaraykset is notBlank %}
+    {% for entry in tutkintokieliMaaraykset %}
+
+    <div class="tietoa">
+        Tutkintokieli on em. {{ "opetuskielen|opetuskielten" | wording(opetuskieliMaaraykset) }}
+        lisäksi {{ entry.key }} {{ "seuraavassa tutkinnossa|seuraavissa tutkinnoissa" | wording(entry.value | length <= 1) }}:
+    </div>
+    <div class="maaraykset sisennys">
+        <div class="loop {{ maarays | htmlClass }}">
+            {% for tutkinto in entry.value %}
+            <div class="data">{{ tutkinto }}</div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
