@@ -48,7 +48,7 @@
         {% endif %}
 
 
-        
+
     </div>
 
     <!-- Opetus- ja tutkintokieli -->
@@ -65,34 +65,11 @@
             { "maaraykset": lupa.maaraykset | filterMaarays(["tyyppi:poikkeus", "kohde:opetusjatutkintokieli"]) }
         %}
 
-        <!-- Vieraskieliset: ruotsi -->
-        {% include fromDefault("maaraykset_vieraskieliset") with
-            { "kieli": "sv",
-              "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "alimaarays:koodisto:kieli", "alimaarays:koodiarvo:sv"])
-            }
+        <!-- Tutkintokielet -->
+        {% include fromDefault("maaraykset_tutkintokielet") with
+        { "tutkintokieliMaaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "alimaarays:koodisto:kieli"]) | groupTutkintokielet(kielet),
+          "opetuskieliMaaraykset": lupa.maaraykset | filterMaarays(["tyyppi:velvoite", "kohde:opetusjatutkintokieli", "koodisto:oppilaitoksenopetuskieli"]) }
         %}
-
-        <!-- Vieraskieliset: englanti -->
-        {% include fromDefault("maaraykset_vieraskieliset") with
-            { "kieli": "en",
-              "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "alimaarays:koodisto:kieli", "alimaarays:koodiarvo:en"])
-            }
-        %}
-
-        <!-- Vieraskieliset: venäjä -->
-        {% include fromDefault("maaraykset_vieraskieliset") with
-            { "kieli": "ru",
-              "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "alimaarays:koodisto:kieli", "alimaarays:koodiarvo:ru"])
-            }
-        %}
-
-        <!-- Vieraskieliset: suomi (ruotsinkielisille järjestäjille) -->
-        {% include fromDefault("maaraykset_vieraskieliset") with
-        { "kieli": "fi",
-        "maaraykset": lupa.maaraykset | filterMaarays(["kohde:tutkinnotjakoulutukset", "koodisto:koulutus", "alimaarays:koodisto:kieli", "alimaarays:koodiarvo:fi"])
-        }
-        %}
-
     </div>
 
     <!-- Toiminta-alue -->
