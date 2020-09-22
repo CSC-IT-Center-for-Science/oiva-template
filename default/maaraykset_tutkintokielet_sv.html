@@ -1,0 +1,17 @@
+<div class="if">
+    {% if tutkintokieliMaaraykset is notBlank %}
+    {% for entry in tutkintokieliMaaraykset %}
+
+    <div class="tietoa">
+        Utöver ovannämnda undervisningsspråk är examensspråket därtill {{ entry.key }} i följande examina:
+    </div>
+    <div class="maaraykset sisennys">
+        <div class="loop {{ maarays | htmlClass }}">
+            {% for tutkinto in entry.value %}
+            <div class="data">{{ tutkinto }}</div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
