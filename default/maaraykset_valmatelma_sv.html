@@ -3,10 +3,12 @@
         <div class="tietoa">
             Utbildningsanordnaren har rätt att ordna följande handledande utbildningar:
         </div>
-        {% for maarays in maaraykset %}
-            <div class="loop sisennys {{ maarays | htmlClass }}">
-                <span class="data">{{maarays.koodiarvo}} {{ maarays.koodi.nimi | translated }}</span>
-            </div>
-        {% endfor %}
+        <div class="maaraykset">
+            {% for maarays in maaraykset %}
+                <div class="loop sisennys {{ maarays | htmlClass }}">
+                    <span class="data">{{maarays.koodiarvo}} {{ maarays.koodi.nimi | translated }}</span>
+                </div>
+            {% endfor %}
+        </div>
     {% endif %}
 </div>
