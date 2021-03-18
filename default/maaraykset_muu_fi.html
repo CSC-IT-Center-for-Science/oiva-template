@@ -1,11 +1,12 @@
 {% if maaraykset is notBlank %}
     {% for maarays in maaraykset %}
+      {% if (maarays.meta | field("value") != null ) %}
         <p><b>{{ maarays.koodi.nimi | translated }}</b></p>
-        <div class="maaraykset">
-            <span class="data loop {{ maarays | htmlClass }}">
-                {{ maarays.koodi.kuvaus | translated }}
-            </span><br/>
-        </div>
+         <div class="maaraykset">
+              <span class="data loop {{ maarays | htmlClass }}">
+                {{ maarays.meta | fieldvalue("value") }}
+              </span><br/>
+         </div>
+      {% endif %}
     {% endfor %}
-
 {% endif %}

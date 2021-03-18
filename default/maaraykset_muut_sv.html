@@ -51,6 +51,11 @@
             { "maaraykset": maaraykset | filterMaarays(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "koodiarvo:9"]) }
         %}
 
+        <!-- Muu määräys -->
+        {% include fromDefault("maaraykset_muu") with
+        { "maaraykset": maaraykset | filterMaarays(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "koodiarvo:22"]) }
+        %}
+
     {% else %}
     <div class="tietoa">
         I detta anordnartillstånd anges inga andra rättigheter, skyldigheter, villkor eller uppgifter för utbildningsanordnaren.
