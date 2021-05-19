@@ -51,8 +51,14 @@
             { "maaraykset": maaraykset | filterMaarays(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "koodiarvo:9"]) }
         %}
 
+        <!-- Muu määräys: kajaanin kaupungin oma (koodiarvo 15) -->
+        {% include fromDefault("maaraykset_muu_kajaani") with
+        { "maaraykset": maaraykset | filterMaarays(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "koodiarvo:15"]) }
+        %}
+
+        <!-- Muu määräys -->
         {% include fromDefault("maaraykset_muu") with
-            { "maaraykset": maaraykset | filterMaarays(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "koodiarvo:15"]) }
+            { "maaraykset": maaraykset | filterMaarays(["koodisto:oivamuutoikeudetvelvollisuudetehdotjatehtavat", "koodiarvo:22"]) }
         %}
 
     {% else %}

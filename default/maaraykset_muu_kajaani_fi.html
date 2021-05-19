@@ -1,0 +1,11 @@
+{% if maaraykset is notBlank %}
+    {% for maarays in maaraykset %}
+        <p><b>{{ maarays.koodi.nimi | translated }}</b></p>
+        <div class="maaraykset">
+            <span class="data loop {{ maarays | htmlClass }}">
+                {{ maarays.koodi.kuvaus | translated }}
+            </span><br/>
+        </div>
+    {% endfor %}
+
+{% endif %}
